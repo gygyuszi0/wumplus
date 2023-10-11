@@ -1,4 +1,4 @@
-package hu.nye.progtech;
+package hu.nye.progtech.wumplus;
 
 public class Main {
     public static void main(String[] args) {
