@@ -10,6 +10,8 @@ public class Game {
 
     private String playerName;
 
+    private final String playerNamePropmt = "Mi a játékos neve? ";
+
     public Game() {
     }
 
@@ -19,6 +21,26 @@ public class Game {
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
+    }
+
+    /**
+     * A játék fő függvénye.
+     *
+     * Bekéri a játékos nevet
+     * Kezeli a menut és futtatja a funkciókat
+     */
+    public void mainLoop() {
+        String newPlayerName = readPlayerName();
+        setPlayerName(newPlayerName);
+        // System.out.println(String.format("New player name : %s", getPlayerName()));
+
+    }
+
+    private String readPlayerName() {
+        String result;
+        System.out.println(playerNamePropmt);
+        result = ConsolRead.read();
+        return result;
     }
 
 }
