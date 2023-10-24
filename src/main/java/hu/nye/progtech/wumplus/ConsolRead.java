@@ -24,5 +24,4 @@ public class ConsolRead {
         }
         return result;
     }
-
 }

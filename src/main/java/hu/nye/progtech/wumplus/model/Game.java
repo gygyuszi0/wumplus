@@ -1,4 +1,8 @@
-package hu.nye.progtech.wumplus;
+package hu.nye.progtech.wumplus.model;
+
+import hu.nye.progtech.wumplus.ConsolRead;
+
+// TODO ez itt nem jó helyen van, service lesz
 
 /**
  * A játék fő osztálya.
@@ -9,7 +13,6 @@ package hu.nye.progtech.wumplus;
 public class Game {
 
     private String playerName;
-
     private final String playerNamePropmt = "Mi a játékos neve? ";
 
     public Game() {
