@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="MainLoop bekéri és tárolja a játékos nevét">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/ConsolReadTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/GameTest.java" afterDir="false" />
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/ConsolRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/ConsolRead.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697378978319</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is">
+      <created>1698168748921</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698168748921</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,7 +156,8 @@
     <MESSAGE value="checkstyle.xml felvétele" />
     <MESSAGE value="fő osztély felvétele checkstyle szerint helyesen" />
     <MESSAGE value="MainLoop bekéri és tárolja a játékos nevét" />
-    <option name="LAST_COMMIT_MESSAGE" value="MainLoop bekéri és tárolja a játékos nevét" />
+    <MESSAGE value="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is" />
+    <option name="LAST_COMMIT_MESSAGE" value="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
