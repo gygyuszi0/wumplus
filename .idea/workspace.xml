@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is">
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Checkstyle szerinti javítás">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReadException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/MapFromFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/map/teszt.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/ConsolRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/IOReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/ConsolReadTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/GameTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -30,16 +41,15 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-Dmaven.plugin.validation=VERBOSE" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2WchTtzKdIgcw03HD1UtFfMaAfJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -54,10 +64,15 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "git-widget-placeholder": "feature/game__class",
+    "last_opened_file_path": "/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/wumplus",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.testRunning"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="hu.nye.progtech.wumplus.service.map" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
@@ -65,7 +80,7 @@
       <recent name="hu.nye.progtech.wumplus" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.Main" />
       <module name="wumplus" />
@@ -79,9 +94,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConsolReadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.ConsolReadTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ConsolReadTest" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698168748921</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Checkstyle szerinti javítás">
+      <created>1698168834757</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698168834757</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,7 +195,8 @@
     <MESSAGE value="fő osztély felvétele checkstyle szerint helyesen" />
     <MESSAGE value="MainLoop bekéri és tárolja a játékos nevét" />
     <MESSAGE value="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is" />
+    <MESSAGE value="Checkstyle szerinti javítás" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checkstyle szerinti javítás" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

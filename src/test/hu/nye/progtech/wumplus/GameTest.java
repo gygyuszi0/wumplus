@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 import hu.nye.progtech.wumplus.ConsolRead;
+import hu.nye.progtech.wumplus.model.Game
 
 @ExtendWith(MockitoExtension.class)
 class GameTest {

@@ -2,12 +2,15 @@ package hu.nye.progtech.wumplus;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.util.List;
 
 /**
  * Consolról olvasó osztály.
  */
-public class ConsolRead {
+public class IOReader {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     /**
@@ -15,7 +18,7 @@ public class ConsolRead {
      *
      * @return Beolvasott szöveg
      */
-    public static String read() {
+    public static String consloeRead() {
         String result = new String();
         try {
             result = reader.readLine();
@@ -23,5 +26,11 @@ public class ConsolRead {
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    public static BufferedReader fileRead(String filaName){
+        InputStream inputStream = Main.class.getClassLoader().getResourceAsStream(filaName);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        return bufferedReader;
     }
 }

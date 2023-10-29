@@ -1,6 +1,6 @@
 package hu.nye.progtech.wumplus.model;
 
-import hu.nye.progtech.wumplus.ConsolRead;
+import hu.nye.progtech.wumplus.IOReader;
 
 // TODO ez itt nem jó helyen van, service lesz
 
@@ -42,7 +42,7 @@ public class Game {
     private String readPlayerName() {
         String result;
         System.out.println(playerNamePropmt);
-        result = ConsolRead.read();
+        result = IOReader.consloeRead();
         return result;
     }
 
