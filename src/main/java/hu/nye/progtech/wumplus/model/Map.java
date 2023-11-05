@@ -1,5 +1,6 @@
 package hu.nye.progtech.wumplus.model;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 /**
@@ -15,9 +16,9 @@ public class Map {
     private final Integer heroY;
     private final List<String> mapObjects;
 
-    private final List<Boolean> mapFixed;
+    private final List<List<Boolean>> mapFixed;
 
-    public Map(Integer numberOfRows, Integer numberOfCols, Integer heroX, Integer heroY, List<String> mapObjects, List<Boolean> mapFixed) {
+    public Map(Integer numberOfRows, Integer numberOfCols, Integer heroX, Integer heroY, List<String> mapObjects, List<List<Boolean>> mapFixed) {
         this.numberOfRows = numberOfRows;
         this.numberOfCols = numberOfCols;
         this.heroX = heroX;

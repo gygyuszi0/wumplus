@@ -4,19 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Checkstyle szerinti javítás">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReadException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/MapFromFile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/map/teszt.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="File olvasás megkezdése">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/RawMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/ConsolRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/IOReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/ConsolReadTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/map/teszt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/map/wumpuszinput.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,9 +42,9 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2WchTtzKdIgcw03HD1UtFfMaAfJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -58,17 +53,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "feature/game__class",
-    "last_opened_file_path": "/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/wumplus",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.testRunning"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/game__class&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/wumplus&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.testRunning&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="hu.nye.progtech.wumplus.service.map" />
@@ -174,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698168834757</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="File olvasás megkezdése">
+      <option name="closed" value="true" />
+      <created>1698585466453</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698585466453</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,7 +199,8 @@
     <MESSAGE value="MainLoop bekéri és tárolja a játékos nevét" />
     <MESSAGE value="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is" />
     <MESSAGE value="Checkstyle szerinti javítás" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checkstyle szerinti javítás" />
+    <MESSAGE value="File olvasás megkezdése" />
+    <option name="LAST_COMMIT_MESSAGE" value="File olvasás megkezdése" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
