@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="File olvasás megkezdése">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/RawMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" afterDir="false" />
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="MapParser vázlat és MapVO javítása">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/map/teszt.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/map/wumpuszinput.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698585466453</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="MapParser vázlat és MapVO javítása">
+      <option name="closed" value="true" />
+      <created>1699205494862</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699205494862</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,7 +203,19 @@
     <MESSAGE value="Player és Map Value object-ek létrehozása.&#10;Egyelőre konstruktorral&#10;&#10;TODO:&#10;Game rossz helyen van&#10;ConsolRead-nek lehetne jobb helye is" />
     <MESSAGE value="Checkstyle szerinti javítás" />
     <MESSAGE value="File olvasás megkezdése" />
-    <option name="LAST_COMMIT_MESSAGE" value="File olvasás megkezdése" />
+    <MESSAGE value="MapParser vázlat és MapVO javítása" />
+    <option name="LAST_COMMIT_MESSAGE" value="MapParser vázlat és MapVO javítása" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

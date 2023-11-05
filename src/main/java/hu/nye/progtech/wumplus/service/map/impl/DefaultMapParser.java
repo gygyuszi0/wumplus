@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DefaultMapParser implements MapParser {
 
-    public static final String WALL = "W";
-    public static final String SPACE = "_";
+    public static final Character WALL = 'W';
+    public static final Character SPACE = '_';
 
     @Override
     public Map parseMap(List<String> rawMap) {
@@ -18,8 +18,11 @@ public class DefaultMapParser implements MapParser {
         List<String> map = extractMap(rawMap);
         List<List<Boolean>> fixed = extractFixed(rawMap);
 
-        System.out.println("map\t: " + map);
-        System.out.println("fixed\t: " + fixed);
+//        for (int i = 0; i < map.size(); i++) {
+//            System.out.println("Row " + i);
+//            System.out.println("\tmap\t\t: " + map.get(i));
+//            System.out.println("\tfixed\t: " + fixed.get(i));
+//        }
 
         result = new Map(0,0,0,0,map, fixed);
 
