@@ -1,6 +1,6 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
-import hu.nye.progtech.wumplus.model.Map;
+import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.service.map.MapParser;
 
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ public class DefaultMapParser implements MapParser {
     public static final Character SPACE = '_';
 
     @Override
-    public Map parseMap(List<String> rawMap) {
-        Map result;
+    public MapVO parseMap(List<String> rawMap) {
+        MapVO result;
 
         List<String> map = extractMap(rawMap);
         List<List<Boolean>> fixed = extractFixed(rawMap);
@@ -24,7 +24,7 @@ public class DefaultMapParser implements MapParser {
 //            System.out.println("\tfixed\t: " + fixed.get(i));
 //        }
 
-        result = new Map(0,0,0,0,map, fixed);
+        result = new MapVO(0,0,0,0,map, fixed);
 
         return result;
     }

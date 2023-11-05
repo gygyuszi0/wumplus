@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="MapParser vázlat és MapVO javítása">
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="DefaultMapParser fixed keresés javítása">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/MapVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/map/wumpuszinput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/map/wumpuszinput.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699205494862</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="DefaultMapParser fixed keresés javítása">
+      <option name="closed" value="true" />
+      <created>1699206075856</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1699206075856</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,7 +216,8 @@
     <MESSAGE value="Checkstyle szerinti javítás" />
     <MESSAGE value="File olvasás megkezdése" />
     <MESSAGE value="MapParser vázlat és MapVO javítása" />
-    <option name="LAST_COMMIT_MESSAGE" value="MapParser vázlat és MapVO javítása" />
+    <MESSAGE value="DefaultMapParser fixed keresés javítása" />
+    <option name="LAST_COMMIT_MESSAGE" value="DefaultMapParser fixed keresés javítása" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

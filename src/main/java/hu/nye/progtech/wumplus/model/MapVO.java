@@ -1,6 +1,7 @@
 package hu.nye.progtech.wumplus.model;
 
-import java.lang.reflect.Array;
+import jdk.jshell.spi.ExecutionControl;
+
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * Lépés után egy új map keletkezik.
  */
 
-public class Map {
+public class MapVO {
     private final Integer numberOfRows;
     private final Integer numberOfCols;
     private final Integer heroX;
@@ -18,12 +19,24 @@ public class Map {
 
     private final List<List<Boolean>> mapFixed;
 
-    public Map(Integer numberOfRows, Integer numberOfCols, Integer heroX, Integer heroY, List<String> mapObjects, List<List<Boolean>> mapFixed) {
+    public MapVO(Integer numberOfRows, Integer numberOfCols, Integer heroX, Integer heroY, List<String> mapObjects, List<List<Boolean>> mapFixed) {
         this.numberOfRows = numberOfRows;
         this.numberOfCols = numberOfCols;
         this.heroX = heroX;
         this.heroY = heroY;
         this.mapObjects = mapObjects;
         this.mapFixed = mapFixed;
+    }
+
+    @Override
+    public String toString() {
+        return "MapVO{" +
+                "numberOfRows=" + numberOfRows +
+                ", numberOfCols=" + numberOfCols +
+                ", heroX=" + heroX +
+                ", heroY=" + heroY +
+                ", mapObjects=" + mapObjects +
+                ", mapFixed=" + mapFixed +
+                '}';
     }
 }

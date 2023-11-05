@@ -1,9 +1,9 @@
 package hu.nye.progtech.wumplus.service.map;
 
-import hu.nye.progtech.wumplus.model.Map;
+import hu.nye.progtech.wumplus.model.MapVO;
 
 import java.util.List;
 
 public interface MapParser {
-    Map parseMap(List<String> rawMap);
+    MapVO parseMap(List<String> rawMap);
 }
