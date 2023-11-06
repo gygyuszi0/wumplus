@@ -28,7 +28,15 @@ public class IOReader {
         return result;
     }
 
-    public static BufferedReader fileRead(String filaName){
+    /**
+     * File olvasást megvalósító függvény.
+     *
+     * @param filaName
+     *
+     * @return
+     *
+     */
+    public static BufferedReader fileRead(String filaName) {
         InputStream inputStream = Main.class.getClassLoader().getResourceAsStream(filaName);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         return bufferedReader;

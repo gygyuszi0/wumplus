@@ -1,15 +1,17 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
-import hu.nye.progtech.wumplus.service.map.MapReadException;
-import hu.nye.progtech.wumplus.service.map.MapReader;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import hu.nye.progtech.wumplus.service.map.MapReadException;
+import hu.nye.progtech.wumplus.service.map.MapReader;
 
-public class MapFromFile implements MapReader{
+/**
+ * MapReder default implementáció.
+ */
+public class MapFromFile implements MapReader {
 
     private final BufferedReader bufferedReader;
 

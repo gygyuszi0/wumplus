@@ -1,8 +1,8 @@
 package hu.nye.progtech.wumplus.model;
 
-import jdk.jshell.spi.ExecutionControl;
-
 import java.util.List;
+
+import jdk.jshell.spi.ExecutionControl;
 
 /**
  * Map object.
@@ -19,7 +19,8 @@ public class MapVO {
 
     private final List<List<Boolean>> mapFixed;
 
-    public MapVO(Integer numberOfRows, Integer numberOfCols, Integer heroX, Integer heroY, List<String> mapObjects, List<List<Boolean>> mapFixed) {
+    public MapVO(Integer numberOfRows, Integer numberOfCols, Integer heroX, Integer heroY,
+                 List<String> mapObjects, List<List<Boolean>> mapFixed) {
         this.numberOfRows = numberOfRows;
         this.numberOfCols = numberOfCols;
         this.heroX = heroX;
