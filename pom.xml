@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hu.nye.progtech</groupId>
@@ -14,24 +14,38 @@
     </properties>
 
     <dependencies>
+
+        <!-- jacoco-maven-plugin -->
+        <!-- <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.11</version>
+            <type>maven-plugin</type>
+        </dependency> -->
+
+        <!-- logback-classic -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.6</version>
         </dependency>
 
+        <!-- junit-jupiter-api -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- mockito-junit-jupiter -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <version>3.12.4</version>
             <scope>test</scope>
         </dependency>
+    
     </dependencies>
 
     <build>
@@ -62,15 +76,19 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!-- maven-surefire-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
             </plugin>
+            
+            <!-- jacoco-maven-plugin -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.2</version>
+                <version>0.8.11</version>
                 <configuration>
                     <excludes>
                         <exclude>hu/nye/progtech/wumplus/Main.*</exclude>
@@ -112,6 +130,8 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!-- maven-checkstyle-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -140,6 +160,8 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!-- maven-site-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -150,6 +172,7 @@
 
     <reporting>
         <plugins>
+            <!-- maven-checkstyle-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -162,7 +185,20 @@
                     </reportSet>
                 </reportSets>
             </plugin>
+        
+            <!-- jacoco-maven-plugin -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <reportSets>
+                  <reportSet>
+                    <reports>
+                      <!-- select non-aggregate reports -->
+                      <report>report</report>
+                    </reports>
+                  </reportSet>
+                </reportSets>
+              </plugin>
         </plugins>
     </reporting>
-
 </project>

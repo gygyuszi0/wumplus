@@ -1,10 +1,11 @@
 package hu.nye.progtech.wumplus.service.map;
 
+import hu.nye.progtech.wumplus.service.exception.MapReadException;
+
 import java.util.List;
 
-/**
- * Map olvasást végző interface.
- */
 public interface MapReader {
-    public List<String> readMap() throws MapReadException;
+
+    List<String> readMap() throws MapReadException;
+
 }

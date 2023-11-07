@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import hu.nye.progtech.wumplus.service.map.MapReadException;
+import hu.nye.progtech.wumplus.service.exception.MapReadException;
 import hu.nye.progtech.wumplus.service.map.MapReader;
 
 /**

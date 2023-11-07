@@ -4,17 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Map osztálynév javítása MapVO-ra.&#10;Keverte a java saját Map-jével.&#10;még tud szabálytalan filet is beolvasni">
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/MapReadException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapValidatorNotSquerException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/impl/BufferedReaderMapReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/impl/MapFromFileTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/MapVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/MapVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/RawMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/RawMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReadException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReadException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/MapFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/MapFromFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/GameTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +31,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -64,7 +68,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;feature/game__class&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/wumplus&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.testRunning&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -75,10 +79,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="hu.nye.progtech.wumplus.service.map.impl" />
       <recent name="hu.nye.progtech.wumplus" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.BufferedReaderMapReaderTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.Main" />
       <module name="wumplus" />
@@ -92,7 +97,54 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ConsolReadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BufferedReaderMapReaderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map.impl" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.impl.BufferedReaderMapReaderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BufferedReaderMapReaderTest.testReadMapShouldReturnRowsReadFromBufferedReader" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map.impl" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.impl.BufferedReaderMapReaderTest" />
+      <option name="METHOD_NAME" value="testReadMapShouldReturnRowsReadFromBufferedReader" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BufferedReaderMapReaderTest.testReadMapShouldThrowMapReadExceptionWhenBufferedReaderFailsToRead" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map.impl" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.impl.BufferedReaderMapReaderTest" />
+      <option name="METHOD_NAME" value="testReadMapShouldThrowMapReadExceptionWhenBufferedReaderFailsToRead" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wumplus" />
       <extension name="coverage">
         <pattern>
@@ -101,7 +153,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.ConsolReadTest" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.GameTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -109,8 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BufferedReaderMapReaderTest" />
+        <item itemvalue="JUnit.BufferedReaderMapReaderTest.testReadMapShouldThrowMapReadExceptionWhenBufferedReaderFailsToRead" />
+        <item itemvalue="JUnit.BufferedReaderMapReaderTest.testReadMapShouldReturnRowsReadFromBufferedReader" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ConsolReadTest" />
+        <item itemvalue="JUnit.GameTest" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699206942371</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Javítások checkstyle szerint">
+      <option name="closed" value="true" />
+      <created>1699290502306</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1699290502306</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,18 +293,8 @@
     <MESSAGE value="MapParser vázlat és MapVO javítása" />
     <MESSAGE value="DefaultMapParser fixed keresés javítása" />
     <MESSAGE value="Map osztálynév javítása MapVO-ra.&#10;Keverte a java saját Map-jével.&#10;még tud szabálytalan filet is beolvasni" />
-    <option name="LAST_COMMIT_MESSAGE" value="Map osztálynév javítása MapVO-ra.&#10;Keverte a java saját Map-jével.&#10;még tud szabálytalan filet is beolvasni" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Javítások checkstyle szerint" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javítások checkstyle szerint" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
