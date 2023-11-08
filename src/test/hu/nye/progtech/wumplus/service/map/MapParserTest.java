@@ -1,6 +1,7 @@
 package hu.nye.progtech.wumplus.service.map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,9 +28,19 @@ public class MapParserTest {
 
     private static final List<String> RAW_MAP_WITH_FEWER_ROWS = List.of(
             "6 B 5 E",
+            "WWWWWW",
+            "W____W",
+            "W____W"
+    );
+
+    private static final List<String> RAW_MAP_WITH_FEWER_COLS = List.of(
+            "6 B 5 E",
             "WWW",
             "W__",
             "W__",
+            "W__",
+            "W__",
+            "WWW"
     );
 
     private static final char[][] MAP = {
@@ -59,6 +70,8 @@ public class MapParserTest {
         underTest = new MapParser(RAW_MAP);
     }
 
+
+
     @Test
     public void testValidMapVo() throws MapParseException {
         System.out.println("[TEST\t] : Return valid mapVo representation");
@@ -70,5 +83,15 @@ public class MapParserTest {
         // then
         assertEquals(EXPECTED_MAP, result);
     }
-
+    
+    @Test
+    void testFewerRows() throws MapParseException {
+        System.out.println("[TEST\t] : If the map contains too few rows, will throw exception ");
+        // given 
+        // when
+        // then
+        Exception exception = assertThrows(MapParseException.class, () -> underTest.parseMap(RAW_MAP_WITH_FEWER_ROWS));
+        System.out.println("\t\t\t\t\t:" + exception.getMessage());
+        assertEquals("Number of rows must be 6", exception.getMessage());
+    }
 }

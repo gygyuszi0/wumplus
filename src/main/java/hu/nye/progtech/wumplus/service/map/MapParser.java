@@ -23,6 +23,7 @@ public class MapParser {
     private final char PIT = 'P';
     private final char GOLD = 'G';
     private final char SPACE = '_';
+    private static final String VALID_ROW_REGEX = "[0-9]+";
 
     private final List<Character> STATIC_ELEMENT = List.of(WALL, PIT);
     private final List<Character> NONSTATIC_ELEMENT = List.of(HERO, WUMP, GOLD, SPACE);
@@ -42,7 +43,9 @@ public class MapParser {
         this.numberOfColumns = dimensions;
     }
 
-    public MapVO parseMap(List<String> rawMap) {
+    public MapVO parseMap(List<String> rawMap) throws MapParseException {
+        checkNumberOfRows(rawMap);
+
         char[][] map = getMap(rawMap);
         boolean[][] fixed = getFixed(map);
 
@@ -50,7 +53,7 @@ public class MapParser {
     }
 
     private void checkNumberOfRows(List<String> rows) throws MapParseException {
-        if (rows.size() != numberOfRows) {
+        if (rows.size() - 1 != numberOfRows) {
             throw new MapParseException("Number of rows must be " + numberOfRows);
         }
     }
