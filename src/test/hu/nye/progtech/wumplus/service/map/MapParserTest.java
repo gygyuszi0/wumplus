@@ -94,4 +94,16 @@ public class MapParserTest {
         System.out.println("\t\t\t\t\t:" + exception.getMessage());
         assertEquals("Number of rows must be 6", exception.getMessage());
     }
+
+    @Test
+    void testFewerCols() {
+        System.out.println("[TEST\t] : The map contains too few columsn but correct rows");
+        // given
+        // when
+        // then
+        Exception exception = assertThrows(MapParseException.class, () -> underTest.parseMap(RAW_MAP_WITH_FEWER_COLS));
+        System.out.println("\t\t\t\t\t:" + exception.getMessage());
+        assertEquals("Number of columns must be 6", exception.getMessage());
+
+    }
 }

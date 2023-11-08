@@ -45,6 +45,7 @@ public class MapParser {
 
     public MapVO parseMap(List<String> rawMap) throws MapParseException {
         checkNumberOfRows(rawMap);
+        checkNumberOfColumns(rawMap);
 
         char[][] map = getMap(rawMap);
         boolean[][] fixed = getFixed(map);
@@ -59,7 +60,8 @@ public class MapParser {
     }
 
     private void checkNumberOfColumns(List<String> rows) throws MapParseException {
-        for (String row : rows) {
+        for (int i = 1; i < rows.size(); i++) {
+            String row = rows.get(i);
             if (row.length() != numberOfColumns) {
                 throw new MapParseException("Number of columns must be " + numberOfColumns);
             }
