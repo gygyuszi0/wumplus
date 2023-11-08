@@ -1,12 +1,107 @@
 package hu.nye.progtech.wumplus.service.map;
 
-import java.util.List;
-
 import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.service.exception.MapParseException;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
 
 /**
- * Raw map konvertálása value object-té.
+ * Listát (raw map) alakít value objectté.
+ *
+ * A Row map tartalmazza az első sort is
  */
-public interface MapParser {
-    MapVO parseMap(List<String> rawMap);
+public class MapParser {
+
+    private final char WALL = 'W';
+    private final char HERO = 'H';
+    private final char WUMP = 'U';
+
+    private final char PIT = 'P';
+    private final char GOLD = 'G';
+    private final char SPACE = '_';
+
+    private final List<Character> STATIC_ELEMENT = List.of(WALL, PIT);
+    private final List<Character> NONSTATIC_ELEMENT = List.of(HERO, WUMP, GOLD, SPACE);
+
+
+
+    private int numberOfRows;
+    private int numberOfColumns;
+
+    public MapParser(List<String> rawMap) {
+        String header = rawMap.get(0);
+        StringTokenizer tokenizer = new StringTokenizer(header, " ");
+        String dimension_block =  tokenizer.nextToken();
+        Integer dimensions = Integer.parseInt(dimension_block);
+
+        this.numberOfRows = dimensions;
+        this.numberOfColumns = dimensions;
+    }
+
+    public MapVO parseMap(List<String> rawMap) {
+        char[][] map = getMap(rawMap);
+        boolean[][] fixed = getFixed(map);
+
+        return new MapVO(numberOfRows, numberOfColumns, map, fixed);
+    }
+
+    private void checkNumberOfRows(List<String> rows) throws MapParseException {
+        if (rows.size() != numberOfRows) {
+            throw new MapParseException("Number of rows must be " + numberOfRows);
+        }
+    }
+
+    private void checkNumberOfColumns(List<String> rows) throws MapParseException {
+        for (String row : rows) {
+            if (row.length() != numberOfColumns) {
+                throw new MapParseException("Number of columns must be " + numberOfColumns);
+            }
+        }
+    }
+
+    private void checkForInvalidValues(List<String> rows) throws MapParseException {
+        for (String row : rows) {
+            if (!Pattern.matches(VALID_ROW_REGEX, row)) {
+                throw new MapParseException("Row contains invalid characters");
+            }
+        }
+    }
+
+    private char[][] getMap(List<String> rawMap) {
+        char[][] result = new char[numberOfRows][];
+
+        for (int i = 0; i < numberOfRows ; i++) {
+            result[i] = new char[numberOfColumns];
+
+            String line = rawMap.get(i + 1);
+            String[] parts = line.split("");
+
+            for (int j = 0; j < numberOfColumns; j++) {
+                char parsed = parts[j].charAt(0);
+                result[i][j] = parsed;
+            }
+        }
+
+        return result;
+    }
+
+    private boolean[][] getFixed(char[][] map) {
+        boolean[][] result = new boolean[numberOfRows][];
+
+        for (int i = 0; i < numberOfRows; i++) {
+            result[i] = new boolean[numberOfColumns];
+
+            for (int j = 0; j < numberOfColumns; j++) {
+                Character currentElement = map[i][j];
+                result[i][j] = STATIC_ELEMENT.contains(currentElement);
+            }
+        }
+
+        return result;
+    }
+
 }

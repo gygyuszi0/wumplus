@@ -5,39 +5,39 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import hu.nye.progtech.wumplus.model.MapVO;
-import hu.nye.progtech.wumplus.service.map.MapParser;
+//import hu.nye.progtech.wumplus.service.map.MapParser;
 
 /**
  * MapParser default implementáció.
  */
-public class DefaultMapParser implements MapParser {
+public class DefaultMapParser{
 
     public static final Character WALL = 'W';
     public static final Character SPACE = '_';
 
-    @Override
-    public MapVO parseMap(List<String> rawMap) {
-        MapVO result;
-
-        List<String> map = extractMap(rawMap);
-        List<List<Boolean>> fixed = extractFixed(rawMap);
-
-        // for (int i = 0; i < map.size(); i++) {
-        //      System.out.println("Row " + i);
-        //      System.out.println("\tmap\t\t: " + map.get(i));
-        //      System.out.println("\tfixed\t: " + fixed.get(i));
-        // }
-
-        StringTokenizer tokenizer = new StringTokenizer(rawMap.get(0), " ");
-        Integer dimensions = Integer.parseInt(tokenizer.nextToken());
-        Character playerX = tokenizer.nextToken().charAt(0);
-        Integer playerY = Integer.parseInt(tokenizer.nextToken());
-        String playerDirection = tokenizer.nextToken();
-
-        result = new MapVO(dimensions, dimensions, new char[dimensions][], new boolean[dimensions][] );
-
-        return result;
-    }
+//    @Override
+//    public MapVO parseMap(List<String> rawMap) {
+//        MapVO result;
+//
+//        List<String> map = extractMap(rawMap);
+//        List<List<Boolean>> fixed = extractFixed(rawMap);
+//
+//        // for (int i = 0; i < map.size(); i++) {
+//        //      System.out.println("Row " + i);
+//        //      System.out.println("\tmap\t\t: " + map.get(i));
+//        //      System.out.println("\tfixed\t: " + fixed.get(i));
+//        // }
+//
+//        StringTokenizer tokenizer = new StringTokenizer(rawMap.get(0), " ");
+//        Integer dimensions = Integer.parseInt(tokenizer.nextToken());
+//        Character playerX = tokenizer.nextToken().charAt(0);
+//        Integer playerY = Integer.parseInt(tokenizer.nextToken());
+//        String playerDirection = tokenizer.nextToken();
+//
+//        result = new MapVO(dimensions, dimensions, new char[dimensions][], new boolean[dimensions][] );
+//
+//        return result;
+//    }
 
     private List<String> extractMap(List<String> rawMap) {
         Integer numRows = rawMap.size();
