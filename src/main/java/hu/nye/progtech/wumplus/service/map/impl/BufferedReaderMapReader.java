@@ -8,6 +8,9 @@ import java.util.List;
 import hu.nye.progtech.wumplus.service.exception.MapReadException;
 import hu.nye.progtech.wumplus.service.map.MapReader;
 
+/**
+ * Default mapReader, bufferedReder segíŧségével olvas.
+ */
 public class BufferedReaderMapReader implements MapReader {
 
     private BufferedReader bufferedReader;

@@ -3,6 +3,9 @@ package hu.nye.progtech.wumplus.model;
 import java.util.Arrays;
 import java.util.Objects;
 
+/**
+ * Map objektum.
+ */
 public final class MapVO {
 
     private final int numberOfRows;
@@ -59,10 +62,17 @@ public final class MapVO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         MapVO mapVO = (MapVO) o;
-        return numberOfRows == mapVO.numberOfRows && numberOfColumns == mapVO.numberOfColumns && Arrays.deepEquals(map, mapVO.map) && Arrays.deepEquals(fixed, mapVO.fixed);
+        return (numberOfRows == mapVO.numberOfRows) &&
+                (numberOfColumns == mapVO.numberOfColumns) &&
+                (Arrays.deepEquals(map, mapVO.map)) &&
+                (Arrays.deepEquals(fixed, mapVO.fixed));
     }
 
     @Override

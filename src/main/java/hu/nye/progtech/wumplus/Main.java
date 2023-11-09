@@ -1,7 +1,6 @@
 package hu.nye.progtech.wumplus;
 
-
-import java.io.*;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import hu.nye.progtech.wumplus.model.MapVO;
@@ -26,16 +25,14 @@ public class Main {
         // Game wumplusGame = new Game();
         // wumplusGame.mainLoop();
 
-//        FileReader fileReader = new FileReader("/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/wumplus/src/resources/map/wumpuszinput.txt");
-//        BufferedReader file = new BufferedReader(fileReader);
-//
-//        MapFromFile fromFile = new MapFromFile(file);
-//        List<String> map = fromFile.readMap();
-//
-//        DefaultMapParser parser = new DefaultMapParser();
-//        MapVO parsedMapVO = parser.parseMap(map);
-//
-//        System.out.println(parsedMapVO);
+        // FileReader fileReader = new FileReader("/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/
+        // wumplus/src/resources/map/wumpuszinput.txt");
+        // BufferedReader file = new BufferedReader(fileReader);
+        // MapFromFile fromFile = new MapFromFile(file);
+        // List<String> map = fromFile.readMap();
+        // DefaultMapParser parser = new DefaultMapParser();
+        // MapVO parsedMapVO = parser.parseMap(map);
+        // System.out.println(parsedMapVO);
 
 
     }

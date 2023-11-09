@@ -1,14 +1,14 @@
 package hu.nye.progtech.wumplus.service.map;
 
-import hu.nye.progtech.wumplus.model.MapVO;
-import hu.nye.progtech.wumplus.service.exception.MapParseException;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
+
+import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.service.exception.MapParseException;
 
 /**
  * Listát (raw map) alakít value objectté.
@@ -17,18 +17,17 @@ import java.util.regex.Pattern;
  */
 public class MapParser {
 
-    private final char WALL = 'W';
-    private final char HERO = 'H';
-    private final char WUMP = 'U';
+    private static final char WALL = 'W';
+    private static final char HERO = 'H';
+    private static final char WUMP = 'U';
 
-    private final char PIT = 'P';
-    private final char GOLD = 'G';
-    private final char SPACE = '_';
-    private  final String VALID_ROW_REGEX = String.format("[%c,%c,%c,%c,%c,%c]+", WALL, HERO, WUMP, PIT, GOLD, SPACE);
-//    private static final String VALID_ROW_REGEX = "[0-9]+";
+    private static final char PIT = 'P';
+    private static final char GOLD = 'G';
+    private static final char SPACE = '_';
+    private static final String VALID_ROW_REGEX = String.format("[%c,%c,%c,%c,%c,%c]+", WALL, HERO, WUMP, PIT, GOLD, SPACE);
 
-    private final List<Character> STATIC_ELEMENT = List.of(WALL, PIT);
-    private final List<Character> NONSTATIC_ELEMENT = List.of(HERO, WUMP, GOLD, SPACE);
+    private static final List<Character> STATIC_ELEMENT = List.of(WALL, PIT);
+    private static final List<Character> NONSTATIC_ELEMENT = List.of(HERO, WUMP, GOLD, SPACE);
 
 
 
@@ -38,13 +37,23 @@ public class MapParser {
     public MapParser(List<String> rawMap) {
         String header = rawMap.get(0);
         StringTokenizer tokenizer = new StringTokenizer(header, " ");
-        String dimension_block =  tokenizer.nextToken();
-        Integer dimensions = Integer.parseInt(dimension_block);
+        String dimensionBlock =  tokenizer.nextToken();
+        Integer dimensions = Integer.parseInt(dimensionBlock);
 
         this.numberOfRows = dimensions;
         this.numberOfColumns = dimensions;
     }
 
+    /**
+     * String lista (raw nap) konvertálása value objecté.
+     *
+     * @param rawMap
+     *
+     * @return
+     *
+     * @throws MapParseException
+     *
+     */
     public MapVO parseMap(List<String> rawMap) throws MapParseException {
         checkNumberOfRows(rawMap);
         checkNumberOfColumns(rawMap);
@@ -83,7 +92,7 @@ public class MapParser {
     private char[][] getMap(List<String> rawMap) {
         char[][] result = new char[numberOfRows][];
 
-        for (int i = 0; i < numberOfRows ; i++) {
+        for (int i = 0; i < numberOfRows; i++) {
             result[i] = new char[numberOfColumns];
 
             String line = rawMap.get(i + 1);
