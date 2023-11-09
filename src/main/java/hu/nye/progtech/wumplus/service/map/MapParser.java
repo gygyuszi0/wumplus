@@ -5,6 +5,7 @@ import hu.nye.progtech.wumplus.service.exception.MapParseException;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
@@ -23,7 +24,8 @@ public class MapParser {
     private final char PIT = 'P';
     private final char GOLD = 'G';
     private final char SPACE = '_';
-    private static final String VALID_ROW_REGEX = "[0-9]+";
+    private  final String VALID_ROW_REGEX = String.format("[%c,%c,%c,%c,%c,%c]+", WALL, HERO, WUMP, PIT, GOLD, SPACE);
+//    private static final String VALID_ROW_REGEX = "[0-9]+";
 
     private final List<Character> STATIC_ELEMENT = List.of(WALL, PIT);
     private final List<Character> NONSTATIC_ELEMENT = List.of(HERO, WUMP, GOLD, SPACE);
@@ -46,6 +48,7 @@ public class MapParser {
     public MapVO parseMap(List<String> rawMap) throws MapParseException {
         checkNumberOfRows(rawMap);
         checkNumberOfColumns(rawMap);
+        checkForInvalidValues(rawMap);
 
         char[][] map = getMap(rawMap);
         boolean[][] fixed = getFixed(map);
@@ -69,7 +72,8 @@ public class MapParser {
     }
 
     private void checkForInvalidValues(List<String> rows) throws MapParseException {
-        for (String row : rows) {
+        for (int i = 1; i < rows.size(); i++) {
+            String row = rows.get(i);
             if (!Pattern.matches(VALID_ROW_REGEX, row)) {
                 throw new MapParseException("Row contains invalid characters");
             }

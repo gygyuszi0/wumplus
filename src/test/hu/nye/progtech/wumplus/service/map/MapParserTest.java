@@ -26,6 +26,16 @@ public class MapParserTest {
             "WWWWWW"
     );
 
+    private static final List<String> RAW_MAP_WITH_WRONG_CHARACTERS = List.of(
+            "6 B 5 E",
+            "WWWWWB",
+            "W____W",
+            "W____W",
+            "W____W",
+            "W____W",
+            "WWWWWW"
+    );
+
     private static final List<String> RAW_MAP_WITH_FEWER_ROWS = List.of(
             "6 B 5 E",
             "WWWWWW",
@@ -104,6 +114,34 @@ public class MapParserTest {
         Exception exception = assertThrows(MapParseException.class, () -> underTest.parseMap(RAW_MAP_WITH_FEWER_COLS));
         System.out.println("\t\t\t\t\t:" + exception.getMessage());
         assertEquals("Number of columns must be 6", exception.getMessage());
+
+    }
+
+    @Test
+    void testValidCharacters() throws MapParseException {
+        System.out.println("[TEST\t] : Test character validator for correct map");
+        // given
+        // when
+        MapVO result = underTest.parseMap(RAW_MAP);
+        System.out.println("\t\t\t\t\t:" + result);
+        System.out.println("\t\t\t\t\t:" + EXPECTED_MAP);
+
+        // then
+        assertEquals(EXPECTED_MAP, result);
+
+        
+
+    }
+
+    @Test
+    void testWrongCharacters() {
+        System.out.println("[TEST\t] : The map contains a wrong character, example B");
+        // given
+        // when
+        // then
+        Exception exception = assertThrows(MapParseException.class, () -> underTest.parseMap(RAW_MAP_WITH_WRONG_CHARACTERS));
+        assertEquals("Row contains invalid characters", exception.getMessage());
+        System.out.println("\t\t\tTHEN\t: exception\t" + exception.getMessage());
 
     }
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="checkNumberOfRows és teszt">
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="checkNumberOfColumns és teszt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/MapParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/MapParserTest.java" afterDir="false" />
@@ -76,7 +76,7 @@
       <recent name="hu.nye.progtech.wumplus" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MapParserTest.testFewerCols">
+  <component name="RunManager" selected="JUnit.MapParserTest.testValidMapVo">
     <configuration name="MapParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wumplus" />
       <extension name="coverage">
@@ -108,38 +108,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MapParserTest.testFewerRows" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wumplus" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
-      <option name="METHOD_NAME" value="testFewerRows" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MapParserTest.testParseMapShouldReturnValidMapVoRepresentation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wumplus" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
-      <option name="METHOD_NAME" value="testParseMapShouldReturnValidMapVoRepresentation" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MapParserTest.testValidMapVo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wumplus" />
       <extension name="coverage">
@@ -156,13 +124,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MapParserTest.testValidcharacters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
+      <option name="METHOD_NAME" value="testValidcharacters" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapParserTest.testWrongCharacters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
+      <option name="METHOD_NAME" value="testWrongCharacters" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MapParserTest.testFewerCols" />
-        <item itemvalue="JUnit.MapParserTest" />
-        <item itemvalue="JUnit.MapParserTest.testFewerRows" />
         <item itemvalue="JUnit.MapParserTest.testValidMapVo" />
-        <item itemvalue="JUnit.MapParserTest.testParseMapShouldReturnValidMapVoRepresentation" />
+        <item itemvalue="JUnit.MapParserTest" />
+        <item itemvalue="JUnit.MapParserTest.testWrongCharacters" />
+        <item itemvalue="JUnit.MapParserTest.testValidcharacters" />
+        <item itemvalue="JUnit.MapParserTest.testFewerCols" />
       </list>
     </recent_temporary>
   </component>
@@ -296,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699467075085</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="checkNumberOfColumns és teszt">
+      <option name="closed" value="true" />
+      <created>1699467500168</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1699467500168</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -327,7 +335,8 @@
     <MESSAGE value="MapReader implementáció" />
     <MESSAGE value="parseMap teszt jó mapre" />
     <MESSAGE value="checkNumberOfRows és teszt" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkNumberOfRows és teszt" />
+    <MESSAGE value="checkNumberOfColumns és teszt" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkNumberOfColumns és teszt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -339,7 +348,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java</url>
-          <line>53</line>
+          <line>56</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
@@ -360,6 +369,9 @@
       <FILTER>hu.nye.progtech.wumplus.service.map.impl.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testFewerCols.ic" NAME="MapParserTest.testFewerCols Coverage Results" MODIFIED="1699467395813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.map.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testValidcharacters.ic" NAME="MapParserTest.testValidcharacters Coverage Results" MODIFIED="1699468167546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.map.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testValidMapVo.ic" NAME="MapParserTest.testValidMapVo Coverage Results" MODIFIED="1699466404058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
