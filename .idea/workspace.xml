@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="check wrong characters">
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="checkstyle">
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Element.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/MapValidationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/player/PlayerParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/MapVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/MapVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/MapParseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/MapParseException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/MapReadException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/MapReadException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapValidatorNotSquerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapValidatorNotSquerException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/BufferedReaderMapReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/BufferedReaderMapReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +40,13 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="/opt/maven/apache-maven-3.9.4" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="MavenRunner">
     <option name="vmOptions" value="-Dmaven.plugin.validation=VERBOSE" />
@@ -80,12 +84,28 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="hu.nye.progtech.wumplus.service.map" />
       <recent name="hu.nye.progtech.wumplus.service.map.impl" />
+      <recent name="hu.nye.progtech.wumplus.service.map" />
       <recent name="hu.nye.progtech.wumplus" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MapParserTest">
+  <component name="RunManager" selected="JUnit.DefaultMapValidatorTest.validateForCorrectMap">
+    <configuration name="DefaultMapValidatorTest.validateForCorrectMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map.impl" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.impl.DefaultMapValidatorTest" />
+      <option name="METHOD_NAME" value="validateForCorrectMap" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MapParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wumplus" />
       <extension name="coverage">
@@ -97,22 +117,6 @@
       <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
       <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MapParserTest.testFewerCols" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wumplus" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
-      <option name="METHOD_NAME" value="testFewerCols" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DefaultMapValidatorTest.validateForCorrectMap" />
         <item itemvalue="JUnit.MapParserTest" />
         <item itemvalue="JUnit.MapParserTest.testValidMapVo" />
         <item itemvalue="JUnit.MapParserTest.testWrongCharacters" />
         <item itemvalue="JUnit.MapParserTest.testValidcharacters" />
-        <item itemvalue="JUnit.MapParserTest.testFewerCols" />
       </list>
     </recent_temporary>
   </component>
@@ -321,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699547856966</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="checkstyle">
+      <option name="closed" value="true" />
+      <created>1699549311073</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699549311073</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -354,7 +366,8 @@
     <MESSAGE value="checkNumberOfRows és teszt" />
     <MESSAGE value="checkNumberOfColumns és teszt" />
     <MESSAGE value="check wrong characters" />
-    <option name="LAST_COMMIT_MESSAGE" value="check wrong characters" />
+    <MESSAGE value="checkstyle" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkstyle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -364,11 +377,6 @@
           <line>41</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/MapParser.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -377,7 +385,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/wumplus$MapParserTest.ic" NAME="MapParserTest Coverage Results" MODIFIED="1699547737825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/wumplus$MapParserTest.ic" NAME="MapParserTest Coverage Results" MODIFIED="1699699681277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.exception.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testFewerRows.ic" NAME="MapParserTest.testFewerRows Coverage Results" MODIFIED="1699466824663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

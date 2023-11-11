@@ -1,13 +1,11 @@
 package hu.nye.progtech.wumplus.service.map;
 
 import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.service.exception.MapValidationException;
 
 /**
- * Map ellenőrzását szolgáló interface, nem biztos, hogy ez lesz használva.
- *
- * @// TODO: 2023. 11. 09. Ez kell-e még?
+ * Map logikai helyességét ellenőrzi.
  */
-
 public interface MapValidator {
-    public Boolean validateMap(MapVO mapVO);
+    public Boolean validateMap(MapVO mapVO) throws MapValidationException;
 }

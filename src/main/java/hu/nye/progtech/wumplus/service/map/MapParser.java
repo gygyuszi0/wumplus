@@ -1,5 +1,8 @@
 package hu.nye.progtech.wumplus.service.map;
 
+import static hu.nye.progtech.wumplus.model.Element.STATIC_ELEMENT;
+import static hu.nye.progtech.wumplus.model.Element.VALID_ROW_REGEX;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.FormatFlagsConversionMismatchException;
@@ -10,26 +13,13 @@ import java.util.regex.Pattern;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.service.exception.MapParseException;
 
+
 /**
  * Listát (raw map) alakít value objectté.
  *
  * A Row map tartalmazza az első sort is
  */
 public class MapParser {
-
-    private static final char WALL = 'W';
-    private static final char HERO = 'H';
-    private static final char WUMP = 'U';
-
-    private static final char PIT = 'P';
-    private static final char GOLD = 'G';
-    private static final char SPACE = '_';
-    private static final String VALID_ROW_REGEX = String.format("[%c,%c,%c,%c,%c,%c]+", WALL, HERO, WUMP, PIT, GOLD, SPACE);
-
-    private static final List<Character> STATIC_ELEMENT = List.of(WALL, PIT);
-    private static final List<Character> NONSTATIC_ELEMENT = List.of(HERO, WUMP, GOLD, SPACE);
-
-
 
     private int numberOfRows;
     private int numberOfColumns;
