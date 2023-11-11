@@ -1,10 +1,13 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
+import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.service.exception.MapValidationException;
 import hu.nye.progtech.wumplus.service.map.MapValidator;
-import hu.nye.progtech.wumplus.model.Element;
 
+/**
+ * Map logikiájának ellenőrzése - játékos független rész.
+ */
 public class DefaultMapValidator implements MapValidator {
 
     @Override
@@ -24,19 +27,19 @@ public class DefaultMapValidator implements MapValidator {
 
         for (int i = 0; i < rowNumber; i++) {
             for (int j = 0; j < colNumber; j++) {
-                if (map[i][j] == Element.WUMP){
+                if (map[i][j] == Element.WUMP) {
                     wumpusCount++;
                 }
             }
         }
 
-        if ((rowNumber <= 8) && (wumpusCount != 1)){
+        if ((rowNumber <= 8) && (wumpusCount != 1)) {
             throw new MapValidationException("Wrong number of Wumpus. Excpected 1, map <= 8");
         }
-        if (((rowNumber >= 9) && (rowNumber <= 14)) && (wumpusCount != 2)){
+        if (((rowNumber >= 9) && (rowNumber <= 14)) && (wumpusCount != 2)) {
             throw new MapValidationException("Wrong number of Wumpus. Excpected 2, map in [9,14]");
         }
-        if ((rowNumber > 14)&& (wumpusCount != 3)){
+        if ((rowNumber > 14) && (wumpusCount != 3)) {
             throw new MapValidationException("Wrong number of Wumpus. Excpected 3, map > 14");
         }
     }
@@ -49,13 +52,13 @@ public class DefaultMapValidator implements MapValidator {
 
         for (int i = 0; i < rowNumber; i++) {
             for (int j = 0; j < colNumber; j++) {
-                if (map[i][j] == Element.GOLD){
+                if (map[i][j] == Element.GOLD) {
                     goldCount++;
                 }
             }
         }
 
-        if (goldCount != 1){
+        if (goldCount != 1) {
             throw new MapValidationException("Wrong number of gold. Excpected : 1");
         }
     }
@@ -65,17 +68,17 @@ public class DefaultMapValidator implements MapValidator {
         Integer colNumber = mapVO.getNumberOfColumns();
         char[][] map = mapVO.getMap();
         char[] line1 = map[0];
-        char[] lineLast = map[rowNumber-1];
+        char[] lineLast = map[rowNumber - 1];
 
         for (int i = 0; i < colNumber; i++) {
-            if ((lineLast[i] != Element.WALL) || (line1[i] != Element.WALL)){
+            if ((lineLast[i] != Element.WALL) || (line1[i] != Element.WALL)) {
                 throw new MapValidationException("Not all element WALL in line1 or the last line.");
             }
         }
 
         for (int i = 1; i < rowNumber - 1; i++) {
             char [] row = map[i];
-            if ((row[0] != Element.WALL) || (row[colNumber-1] != Element.WALL)){
+            if ((row[0] != Element.WALL) || (row[colNumber - 1] != Element.WALL)) {
                 throw new MapValidationException("Not in WALL fram the line " + (i + 1));
             }
         }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="MapValidator">
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Map játékos-független elemeinek ellenőrzése">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" afterDir="false" />
     </list>
@@ -333,7 +333,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699715544882</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Map játékos-független elemeinek ellenőrzése">
+      <option name="closed" value="true" />
+      <created>1699716485062</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1699716485062</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -368,7 +376,8 @@
     <MESSAGE value="check wrong characters" />
     <MESSAGE value="checkstyle" />
     <MESSAGE value="MapValidator" />
-    <option name="LAST_COMMIT_MESSAGE" value="MapValidator" />
+    <MESSAGE value="Map játékos-független elemeinek ellenőrzése" />
+    <option name="LAST_COMMIT_MESSAGE" value="Map játékos-független elemeinek ellenőrzése" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
