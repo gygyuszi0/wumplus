@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="PlayerVO új elemek a speci alapján, felülírt függvények&#10;PlayerParser vázlat és teszt">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/PlayerParserException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/util/NumberOfElement.java" afterDir="false" />
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="PlayerParser tesztek, gameLogic infó mentése">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Element.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Element.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/PlayerVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/PlayerVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/PlayerParserException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/PlayerParserException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/player/PlayerParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/player/PlayerParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/player/PlayerParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/player/PlayerParserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/util/NumberOfElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/util/NumberOfElement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -364,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699801976579</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="PlayerParser tesztek, gameLogic infó mentése">
+      <option name="closed" value="true" />
+      <created>1699805247966</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1699805247966</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +407,8 @@
     <MESSAGE value="Map játékos-független elemeinek ellenőrzése" />
     <MESSAGE value="Javítás checkstyle szerint.&#10;Teszt még hiányos" />
     <MESSAGE value="PlayerVO új elemek a speci alapján, felülírt függvények&#10;PlayerParser vázlat és teszt" />
-    <option name="LAST_COMMIT_MESSAGE" value="PlayerVO új elemek a speci alapján, felülírt függvények&#10;PlayerParser vázlat és teszt" />
+    <MESSAGE value="PlayerParser tesztek, gameLogic infó mentése" />
+    <option name="LAST_COMMIT_MESSAGE" value="PlayerParser tesztek, gameLogic infó mentése" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -444,7 +450,7 @@
     <SUITE FILE_PATH="coverage/wumplus$PlayerParserTest_parsePlayerCorrectMap.ic" NAME="PlayerParserTest.parsePlayerCorrectMap Coverage Results" MODIFIED="1699804354960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.player.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/wumplus$PlayerParserTest.ic" NAME="PlayerParserTest Coverage Results" MODIFIED="1699804950003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/wumplus$PlayerParserTest.ic" NAME="PlayerParserTest Coverage Results" MODIFIED="1699805200023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.player.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testValidMapVo.ic" NAME="MapParserTest.testValidMapVo Coverage Results" MODIFIED="1699547813728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

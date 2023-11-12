@@ -3,11 +3,26 @@ package hu.nye.progtech.wumplus.service.util;
 import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 
+/**
+ * Elemeket számoló osztály.
+ */
 public class NumberOfElement {
+    /**
+     * Privát constructor.
+     */
     private NumberOfElement() {
     }
 
-    public static Integer count(MapVO mapVO, Character element){
+    /**
+     * Elemekest számoló osztály.
+     *
+     * @param mapVO Melyik mapen keresi
+     *
+     * @param element Melyik elemet
+     *
+     * @return Darabszám
+     */
+    public static Integer count(MapVO mapVO, Character element) {
         Integer countOfElement = 0;
         Integer rowNumber = mapVO.getNumberOfRows();
         Integer colNumber = mapVO.getNumberOfColumns();

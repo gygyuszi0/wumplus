@@ -50,10 +50,21 @@ public class PlayerVO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PlayerVO playerVO = (PlayerVO) o;
-        return coordinateRows == playerVO.coordinateRows && Objects.equals(name, playerVO.name) && Objects.equals(direction, playerVO.direction) && Objects.equals(coordinateCols, playerVO.coordinateCols) && Objects.equals(numberOfArrows, playerVO.numberOfArrows) && Objects.equals(haveGold, playerVO.haveGold) && Objects.equals(score, playerVO.score) && Objects.equals(numberOfSteps, playerVO.numberOfSteps);
+        return coordinateRows == playerVO.coordinateRows &&
+                Objects.equals(name, playerVO.name) &&
+                Objects.equals(direction, playerVO.direction) &&
+                Objects.equals(coordinateCols, playerVO.coordinateCols) &&
+                Objects.equals(numberOfArrows, playerVO.numberOfArrows) &&
+                Objects.equals(haveGold, playerVO.haveGold) &&
+                Objects.equals(score, playerVO.score) &&
+                Objects.equals(numberOfSteps, playerVO.numberOfSteps);
     }
 
     @Override

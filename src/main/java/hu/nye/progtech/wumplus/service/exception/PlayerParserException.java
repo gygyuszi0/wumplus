@@ -1,6 +1,9 @@
 package hu.nye.progtech.wumplus.service.exception;
 
-public class PlayerParserException extends Exception{
+/**
+ * PlayerVo készítésekor előforduló hibák.
+ */
+public class PlayerParserException extends Exception {
     public PlayerParserException() {
     }
 

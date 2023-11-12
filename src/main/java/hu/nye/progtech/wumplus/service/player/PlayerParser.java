@@ -1,5 +1,8 @@
 package hu.nye.progtech.wumplus.service.player;
 
+import java.util.List;
+import java.util.StringTokenizer;
+
 import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
@@ -8,9 +11,9 @@ import hu.nye.progtech.wumplus.service.exception.PlayerParserException;
 import hu.nye.progtech.wumplus.service.map.MapParser;
 import hu.nye.progtech.wumplus.service.util.NumberOfElement;
 
-import java.util.List;
-import java.util.StringTokenizer;
-
+/**
+ * Raw map konvertálása Player value object-re.
+ */
 public class PlayerParser {
 
     private final String playerName;
@@ -19,6 +22,18 @@ public class PlayerParser {
         playerName = player;
     }
 
+    /**
+     * Player VO-t készítő függvény.
+     *
+     * @param rawMap
+     *
+     * @return
+     *
+     * @throws PlayerParserException
+     *
+     * @throws MapParseException
+     *
+     */
     public PlayerVO parsePlayer(List<String> rawMap) throws PlayerParserException, MapParseException {
         MapVO mapInfo = new MapParser(rawMap).parseMap(rawMap);
 
@@ -48,7 +63,7 @@ public class PlayerParser {
         return result;
     }
 
-    private PlayerVO setGameLogicInformation(PlayerVO playerVO, MapVO mapVO){
+    private PlayerVO setGameLogicInformation(PlayerVO playerVO, MapVO mapVO) {
         Integer numberOfWumpus = NumberOfElement.count(mapVO, Element.WUMP);
         PlayerVO result = new PlayerVO(playerVO.getName(), playerVO.getDirection(),
                 playerVO.getCoordinateCols(), playerVO.getCoordinateRows());
@@ -57,7 +72,7 @@ public class PlayerParser {
     }
 
     private void isCorrectDirection(Character dir) throws PlayerParserException {
-        if (! Element.CORRECT_DIRECTIONS.contains(dir)){
+        if (! Element.CORRECT_DIRECTIONS.contains(dir)) {
             throw new PlayerParserException("Wrong direction, expected one of : " + Element.CORRECT_DIRECTIONS);
         }
     }
