@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Map játékos-független elemeinek ellenőrzése">
+    <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="Javítás checkstyle szerint.&#10;Teszt még hiányos">
+      <change afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/player/PlayerParserTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/PlayerVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/player/PlayerParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/player/PlayerParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,12 +80,13 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="hu.nye.progtech.wumplus.service.player" />
       <recent name="hu.nye.progtech.wumplus.service.map.impl" />
       <recent name="hu.nye.progtech.wumplus.service.map" />
       <recent name="hu.nye.progtech.wumplus" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.DefaultMapValidatorTest">
+  <component name="RunManager" selected="JUnit.PlayerParserTest.parsePlayer">
     <configuration name="DefaultMapValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wumplus" />
       <extension name="coverage">
@@ -145,17 +149,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MapParserTest.testWrongCharacters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayerParserTest.parsePlayer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wumplus" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.*" />
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.player.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
-      <option name="METHOD_NAME" value="testWrongCharacters" />
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.player" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.player.PlayerParserTest" />
+      <option name="METHOD_NAME" value="parsePlayer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerParserTest.parsePlayer" />
         <item itemvalue="JUnit.DefaultMapValidatorTest" />
         <item itemvalue="JUnit.DefaultMapValidatorTest.validateForCorrectMap" />
         <item itemvalue="JUnit.MapParserTest" />
         <item itemvalue="JUnit.MapParserTest.testValidMapVo" />
-        <item itemvalue="JUnit.MapParserTest.testWrongCharacters" />
       </list>
     </recent_temporary>
   </component>
@@ -341,7 +345,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699716485062</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Javítás checkstyle szerint.&#10;Teszt még hiányos">
+      <option name="closed" value="true" />
+      <created>1699716641395</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1699716641395</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -377,7 +389,8 @@
     <MESSAGE value="checkstyle" />
     <MESSAGE value="MapValidator" />
     <MESSAGE value="Map játékos-független elemeinek ellenőrzése" />
-    <option name="LAST_COMMIT_MESSAGE" value="Map játékos-független elemeinek ellenőrzése" />
+    <MESSAGE value="Javítás checkstyle szerint.&#10;Teszt még hiányos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javítás checkstyle szerint.&#10;Teszt még hiányos" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
