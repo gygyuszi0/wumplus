@@ -18,6 +18,14 @@ public class Element {
     public static final List<Character> STATIC_ELEMENT = List.of(WALL, PIT);
     public static final List<Character> NONSTATIC_ELEMENT = List.of(HERO, WUMP, GOLD, SPACE);
 
+    public static final Character EAST = 'E';
+    public static final Character WEST = 'W';
+    public static final Character NORTH = 'N';
+    public static final Character SOUTH = 'S';
+
+    public static final List<Character> CORRECT_DIRECTIONS = List.of(EAST, WEST, NORTH, SOUTH);
+
+
     private Element() {
     }
 }

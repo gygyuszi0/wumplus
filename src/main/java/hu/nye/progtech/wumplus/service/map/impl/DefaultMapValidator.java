@@ -4,6 +4,7 @@ import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.service.exception.MapValidationException;
 import hu.nye.progtech.wumplus.service.map.MapValidator;
+import hu.nye.progtech.wumplus.service.util.NumberOfElement;
 
 /**
  * Map logikiájának ellenőrzése - játékos független rész.
@@ -22,18 +23,8 @@ public class DefaultMapValidator implements MapValidator {
     }
 
     private void numberOfWumpus(MapVO mapVO) throws MapValidationException {
-        Integer wumpusCount = 0;
+        Integer wumpusCount = NumberOfElement.count(mapVO, Element.WUMP);
         Integer rowNumber = mapVO.getNumberOfRows();
-        Integer colNumber = mapVO.getNumberOfColumns();
-        char[][] map = mapVO.getMap();
-
-        for (int i = 0; i < rowNumber; i++) {
-            for (int j = 0; j < colNumber; j++) {
-                if (map[i][j] == Element.WUMP) {
-                    wumpusCount++;
-                }
-            }
-        }
 
         if ((rowNumber <= 8) && (wumpusCount != 1)) {
             throw new MapValidationException("Wrong number of Wumpus. Excpected 1, map <= 8");

@@ -23,9 +23,15 @@ public class PlayerVO {
 
     public PlayerVO(String name, Character direction, Character coordinateCols, int coordinateRows) {
         this.name = name;
+
         this.direction = direction;
         this.coordinateCols = coordinateCols;
         this.coordinateRows = coordinateRows;
+
+        this.numberOfArrows = 0;
+        this.haveGold = false;
+        this.score = 0;
+        this.numberOfSteps = 0;
     }
 
     @Override
@@ -54,4 +60,54 @@ public class PlayerVO {
     public int hashCode() {
         return Objects.hash(name, direction, coordinateCols, coordinateRows, numberOfArrows, haveGold, score, numberOfSteps);
     }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public Character getDirection() {
+        return direction;
+    }
+
+    public Character getCoordinateCols() {
+        return coordinateCols;
+    }
+
+    public int getCoordinateRows() {
+        return coordinateRows;
+    }
+
+    public Integer getNumberOfArrows() {
+        return numberOfArrows;
+    }
+
+    public void setNumberOfArrows(Integer numberOfArrows) {
+        this.numberOfArrows = numberOfArrows;
+    }
+
+    public Boolean getHaveGold() {
+        return haveGold;
+    }
+
+    public void setHaveGold(Boolean haveGold) {
+        this.haveGold = haveGold;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public Integer getNumberOfSteps() {
+        return numberOfSteps;
+    }
+
+    public void setNumberOfSteps(Integer numberOfSteps) {
+        this.numberOfSteps = numberOfSteps;
+    }
+
 }
