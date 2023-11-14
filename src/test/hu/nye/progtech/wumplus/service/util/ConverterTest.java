@@ -26,9 +26,9 @@ class ConverterTest {
         Integer resultF = Converter.LetterToInteger(F);
         System.out.println("\t\t\tWHEN\t:" + resultA + " " + resultZ + " " + resultF);
 
-        Assertions.assertEquals(resultA, 65);
-        Assertions.assertEquals(resultZ, 90);
-        Assertions.assertEquals(resultF, 70);
+        Assertions.assertEquals(resultA, 1);
+        Assertions.assertEquals(resultZ, 26);
+        Assertions.assertEquals(resultF, 6);
 
     }
 }

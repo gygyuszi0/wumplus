@@ -6,8 +6,7 @@ public class Converter {
         Integer result;
 
         int letterCode = letter.charValue();
-        result = letterCode;
-
+        result = letterCode - 64;
 
         return result;
     }
