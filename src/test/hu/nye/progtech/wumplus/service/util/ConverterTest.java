@@ -21,9 +21,9 @@ class ConverterTest {
     void letterToInteger() {
         System.out.println("[TEST\t] : Convert some charcter to int");
         System.out.println("\t\t\tGIVEN\t:" + A + Z + F);
-        Integer resultA = Converter.LetterToInteger(A);
-        Integer resultZ = Converter.LetterToInteger(Z);
-        Integer resultF = Converter.LetterToInteger(F);
+        Integer resultA = Converter.letterToInteger(A);
+        Integer resultZ = Converter.letterToInteger(Z);
+        Integer resultF = Converter.letterToInteger(F);
         System.out.println("\t\t\tWHEN\t:" + resultA + " " + resultZ + " " + resultF);
 
         Assertions.assertEquals(resultA, 1);

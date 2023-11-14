@@ -12,8 +12,8 @@ public class PlayerVO {
 
     // Fileból derül ki
     private final Character direction;
-    private final Character coordinateCols;
-    private final int coordinateRows;
+    private final Character coordinateCols; // 1-től indexel
+    private final int coordinateRows; // 1-től indexel
 
     // Játéklogia elemei
     private Integer numberOfArrows;

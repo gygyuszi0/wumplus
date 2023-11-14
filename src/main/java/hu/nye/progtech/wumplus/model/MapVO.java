@@ -10,8 +10,8 @@ public final class MapVO {
 
     private final int numberOfRows;
     private final int numberOfColumns;
-    private final char[][] map;
-    private final boolean[][] fixed;
+    private final char[][] map;             // 0-tól indexel
+    private final boolean[][] fixed;        // 0-tól indexel
 
     public MapVO(int numberOfRows, int numberOfColumns, char[][] map, boolean[][] fixed) {
         this.numberOfRows = numberOfRows;

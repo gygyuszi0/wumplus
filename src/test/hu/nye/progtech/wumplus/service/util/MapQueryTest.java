@@ -44,7 +44,7 @@ class MapQueryTest {
     void TestAllCoordinateof() {
         System.out.println("[TEST\t] : Query a non-valid mini map, search all wall element");
         System.out.println("\t\t\tGIVEN\t:" + MAPVO);
-        List<CoordinateVO> result = MapQuery.AllCoordinateOf(Element.WALL, MAPVO);
+        List<CoordinateVO> result = MapQuery.allCoordinateOf(Element.WALL, MAPVO);
         List<CoordinateVO> expected = List.of(
                 new CoordinateVO(0,0),
                 new CoordinateVO(0,1),

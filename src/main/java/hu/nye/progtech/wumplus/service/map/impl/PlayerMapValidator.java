@@ -1,5 +1,7 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
+import java.util.List;
+
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
@@ -9,8 +11,9 @@ import hu.nye.progtech.wumplus.service.map.MapValidator;
 import hu.nye.progtech.wumplus.service.util.Converter;
 import hu.nye.progtech.wumplus.service.util.MapQuery;
 
-import java.util.List;
-
+/**
+ * Összeveti a játékos helyzetét a map-pel.
+ */
 public class PlayerMapValidator implements MapValidator {
 
     private final PlayerVO playerVO;
@@ -21,19 +24,19 @@ public class PlayerMapValidator implements MapValidator {
 
     @Override
     public Boolean validateMap(MapVO mapVO) throws MapValidationException {
-        IntersectWall(mapVO);
+        intersectWall(mapVO);
 
         return true;
     }
 
-    private void IntersectWall(MapVO mapVO) throws MapValidationException {
-        List<CoordinateVO> wallCoordinates = MapQuery.AllCoordinateOf(Element.WALL, mapVO);
+    private void intersectWall(MapVO mapVO) throws MapValidationException {
+        List<CoordinateVO> wallCoordinates = MapQuery.allCoordinateOf(Element.WALL, mapVO);
 
-        Integer playerX = Converter.LetterToInteger(playerVO.getCoordinateCols());
+        Integer playerX = Converter.letterToInteger(playerVO.getCoordinateCols());
         Integer playerY = playerVO.getCoordinateRows();
         CoordinateVO playerCoordinate = new CoordinateVO(playerX - 1, playerY - 1);
 
-        if (wallCoordinates.contains(playerCoordinate)){
+        if (wallCoordinates.contains(playerCoordinate)) {
             throw new MapValidationException("Player on wall");
         }
     }
