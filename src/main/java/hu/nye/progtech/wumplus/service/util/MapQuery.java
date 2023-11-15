@@ -34,7 +34,7 @@ public class MapQuery {
             for (int j = 0; j < cols; j++) {
                 Character currentElement = currentRow[j];
                 if (currentElement.equals(element)) {
-                    CoordinateVO newCoord = new CoordinateVO(i, j);
+                    CoordinateVO newCoord = new CoordinateVO(j, i);
                     result.add(newCoord);
                 }
             }

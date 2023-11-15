@@ -16,7 +16,7 @@ class PlayerMapValidatorTest {
         {'W', 'W', 'W', 'W', 'W', 'W'},
         {'W', '_', '_', '_', '_', 'W'},
         {'W', '_', '_', '_', '_', 'W'},
-        {'W', '_', '_', '_', '_', 'W'},
+        {'W', '_', '_', '_', 'P', 'W'},
         {'W', '_', '_', '_', '_', 'W'},
         {'W', 'W', 'W', 'W', 'W', 'W'}
 };
@@ -24,13 +24,14 @@ class PlayerMapValidatorTest {
         {true,  true,   true,   true,   true,   true},
         {true,  false,  false,  false,  false,  true},
         {true,  false,  false,  false,  false,  true},
-        {true,  false,  false,  false,  false,  true},
+        {true,  false,  false,  false,  true,   true},
         {true,  false,  false,  false,  false,  true},
         {true,  true,   true,   true,   true,   true},
     };
 
-    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(2,2));
+    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(1,1));
     private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", Element.EAST, new CoordinateVO(0,1));
+    private static final PlayerVO PLAYER_ON_PIT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(4,3));
 
     private static final MapVO MAPVO = new MapVO(6, 6, MAP, FIXED);
     private static PlayerMapValidator underTest;
@@ -63,6 +64,20 @@ class PlayerMapValidatorTest {
         Exception exception = Assertions.assertThrows(MapValidationException.class, () -> underTest.validateMap(MAPVO));
         Assertions.assertEquals(exception.getMessage(), "Player on wall");
         System.out.println("\t\t\tTHEN\t:" + exception.getMessage());
+    }
+
+    @Test
+    void OnPit() {
+        System.out.println("[TEST\t] : Validate map with a player on a pit");
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + PLAYER_ON_PIT);
+
+        underTest = new PlayerMapValidator(PLAYER_ON_PIT);
+
+        Exception exception = Assertions.assertThrows(MapValidationException.class, () -> underTest.validateMap(MAPVO));
+        Assertions.assertEquals(exception.getMessage(), "Player on pit");
+        System.out.println("\t\t\tTHEN\t:" + exception.getMessage());
+
 
     }
 }
