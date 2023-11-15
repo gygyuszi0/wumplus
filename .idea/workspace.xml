@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7d7144e7-8a18-4404-b240-12b61b03d24d" name="Changes" comment="PlayerParser tesztek, gameLogic infó mentése">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/PlayerParserException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/exception/PlayerParserException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/DefaultMapValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/PlayerVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/model/PlayerVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/PlayerMapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/PlayerMapValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/player/PlayerParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/player/PlayerParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/util/NumberOfElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/util/NumberOfElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/impl/MapFromFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/impl/MapFromFileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/impl/PlayerMapValidatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/map/impl/PlayerMapValidatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/player/PlayerParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/hu/nye/progtech/wumplus/service/player/PlayerParserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,17 +64,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/game__class&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/wumplus&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "feature/game__class",
+    "last_opened_file_path": "/home/gygyuszi/Dokumentumok/Egyetem/1_felev/progTech/wumplus",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="hu.nye.progtech.wumplus.service.map" />
@@ -86,8 +92,31 @@
       <recent name="hu.nye.progtech.wumplus" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerParserTest">
-    <configuration name="DefaultMapValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.PlayerMapValidatorTest">
+    <configuration name="All in wumplus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.MapParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerMapValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="wumplus" />
       <extension name="coverage">
         <pattern>
@@ -96,8 +125,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map.impl" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.impl.DefaultMapValidatorTest" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.impl.PlayerMapValidatorTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerMapValidatorTest.OnWall" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="wumplus" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.map.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.map.impl" />
+      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.map.impl.PlayerMapValidatorTest" />
+      <option name="METHOD_NAME" value="OnWall" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -117,61 +162,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerParserTest.CorrectMapNonZeroWumpus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wumplus" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.player.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.player" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.player.PlayerParserTest" />
-      <option name="METHOD_NAME" value="CorrectMapNonZeroWumpus" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerParserTest.WrongDirection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wumplus" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.player.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.player" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.player.PlayerParserTest" />
-      <option name="METHOD_NAME" value="WrongDirection" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerParserTest.parsePlayerCorrectMap" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="wumplus" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hu.nye.progtech.wumplus.service.player.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="hu.nye.progtech.wumplus.service.player" />
-      <option name="MAIN_CLASS_NAME" value="hu.nye.progtech.wumplus.service.player.PlayerParserTest" />
-      <option name="METHOD_NAME" value="parsePlayerCorrectMap" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerMapValidatorTest" />
         <item itemvalue="JUnit.PlayerParserTest" />
-        <item itemvalue="JUnit.PlayerParserTest.CorrectMapNonZeroWumpus" />
-        <item itemvalue="JUnit.PlayerParserTest.WrongDirection" />
-        <item itemvalue="JUnit.PlayerParserTest.parsePlayerCorrectMap" />
-        <item itemvalue="JUnit.DefaultMapValidatorTest" />
+        <item itemvalue="JUnit.PlayerMapValidatorTest.OnWall" />
+        <item itemvalue="JUnit.All in wumplus" />
+        <item itemvalue="JUnit.MapParserTest" />
       </list>
     </recent_temporary>
   </component>
@@ -418,6 +415,11 @@
           <line>41</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/hu/nye/progtech/wumplus/service/map/impl/PlayerMapValidator.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -426,14 +428,8 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/wumplus$MapParserTest.ic" NAME="MapParserTest Coverage Results" MODIFIED="1699699681277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>hu.nye.progtech.wumplus.service.exception.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testFewerRows.ic" NAME="MapParserTest.testFewerRows Coverage Results" MODIFIED="1699466824663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.map.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/wumplus$BufferedReaderMapReaderTest.ic" NAME="BufferedReaderMapReaderTest Coverage Results" MODIFIED="1699375999086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>hu.nye.progtech.wumplus.service.map.impl.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$DefaultMapValidatorTest.ic" NAME="DefaultMapValidatorTest Coverage Results" MODIFIED="1699715917925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.map.impl.*</FILTER>
@@ -441,16 +437,35 @@
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testFewerCols.ic" NAME="MapParserTest.testFewerCols Coverage Results" MODIFIED="1699467395813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.map.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/wumplus$MapQueryTest.ic" NAME="MapQueryTest Coverage Results" MODIFIED="1699983300011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/wumplus$All_in_wumplus.ic" NAME="All in wumplus Coverage Results" MODIFIED="1700066906547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/wumplus$ConverterTest.ic" NAME="ConverterTest Coverage Results" MODIFIED="1699983343152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.util.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/wumplus$PlayerParserTest.ic" NAME="PlayerParserTest Coverage Results" MODIFIED="1700066515983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.player.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/wumplus$MapParserTest.ic" NAME="MapParserTest Coverage Results" MODIFIED="1700066328776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.map.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/wumplus$BufferedReaderMapReaderTest.ic" NAME="BufferedReaderMapReaderTest Coverage Results" MODIFIED="1699375999086" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.map.impl.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/wumplus$PlayerMapValidatorTest_OnWall.ic" NAME="PlayerMapValidatorTest.OnWall Coverage Results" MODIFIED="1700070276661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.map.impl.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testValidcharacters.ic" NAME="MapParserTest.testValidcharacters Coverage Results" MODIFIED="1699468167546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.map.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testWrongCharacters.ic" NAME="MapParserTest.testWrongCharacters Coverage Results" MODIFIED="1699547720153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.map.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/wumplus$PlayerParserTest_parsePlayerCorrectMap.ic" NAME="PlayerParserTest.parsePlayerCorrectMap Coverage Results" MODIFIED="1699804354960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>hu.nye.progtech.wumplus.service.player.*</FILTER>
+    <SUITE FILE_PATH="coverage/wumplus$PlayerMapValidatorTest.ic" NAME="PlayerMapValidatorTest Coverage Results" MODIFIED="1699983278089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>hu.nye.progtech.wumplus.service.map.impl.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/wumplus$PlayerParserTest.ic" NAME="PlayerParserTest Coverage Results" MODIFIED="1699805200023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/wumplus$PlayerParserTest_parsePlayerCorrectMap.ic" NAME="PlayerParserTest.parsePlayerCorrectMap Coverage Results" MODIFIED="1699804354960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>hu.nye.progtech.wumplus.service.player.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/wumplus$MapParserTest_testValidMapVo.ic" NAME="MapParserTest.testValidMapVo Coverage Results" MODIFIED="1699547813728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

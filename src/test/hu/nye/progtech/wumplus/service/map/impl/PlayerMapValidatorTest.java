@@ -1,5 +1,6 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
+import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
@@ -28,8 +29,8 @@ class PlayerMapValidatorTest {
         {true,  true,   true,   true,   true,   true},
     };
 
-    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", Element.EAST, 'B', 2);
-    private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", Element.EAST, 'B', 1);
+    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(2,2));
+    private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", Element.EAST, new CoordinateVO(0,1));
 
     private static final MapVO MAPVO = new MapVO(6, 6, MAP, FIXED);
     private static PlayerMapValidator underTest;

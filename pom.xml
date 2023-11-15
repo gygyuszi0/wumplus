@@ -16,12 +16,12 @@
     <dependencies>
 
         <!-- jacoco-maven-plugin -->
-        <!-- <dependency>
+        <dependency>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.11</version>
             <type>maven-plugin</type>
-        </dependency> -->
+        </dependency>
 
         <!-- logback-classic -->
         <dependency>

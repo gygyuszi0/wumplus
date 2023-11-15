@@ -12,8 +12,7 @@ public class PlayerVO {
 
     // Fileból derül ki
     private final Character direction;
-    private final Character coordinateCols; // 1-től indexel
-    private final int coordinateRows; // 1-től indexel
+    private final CoordinateVO coordinate; // 0-tól indexel
 
     // Játéklogia elemei
     private Integer numberOfArrows;
@@ -21,12 +20,11 @@ public class PlayerVO {
     private Integer score;
     private Integer numberOfSteps;
 
-    public PlayerVO(String name, Character direction, Character coordinateCols, int coordinateRows) {
-        this.name = name;
 
+    public PlayerVO(String name, Character direction, CoordinateVO coordinate) {
+        this.name = name;
         this.direction = direction;
-        this.coordinateCols = coordinateCols;
-        this.coordinateRows = coordinateRows;
+        this.coordinate = coordinate;
 
         this.numberOfArrows = 0;
         this.haveGold = false;
@@ -39,8 +37,7 @@ public class PlayerVO {
         return "PlayerVO{" +
                 "name='" + name + '\'' +
                 ", direction=" + direction +
-                ", coordinateCols=" + coordinateCols +
-                ", coordinateRows=" + coordinateRows +
+                ", coordinate=" + coordinate +
                 ", numberOfArrows=" + numberOfArrows +
                 ", haveGold=" + haveGold +
                 ", score=" + score +
@@ -50,28 +47,16 @@ public class PlayerVO {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         PlayerVO playerVO = (PlayerVO) o;
-        return coordinateRows == playerVO.coordinateRows &&
-                Objects.equals(name, playerVO.name) &&
-                Objects.equals(direction, playerVO.direction) &&
-                Objects.equals(coordinateCols, playerVO.coordinateCols) &&
-                Objects.equals(numberOfArrows, playerVO.numberOfArrows) &&
-                Objects.equals(haveGold, playerVO.haveGold) &&
-                Objects.equals(score, playerVO.score) &&
-                Objects.equals(numberOfSteps, playerVO.numberOfSteps);
+        return Objects.equals(name, playerVO.name) && Objects.equals(direction, playerVO.direction) && Objects.equals(coordinate, playerVO.coordinate) && Objects.equals(numberOfArrows, playerVO.numberOfArrows) && Objects.equals(haveGold, playerVO.haveGold) && Objects.equals(score, playerVO.score) && Objects.equals(numberOfSteps, playerVO.numberOfSteps);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, direction, coordinateCols, coordinateRows, numberOfArrows, haveGold, score, numberOfSteps);
+        return Objects.hash(name, direction, coordinate, numberOfArrows, haveGold, score, numberOfSteps);
     }
-
 
     public String getName() {
         return name;
@@ -81,12 +66,8 @@ public class PlayerVO {
         return direction;
     }
 
-    public Character getCoordinateCols() {
-        return coordinateCols;
-    }
-
-    public int getCoordinateRows() {
-        return coordinateRows;
+    public CoordinateVO getCoordinate() {
+        return coordinate;
     }
 
     public Integer getNumberOfArrows() {
@@ -120,5 +101,4 @@ public class PlayerVO {
     public void setNumberOfSteps(Integer numberOfSteps) {
         this.numberOfSteps = numberOfSteps;
     }
-
 }

@@ -32,9 +32,8 @@ public class PlayerMapValidator implements MapValidator {
     private void intersectWall(MapVO mapVO) throws MapValidationException {
         List<CoordinateVO> wallCoordinates = MapQuery.allCoordinateOf(Element.WALL, mapVO);
 
-        Integer playerX = Converter.letterToInteger(playerVO.getCoordinateCols());
-        Integer playerY = playerVO.getCoordinateRows();
-        CoordinateVO playerCoordinate = new CoordinateVO(playerX - 1, playerY - 1);
+        CoordinateVO playerCoordinate = playerVO.getCoordinate();
+
 
         if (wallCoordinates.contains(playerCoordinate)) {
             throw new MapValidationException("Player on wall");

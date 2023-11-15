@@ -3,12 +3,14 @@ package hu.nye.progtech.wumplus.service.player;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.service.exception.MapParseException;
 import hu.nye.progtech.wumplus.service.exception.PlayerParserException;
 import hu.nye.progtech.wumplus.service.map.MapParser;
+import hu.nye.progtech.wumplus.service.util.Converter;
 import hu.nye.progtech.wumplus.service.util.NumberOfElement;
 
 /**
@@ -54,11 +56,14 @@ public class PlayerParser {
         String playerDirectionBlock = tokenizer.nextToken();
 
         Character playerColumnValue = playerColumnBlock.charAt(0);
-        Integer playerRowValue = Integer.parseInt(playerRowBlock);
+        Integer playerX = Converter.letterToInteger(playerColumnValue) - 1;
+        Integer playerY = Integer.parseInt(playerRowBlock) - 1;
+        CoordinateVO playerCoordinate = new CoordinateVO(playerX, playerY);
+
         Character playerDirectionValue = playerDirectionBlock.charAt(0);
         isCorrectDirection(playerDirectionValue);
 
-        PlayerVO result = new PlayerVO(playerName, playerDirectionValue, playerColumnValue, playerRowValue);
+        PlayerVO result = new PlayerVO(playerName, playerDirectionValue, playerCoordinate);
 
         return result;
     }
@@ -66,7 +71,7 @@ public class PlayerParser {
     private PlayerVO setGameLogicInformation(PlayerVO playerVO, MapVO mapVO) {
         Integer numberOfWumpus = NumberOfElement.count(mapVO, Element.WUMP);
         PlayerVO result = new PlayerVO(playerVO.getName(), playerVO.getDirection(),
-                playerVO.getCoordinateCols(), playerVO.getCoordinateRows());
+                playerVO.getCoordinate());
         result.setNumberOfArrows(numberOfWumpus);
         return result;
     }
