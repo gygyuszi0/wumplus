@@ -12,7 +12,6 @@ class ConverterTest {
     private static final Character Z = 'Z';
     private static final Character F = 'F';
 
-
     @BeforeEach
     void setUp() {
     }

@@ -4,9 +4,9 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import hu.nye.progtech.wumplus.model.MapVO;
-import hu.nye.progtech.wumplus.service.map.MapReadException;
-import hu.nye.progtech.wumplus.service.map.impl.DefaultMapParser;
-import hu.nye.progtech.wumplus.service.map.impl.MapFromFile;
+//import hu.nye.progtech.wumplus.service.map.MapReadException;
+//import hu.nye.progtech.wumplus.service.map.impl.DefaultMapParser;
+//import hu.nye.progtech.wumplus.service.map.impl.MapFromFile;
 
 
 /**
@@ -18,10 +18,8 @@ public class Main {
      *
      * @param args
      *
-     * @throws MapReadException
-     *
      */
-    public static void main(String[] args) throws MapReadException, FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
         // Game wumplusGame = new Game();
         // wumplusGame.mainLoop();
 

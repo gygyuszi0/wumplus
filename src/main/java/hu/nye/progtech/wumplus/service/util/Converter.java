@@ -3,7 +3,10 @@ package hu.nye.progtech.wumplus.service.util;
 /**
  * Különböző módon meghatározott elemeket konvertál.
  */
-public class Converter {
+public final class Converter {
+
+     private Converter() {
+     }
 
     /**
      * Egy angol nagybetűről megmondja a sorszámát.
@@ -12,6 +15,7 @@ public class Converter {
      *
      * @return 1-től indexelve mi a kérdéses betű sorszáma?
      */
+
     public static Integer letterToInteger(Character letter) {
         Integer result;
 

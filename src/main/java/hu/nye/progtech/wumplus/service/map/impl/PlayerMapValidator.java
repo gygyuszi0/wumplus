@@ -69,10 +69,10 @@ public class PlayerMapValidator implements MapValidator {
         Integer cols = mapVO.getNumberOfColumns();
         Integer rows = mapVO.getNumberOfRows();
 
-        if ((playerCoordinate.getCoordX() < 0) || (playerCoordinate.getCoordX() > cols - 2)){
+        if ((playerCoordinate.getCoordX() < 0) || (playerCoordinate.getCoordX() > cols - 2)) {
             throw new MapValidationException("Player not on map, x-coordinate out of range");
         }
-        if ((playerCoordinate.getCoordY() < 0) || (playerCoordinate.getCoordY() > rows - 2)){
+        if ((playerCoordinate.getCoordY() < 0) || (playerCoordinate.getCoordY() > rows - 2)) {
             throw new MapValidationException("Player not on map, y-coordinate out of range");
         }
 
