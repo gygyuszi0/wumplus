@@ -33,6 +33,8 @@ class PlayerMapValidatorTest {
     private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", Element.EAST, new CoordinateVO(0,1));
     private static final PlayerVO PLAYER_ON_PIT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(4,3));
     private static final PlayerVO PLAYER_ON_WUMPUS = new PlayerVO("teszt", Element.EAST, new CoordinateVO(1,4));
+    private static final PlayerVO PLAYER_NOT_ON_MAPX6 = new PlayerVO("teszt", Element.EAST, new CoordinateVO(6,4));
+    private static final PlayerVO PLAYER_NOT_ON_MAPX = new PlayerVO("teszt", Element.EAST, new CoordinateVO(-1,4));
 
     private static final MapVO MAPVO = new MapVO(6, 6, MAP, FIXED);
     private static PlayerMapValidator underTest;
@@ -92,6 +94,32 @@ class PlayerMapValidatorTest {
 
         Exception exception = Assertions.assertThrows(MapValidationException.class, () -> underTest.validateMap(MAPVO));
         Assertions.assertEquals(exception.getMessage(), "Player on Wumpus");
+        System.out.println("\t\t\tTHEN\t:" + exception.getMessage());
+    }
+
+    @Test
+    void NotOnMapX() {
+        System.out.println("[TEST\t] : Validate map with a player out of map (x-coordinate = -1)");
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + PLAYER_NOT_ON_MAPX);
+
+        underTest = new PlayerMapValidator(PLAYER_NOT_ON_MAPX);
+
+        Exception exception = Assertions.assertThrows(MapValidationException.class, () -> underTest.validateMap(MAPVO));
+        Assertions.assertEquals(exception.getMessage(), "Player not on map, x-coordinate out of range");
+        System.out.println("\t\t\tTHEN\t:" + exception.getMessage());
+    }
+
+    @Test
+    void NotOnMapX6() {
+        System.out.println("[TEST\t] : Validate map with a player out of map (x-coordinate = 6)");
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + PLAYER_NOT_ON_MAPX6);
+
+        underTest = new PlayerMapValidator(PLAYER_NOT_ON_MAPX6);
+
+        Exception exception = Assertions.assertThrows(MapValidationException.class, () -> underTest.validateMap(MAPVO));
+        Assertions.assertEquals(exception.getMessage(), "Player not on map, x-coordinate out of range");
         System.out.println("\t\t\tTHEN\t:" + exception.getMessage());
     }
 }

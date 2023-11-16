@@ -27,6 +27,7 @@ public class PlayerMapValidator implements MapValidator {
         intersectWall(mapVO);
         intersectPit(mapVO);
         intersectWumpus(mapVO);
+        playerOnMap(mapVO);
 
         return true;
     }
@@ -63,5 +64,18 @@ public class PlayerMapValidator implements MapValidator {
 
     }
 
+    private void playerOnMap(MapVO mapVO) throws MapValidationException {
+        CoordinateVO playerCoordinate = playerVO.getCoordinate();
+        Integer cols = mapVO.getNumberOfColumns();
+        Integer rows = mapVO.getNumberOfRows();
+
+        if ((playerCoordinate.getCoordX() < 0) || (playerCoordinate.getCoordX() > cols - 2)){
+            throw new MapValidationException("Player not on map, x-coordinate out of range");
+        }
+        if ((playerCoordinate.getCoordY() < 0) || (playerCoordinate.getCoordY() > rows - 2)){
+            throw new MapValidationException("Player not on map, y-coordinate out of range");
+        }
+
+    }
 }
 
