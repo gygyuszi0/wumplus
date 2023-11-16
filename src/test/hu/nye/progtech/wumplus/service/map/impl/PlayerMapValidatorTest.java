@@ -17,7 +17,7 @@ class PlayerMapValidatorTest {
         {'W', '_', '_', '_', '_', 'W'},
         {'W', '_', '_', '_', '_', 'W'},
         {'W', '_', '_', '_', 'P', 'W'},
-        {'W', '_', '_', '_', '_', 'W'},
+        {'W', 'U', '_', '_', '_', 'W'},
         {'W', 'W', 'W', 'W', 'W', 'W'}
 };
     private static final boolean[][] FIXED = {
@@ -32,6 +32,7 @@ class PlayerMapValidatorTest {
     private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(1,1));
     private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", Element.EAST, new CoordinateVO(0,1));
     private static final PlayerVO PLAYER_ON_PIT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(4,3));
+    private static final PlayerVO PLAYER_ON_WUMPUS = new PlayerVO("teszt", Element.EAST, new CoordinateVO(1,4));
 
     private static final MapVO MAPVO = new MapVO(6, 6, MAP, FIXED);
     private static PlayerMapValidator underTest;
@@ -79,5 +80,18 @@ class PlayerMapValidatorTest {
         System.out.println("\t\t\tTHEN\t:" + exception.getMessage());
 
 
+    }
+
+    @Test
+    void OnWumpus() {
+        System.out.println("[TEST\t] : Validate map with a player on a Wumpus");
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + PLAYER_ON_WUMPUS);
+        
+        underTest = new PlayerMapValidator(PLAYER_ON_WUMPUS);
+
+        Exception exception = Assertions.assertThrows(MapValidationException.class, () -> underTest.validateMap(MAPVO));
+        Assertions.assertEquals(exception.getMessage(), "Player on Wumpus");
+        System.out.println("\t\t\tTHEN\t:" + exception.getMessage());
     }
 }

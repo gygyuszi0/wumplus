@@ -46,11 +46,11 @@ class MapQueryTest {
         System.out.println("\t\t\tGIVEN\t:" + MAPVO);
         List<CoordinateVO> result = MapQuery.allCoordinateOf(Element.WALL, MAPVO);
         List<CoordinateVO> expected = List.of(
-                new CoordinateVO(0,0),
-                new CoordinateVO(0,1),
-                new CoordinateVO(0,2),
-                new CoordinateVO(1,0),
-                new CoordinateVO(2,0)
+                new CoordinateVO(0, 0),
+                new CoordinateVO(1, 0),
+                new CoordinateVO(2, 0),
+                new CoordinateVO(0, 1),
+                new CoordinateVO(0, 2)
                 );
         System.out.println("\t\t\tWHEN\t:" + result);
         Assertions.assertEquals(result, expected);

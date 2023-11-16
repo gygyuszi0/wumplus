@@ -26,6 +26,7 @@ public class PlayerMapValidator implements MapValidator {
     public Boolean validateMap(MapVO mapVO) throws MapValidationException {
         intersectWall(mapVO);
         intersectPit(mapVO);
+        intersectWumpus(mapVO);
 
         return true;
     }
@@ -47,6 +48,17 @@ public class PlayerMapValidator implements MapValidator {
 
         if (pitCoordinates.contains(playerCoordinate)) {
             throw new MapValidationException("Player on pit");
+        }
+
+    }
+
+    private void intersectWumpus(MapVO mapVO) throws MapValidationException {
+        List<CoordinateVO> pitCoordinates = MapQuery.allCoordinateOf(Element.WUMP, mapVO);
+
+        CoordinateVO playerCoordinate = playerVO.getCoordinate();
+
+        if (pitCoordinates.contains(playerCoordinate)) {
+            throw new MapValidationException("Player on Wumpus");
         }
 
     }
