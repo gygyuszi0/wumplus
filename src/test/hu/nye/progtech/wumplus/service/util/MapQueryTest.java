@@ -1,7 +1,7 @@
 package hu.nye.progtech.wumplus.service.util;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
-import hu.nye.progtech.wumplus.model.Element;
+import hu.nye.progtech.wumplus.model.constants.Element;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +9,6 @@ import org.junit.jupiter.api.Test;
 import hu.nye.progtech.wumplus.model.MapVO;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class MapQueryTest {
 

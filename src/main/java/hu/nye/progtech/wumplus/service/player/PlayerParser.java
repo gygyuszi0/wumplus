@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
-import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.constants.Element;
+import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.MapParseException;
 import hu.nye.progtech.wumplus.service.exception.PlayerParserException;
 import hu.nye.progtech.wumplus.service.map.MapParser;
@@ -77,8 +78,8 @@ public class PlayerParser {
     }
 
     private void isCorrectDirection(Character dir) throws PlayerParserException {
-        if (! Element.CORRECT_DIRECTIONS.contains(dir)) {
-            throw new PlayerParserException("Wrong direction, expected one of : " + Element.CORRECT_DIRECTIONS);
+        if (! PlayerConst.CORRECT_DIRECTIONS.contains(dir)) {
+            throw new PlayerParserException("Wrong direction, expected one of : " + PlayerConst.CORRECT_DIRECTIONS);
         }
     }
 }

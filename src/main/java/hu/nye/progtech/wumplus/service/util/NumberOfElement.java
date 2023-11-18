@@ -1,6 +1,5 @@
 package hu.nye.progtech.wumplus.service.util;
 
-import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 
 /**

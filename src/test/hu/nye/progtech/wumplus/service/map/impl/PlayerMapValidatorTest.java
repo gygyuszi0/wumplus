@@ -1,15 +1,13 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
-import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.MapValidationException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerMapValidatorTest {
     private static final char[][] MAP = {
@@ -29,12 +27,12 @@ class PlayerMapValidatorTest {
         {true,  true,   true,   true,   true,   true},
     };
 
-    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(1,1));
-    private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", Element.EAST, new CoordinateVO(0,1));
-    private static final PlayerVO PLAYER_ON_PIT = new PlayerVO("teszt", Element.EAST, new CoordinateVO(4,3));
-    private static final PlayerVO PLAYER_ON_WUMPUS = new PlayerVO("teszt", Element.EAST, new CoordinateVO(1,4));
-    private static final PlayerVO PLAYER_NOT_ON_MAPX6 = new PlayerVO("teszt", Element.EAST, new CoordinateVO(6,4));
-    private static final PlayerVO PLAYER_NOT_ON_MAPX = new PlayerVO("teszt", Element.EAST, new CoordinateVO(-1,4));
+    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1,1));
+    private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(0,1));
+    private static final PlayerVO PLAYER_ON_PIT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(4,3));
+    private static final PlayerVO PLAYER_ON_WUMPUS = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1,4));
+    private static final PlayerVO PLAYER_NOT_ON_MAPX6 = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(6,4));
+    private static final PlayerVO PLAYER_NOT_ON_MAPX = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(-1,4));
 
     private static final MapVO MAPVO = new MapVO(6, 6, MAP, FIXED);
     private static PlayerMapValidator underTest;

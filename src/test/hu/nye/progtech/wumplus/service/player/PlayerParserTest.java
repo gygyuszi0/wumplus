@@ -1,8 +1,8 @@
 package hu.nye.progtech.wumplus.service.player;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
-import hu.nye.progtech.wumplus.model.Element;
 
+import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.MapParseException;
 import hu.nye.progtech.wumplus.service.exception.PlayerParserException;
 import org.junit.jupiter.api.Assertions;
@@ -58,7 +58,7 @@ class PlayerParserTest {
         System.out.println("\t\t\t\t\t:" + RAW_MAP);
         // when
         PlayerVO result = underTest.parsePlayer(RAW_MAP);
-        PlayerVO expected = new PlayerVO(TEST_PLAYER, Element.EAST, new CoordinateVO(1, 4));
+        PlayerVO expected = new PlayerVO(TEST_PLAYER, PlayerConst.EAST, new CoordinateVO(1, 4));
         System.out.println("\t\t\tWHEN\t:" + result);
         // then
         Assertions.assertEquals(expected, result);
@@ -72,7 +72,7 @@ class PlayerParserTest {
         System.out.println("\t\t\t\t\t:" + RAW_MAP_NOT_ZERO_WUMPUS);
         // when
         PlayerVO result = underTest.parsePlayer(RAW_MAP_NOT_ZERO_WUMPUS);
-        PlayerVO expected = new PlayerVO(TEST_PLAYER, Element.EAST, new CoordinateVO(1, 4));
+        PlayerVO expected = new PlayerVO(TEST_PLAYER, PlayerConst.EAST, new CoordinateVO(1, 4));
         expected.setNumberOfArrows(1);
         System.out.println("\t\t\tWHEN\t:" + result);
         // then

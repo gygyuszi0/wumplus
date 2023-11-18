@@ -3,12 +3,11 @@ package hu.nye.progtech.wumplus.service.map.impl;
 import java.util.List;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
-import hu.nye.progtech.wumplus.model.Element;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.constants.Element;
 import hu.nye.progtech.wumplus.service.exception.MapValidationException;
 import hu.nye.progtech.wumplus.service.map.MapValidator;
-import hu.nye.progtech.wumplus.service.util.Converter;
 import hu.nye.progtech.wumplus.service.util.MapQuery;
 
 /**

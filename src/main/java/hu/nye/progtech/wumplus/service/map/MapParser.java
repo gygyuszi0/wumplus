@@ -1,11 +1,8 @@
 package hu.nye.progtech.wumplus.service.map;
 
-import static hu.nye.progtech.wumplus.model.Element.STATIC_ELEMENT;
-import static hu.nye.progtech.wumplus.model.Element.VALID_ROW_REGEX;
+import static hu.nye.progtech.wumplus.model.constants.Element.STATIC_ELEMENT;
+import static hu.nye.progtech.wumplus.model.constants.Element.VALID_ROW_REGEX;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
