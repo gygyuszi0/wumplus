@@ -45,6 +45,14 @@ public class PlayerVO {
                 '}';
     }
 
+    public void setNonStatic(Integer numberOfArrows, Boolean haveGold,
+                             Integer score, Integer numberOfSteps){
+        this.numberOfArrows = numberOfArrows;
+        this.haveGold = haveGold;
+        this.score = score;
+        this.numberOfSteps = numberOfSteps;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

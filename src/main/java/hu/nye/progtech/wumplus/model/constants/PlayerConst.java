@@ -10,7 +10,7 @@ public class PlayerConst {
     public static final Character WEST = 'W';
     public static final Character NORTH = 'N';
     public static final Character SOUTH = 'S';
-    public static final List<Character> CORRECT_DIRECTIONS = List.of(EAST, WEST, NORTH, SOUTH);
+    public static final List<Character> CORRECT_DIRECTIONS = List.of(NORTH, EAST, SOUTH, WEST);
 
     private PlayerConst() {
     }

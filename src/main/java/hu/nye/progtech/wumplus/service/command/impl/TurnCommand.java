@@ -3,6 +3,7 @@ package hu.nye.progtech.wumplus.service.command.impl;
 import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.Command;
 
+import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 public class TurnCommand implements Command {
@@ -19,6 +20,8 @@ public class TurnCommand implements Command {
 
     @Override
     public void process(String input) {
-
+        StringTokenizer tokenizer = new StringTokenizer(input, " ");
+        String command = tokenizer.nextToken();
+        String direction = tokenizer.nextToken();
     }
 }
