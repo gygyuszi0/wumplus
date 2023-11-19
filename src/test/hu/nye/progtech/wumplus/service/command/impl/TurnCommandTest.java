@@ -1,8 +1,16 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
+import hu.nye.progtech.wumplus.model.GameState;
+import hu.nye.progtech.wumplus.model.MapVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import hu.nye.progtech.wumplus.model.CoordinateVO;
+import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.constants.PlayerConst;
+
+import java.util.Map;
 
 class TurnCommandTest {
 
@@ -11,10 +19,32 @@ class TurnCommandTest {
     private final String CORRECT_TURN_RIGHT = "turn R";
     private final String WRONG_DIRECTION = "turn Z";
     private final String WRONG_COMMAND = "xzy R";
+    private final PlayerVO PLAYER = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1, 1));
+    private final MapVO mapVO = new MapVO(6,6 ,
+        new char[][] {
+            {'W', 'W', 'W', 'W', 'W', 'W'},
+            {'W', '_', '_', '_', '_', 'W'},
+            {'W', 'U', 'G', 'P', '_', 'W'},
+            {'W', '_', '_', '_', '_', 'W'},
+            {'W', '_', '_', 'P', '_', 'W'},
+            {'W', 'W', 'W', 'W', 'W', 'W'}
+        },
+        new boolean[][] {
+            {true, true, true, true, true, true},
+            {true, false, false, false, false, true},
+            {true, false, false, true, false, true},
+            {true, false, false, false, false, true},
+            {true, false, false, true, false, true},
+            {true, true, true, true, true, true}
+        }
+    );
+
+    private final GameState GAME_STATE = new GameState(mapVO, PLAYER, false, false);
+
 
     @BeforeEach
     void setUp() {
-        underTest = new TurnCommand();
+        underTest = new TurnCommand(GAME_STATE);
     }
 
     @Test
@@ -59,5 +89,18 @@ class TurnCommandTest {
 
     @Test
     void process() {
+        System.out.println("[TEST\t] : TurnCommand do a correct turn");
+        // given
+        System.out.println("\t\t\tGIVEN\t:" + PLAYER);
+        System.out.println("\t\t\t\t\t:" + CORRECT_TURN_LEFT);
+        // when
+        underTest.process(CORRECT_TURN_LEFT);
+        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,1));
+        GameState expected = new GameState(mapVO, expectedPlayer, false, false);
+        System.out.println("\t\t\tWHEN\t:" + GAME_STATE);
+        System.out.println("\t\t\t\t\t:" + underTest.getGameState());
+        // then
+        Assertions.assertEquals(underTest.getGameState(), expected);
+
     }
 }
