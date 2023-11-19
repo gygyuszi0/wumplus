@@ -1,14 +1,17 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
+import java.util.StringTokenizer;
+import java.util.regex.Pattern;
+
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
 
-import java.util.StringTokenizer;
-import java.util.regex.Pattern;
-
+/**
+ * Fordulás parancs implementációja.
+ */
 public class TurnCommand implements Command {
 
     private final GameState gameState;

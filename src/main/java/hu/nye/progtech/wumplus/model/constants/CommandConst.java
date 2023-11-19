@@ -1,5 +1,8 @@
 package hu.nye.progtech.wumplus.model.constants;
 
+/**
+ * Parancsokat alkotó Character és String elemek.
+ */
 public class CommandConst {
     public static final String TURN = "turn";
 

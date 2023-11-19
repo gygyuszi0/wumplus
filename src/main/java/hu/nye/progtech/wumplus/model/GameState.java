@@ -2,6 +2,9 @@ package hu.nye.progtech.wumplus.model;
 
 import java.util.Objects;
 
+/**
+ * Játék állapota.
+ */
 public class GameState {
     private MapVO mapVO;
     private PlayerVO playerVO;
@@ -49,10 +52,15 @@ public class GameState {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         GameState gameState = (GameState) o;
-        return shouldExit == gameState.shouldExit && mapCompleted == gameState.mapCompleted && Objects.equals(mapVO, gameState.mapVO) && Objects.equals(playerVO, gameState.playerVO);
+        return shouldExit == gameState.shouldExit && mapCompleted == gameState.mapCompleted &&
+                Objects.equals(mapVO, gameState.mapVO) && Objects.equals(playerVO, gameState.playerVO);
     }
 
     @Override

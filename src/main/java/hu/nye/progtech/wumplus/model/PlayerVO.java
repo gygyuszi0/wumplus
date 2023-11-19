@@ -45,8 +45,20 @@ public class PlayerVO {
                 '}';
     }
 
+    /**
+     * Változtatható tagok értékadása.
+     *
+     * @param numberOfArrows nyilak száma
+     *
+     * @param haveGold van-e arany
+     *
+     * @param score pontszám
+     *
+     * @param numberOfSteps lépések száma
+     *
+     */
     public void setNonStatic(Integer numberOfArrows, Boolean haveGold,
-                             Integer score, Integer numberOfSteps){
+                             Integer score, Integer numberOfSteps) {
         this.numberOfArrows = numberOfArrows;
         this.haveGold = haveGold;
         this.score = score;
