@@ -37,12 +37,23 @@ class StepCommandTest {
         System.out.println("[TEST\t] : Step with correct command");
         // given
         System.out.println("\t\t\tGIVEN\t:" + STEP_CORRECT);
-        System.out.println("\t\t\t\t\t:" + gameState);
         // when
         boolean result = underTest.canProcess(STEP_CORRECT);
         System.out.println("\t\t\tWHEN\t:" + result);
         // then
         Assertions.assertEquals(result, true);
+    }
+
+    @Test
+    void canProcessWrong() {
+        System.out.println("[TEST\t] : Step with wrong command");
+        // given
+        System.out.println("\t\t\tGIVEN\t:" + STEP_WRONG);
+        // when
+        boolean result = underTest.canProcess(STEP_WRONG);
+        System.out.println("\t\t\tWHEN\t:" + result);
+        // then
+        Assertions.assertEquals(result, false);
     }
 
     @Test
