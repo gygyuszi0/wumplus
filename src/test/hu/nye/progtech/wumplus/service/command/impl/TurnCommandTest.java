@@ -2,6 +2,8 @@ package hu.nye.progtech.wumplus.service.command.impl;
 
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.model.constants.CommandConst;
+import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,8 +11,17 @@ import org.junit.jupiter.api.Test;
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Map;
+
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
+
+@ExtendWith(MockitoExtension.class)
 
 class TurnCommandTest {
 
@@ -40,11 +51,13 @@ class TurnCommandTest {
     );
 
     private final GameState GAME_STATE = new GameState(mapVO, PLAYER, false, false);
+    @Mock
+    private TurnPerformer TURN_PREFORMER;
 
 
     @BeforeEach
     void setUp() {
-        underTest = new TurnCommand(GAME_STATE);
+        underTest = new TurnCommand(GAME_STATE, TURN_PREFORMER);
     }
 
     @Test
@@ -91,6 +104,7 @@ class TurnCommandTest {
     void process() {
         System.out.println("[TEST\t] : TurnCommand do a correct turn");
         // given
+        given(TURN_PREFORMER.perform(PLAYER, CommandConst.TURN_LEFT)).willReturn(new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,1)));
         System.out.println("\t\t\tGIVEN\t:" + PLAYER);
         System.out.println("\t\t\t\t\t:" + CORRECT_TURN_LEFT);
         // when
@@ -101,6 +115,6 @@ class TurnCommandTest {
         System.out.println("\t\t\t\t\t:" + underTest.getGameState());
         // then
         Assertions.assertEquals(underTest.getGameState(), expected);
-
+        verify(TURN_PREFORMER).perform(PLAYER, CommandConst.TURN_LEFT);
     }
 }

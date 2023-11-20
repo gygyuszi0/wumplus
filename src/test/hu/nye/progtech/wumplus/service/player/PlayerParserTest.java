@@ -90,7 +90,7 @@ class PlayerParserTest {
         // when
         // then
         Exception exception = Assertions.assertThrows(PlayerParserException.class, () -> underTest.parsePlayer(RAW_MAP_WRONG_DIRECTION));
-        Assertions.assertEquals("Wrong direction, expected one of : [E, W, N, S]", exception.getMessage());
+        Assertions.assertEquals("Wrong direction, expected one of : [N, E, S, W]", exception.getMessage());
         System.out.println("\t\t\tTHNE\t:" + exception.getMessage());
         
 

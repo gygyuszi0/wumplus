@@ -16,10 +16,12 @@ public class TurnCommand implements Command {
 
     private final GameState gameState;
 
+    private final TurnPerformer turnPerformer;
 
 
-    public TurnCommand(GameState gameState) {
+    public TurnCommand(GameState gameState, TurnPerformer turnPerformer) {
         this.gameState = gameState;
+        this.turnPerformer = turnPerformer;
     }
 
     private static final String TURN_PATTERN = String.format("^%s [%c,%c]",
@@ -38,7 +40,7 @@ public class TurnCommand implements Command {
         String command = tokenizer.nextToken();
         Character direction = tokenizer.nextToken().charAt(0);
 
-        PlayerVO newPlayer = TurnPerformer.perform(gameState.getPlayerVO(), direction);
+        PlayerVO newPlayer = turnPerformer.perform(gameState.getPlayerVO(), direction);
         gameState.setPlayerVO(newPlayer);
     }
 

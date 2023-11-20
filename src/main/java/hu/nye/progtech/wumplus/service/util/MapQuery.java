@@ -5,6 +5,9 @@ import java.util.List;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.constants.PlayerConst;
+import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 
 /**
  * Mapről olvas információkat.
@@ -42,4 +45,38 @@ public class MapQuery {
 
         return result;
     }
+
+    public static Character getFieldByCoordinate(CoordinateVO coordinateVO, MapVO mapVO) throws MapQueryException {
+        Character result;
+
+        char[][] map = mapVO.getMap();
+        Integer fieldX = coordinateVO.getCoordX();
+        Integer fieldY = coordinateVO.getCoordY();
+
+        try {
+            result = map[fieldX][fieldY];
+        } catch (Exception e){
+            throw new MapQueryException("This coordinate out of the map : " + coordinateVO);
+        }
+
+        return result;
+    }
+
+    public static CoordinateVO getCoordFrontOfThePlayer(PlayerVO playerVO, MapVO mapVO) {
+        CoordinateVO result = playerVO.getCoordinate();
+        Character direction = playerVO.getDirection();
+        Integer step = 0;
+
+        if (direction == PlayerConst.NORTH || direction == PlayerConst.SOUTH){
+            step = (direction == PlayerConst.NORTH) ? -1 : 1;
+            result.setCoordY(result.getCoordY() + step);
+        }
+        if (direction == PlayerConst.EAST || direction == PlayerConst.WEST){
+            step = (direction == PlayerConst.WEST) ? -1 : 1;
+            result.setCoordX(result.getCoordX() + step);
+        }
+
+        return result;
+    }
+
 }
