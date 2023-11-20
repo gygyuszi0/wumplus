@@ -46,6 +46,18 @@ public class MapQuery {
         return result;
     }
 
+    /**
+     * Visszatér a koordináta által meghatározott mezővel.
+     *
+     * @param coordinateVO Melyik kordináta?
+     *
+     * @param mapVO Melyik map-en keres?
+     *
+     * @return Melyik elem található itt
+     *
+     * @throws MapQueryException ha nincs ilyen koordináta a map-en.
+     *
+     */
     public static Character getFieldByCoordinate(CoordinateVO coordinateVO, MapVO mapVO) throws MapQueryException {
         Character result;
 
@@ -55,23 +67,33 @@ public class MapQuery {
 
         try {
             result = map[fieldX][fieldY];
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new MapQueryException("This coordinate out of the map : " + coordinateVO);
         }
 
         return result;
     }
 
+    /**
+     * Melyik koordináta van a játékos előtt.
+     *
+     * @param playerVO Melyik játékos?
+     *
+     * @param mapVO Melyik map-en?
+     *
+     * @return
+     *
+     */
     public static CoordinateVO getCoordFrontOfThePlayer(PlayerVO playerVO, MapVO mapVO) {
         CoordinateVO result = playerVO.getCoordinate();
         Character direction = playerVO.getDirection();
         Integer step = 0;
 
-        if (direction == PlayerConst.NORTH || direction == PlayerConst.SOUTH){
+        if (direction == PlayerConst.NORTH || direction == PlayerConst.SOUTH) {
             step = (direction == PlayerConst.NORTH) ? -1 : 1;
             result.setCoordY(result.getCoordY() + step);
         }
-        if (direction == PlayerConst.EAST || direction == PlayerConst.WEST){
+        if (direction == PlayerConst.EAST || direction == PlayerConst.WEST) {
             step = (direction == PlayerConst.WEST) ? -1 : 1;
             result.setCoordX(result.getCoordX() + step);
         }

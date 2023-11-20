@@ -10,6 +10,9 @@ import hu.nye.progtech.wumplus.service.command.performer.StepPerformer;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
 import hu.nye.progtech.wumplus.service.util.MapQuery;
 
+/**
+ * Lépés parancs.
+ */
 public class StepCommand implements Command {
 
     private final GameState gameState;
@@ -31,7 +34,7 @@ public class StepCommand implements Command {
         try {
             PlayerVO stepedPlayer = stepPerformer.perform(gameState.getPlayerVO(), gameState.getMapVO());
             gameState.setPlayerVO(stepedPlayer);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Can't perform this step");
             System.out.println(e.getMessage());
         }
