@@ -90,7 +90,7 @@ class StepCommandTest {
 
         // then
         Assertions.assertEquals(expected, gameState);
-        verify(stepPerformerMock.perform(any(), any()));
+        verify(stepPerformerMock).perform(any(), any());
 
     }
 
