@@ -66,7 +66,7 @@ public class MapQuery {
         Integer fieldY = coordinateVO.getCoordY();
 
         try {
-            result = map[fieldX][fieldY];
+            result = map[fieldY][fieldX];
         } catch (Exception e) {
             throw new MapQueryException("This coordinate out of the map : " + coordinateVO);
         }

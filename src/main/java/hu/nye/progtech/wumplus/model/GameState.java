@@ -11,11 +11,14 @@ public class GameState {
     private boolean shouldExit;
     private boolean mapCompleted;
 
+    private boolean playerDead;
+
     public GameState(MapVO mapVO, PlayerVO playerVO, boolean shouldExit, boolean mapCompleted) {
         this.mapVO = mapVO;
         this.playerVO = playerVO;
         this.shouldExit = shouldExit;
         this.mapCompleted = mapCompleted;
+        this.playerDead = false;
     }
 
     public MapVO getMapVO() {
@@ -50,6 +53,14 @@ public class GameState {
         this.mapCompleted = mapCompleted;
     }
 
+    public boolean isPlayerDead() {
+        return playerDead;
+    }
+
+    public void setPlayerDead(boolean playerDead) {
+        this.playerDead = playerDead;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -60,12 +71,13 @@ public class GameState {
         }
         GameState gameState = (GameState) o;
         return shouldExit == gameState.shouldExit && mapCompleted == gameState.mapCompleted &&
-                Objects.equals(mapVO, gameState.mapVO) && Objects.equals(playerVO, gameState.playerVO);
+                playerDead == gameState.playerDead && Objects.equals(mapVO, gameState.mapVO) &&
+                Objects.equals(playerVO, gameState.playerVO);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mapVO, playerVO, shouldExit, mapCompleted);
+        return Objects.hash(mapVO, playerVO, shouldExit, mapCompleted, playerDead);
     }
 
     @Override
@@ -75,6 +87,7 @@ public class GameState {
                 ", playerVO=" + playerVO +
                 ", shouldExit=" + shouldExit +
                 ", mapCompleted=" + mapCompleted +
+                ", playerDead=" + playerDead +
                 '}';
     }
 }

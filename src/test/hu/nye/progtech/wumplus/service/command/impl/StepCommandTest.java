@@ -9,6 +9,7 @@ import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.command.performer.StepPerformer;
 import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
+import hu.nye.progtech.wumplus.service.exception.PlayerDeadException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -71,7 +72,7 @@ class StepCommandTest {
 
 
     @Test
-    void processCorrect() throws PerformerException, MapQueryException {
+    void processCorrect() throws PerformerException, MapQueryException, PlayerDeadException {
         System.out.println("[TEST\t] : Perform a correct step command");
 
         // given
@@ -95,7 +96,7 @@ class StepCommandTest {
     }
 
     @Test
-    void processWall() throws PerformerException, MapQueryException {
+    void processWall() throws PerformerException, MapQueryException, PlayerDeadException {
         System.out.println("[TEST\t] : Try to perform a step to the wall");
 
         // given
