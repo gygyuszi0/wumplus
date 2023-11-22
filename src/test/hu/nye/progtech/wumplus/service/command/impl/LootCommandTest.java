@@ -37,7 +37,6 @@ class LootCommandTest {
         
     }
 
-
     @Test
     void canProcessWrong() {
         System.out.println("[TEST\t] : Can process a wrong loot command");

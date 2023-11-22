@@ -4,6 +4,7 @@ import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.constants.Element;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
+import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -89,4 +90,36 @@ class MapQueryTest {
         Assertions.assertEquals(result, expected);
 
     }
+
+    @Test
+    void setElementByCoordinateCorrect() throws MapQueryException {
+        System.out.println("[TEST\t] : Set element to the coordinate, if the coordinate is correct.");
+        // given
+        CoordinateVO coordinateVO = new CoordinateVO(1,1);
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + coordinateVO);
+        // when
+        MapVO result = MapQuery.setElementByCoordinate(MAPVO, coordinateVO, Element.WUMP);
+        char[][] expectedMap = {
+            {'W', 'W', 'W'},
+            {'W', 'U', '_'},
+            {'W', '_', '_'},
+        };
+        MapVO expected = new MapVO(3,3, expectedMap, FIXED);
+        System.out.println("\t\t\tWHEN\t:" + result);
+        System.out.println("\t\t\t\t\t:" + expected);
+        // then
+        Assertions.assertEquals(result, expected);
+    }
+
+//    @Test
+//    void setElementByCoordinateWrong() {
+//        System.out.println("[TEST\t] : Set element to the coordinate, if the coordinate is wrong.");
+//        // given
+//        CoordinateVO coordinateVO = new CoordinateVO(-1,1);
+//        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+//        System.out.println("\t\t\t\t\t:" + coordinateVO);
+//        // when - given
+//
+//    }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.constants.Element;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 
@@ -101,4 +102,18 @@ public class MapQuery {
         return result;
     }
 
+    public static MapVO setElementByCoordinate(MapVO mapVO, CoordinateVO coordinateVO, Character element) throws MapQueryException {
+        char[][] resultMap = mapVO.getMap();
+        boolean[][] resultFixed = mapVO.getFixed();
+        Integer dimension = mapVO.getNumberOfRows();
+        boolean newFixed = element.equals(Element.WALL);
+
+        try {
+            resultMap[coordinateVO.getCoordY()][coordinateVO.getCoordX()] = element;
+            resultFixed[coordinateVO.getCoordY()][coordinateVO.getCoordX()] = newFixed;
+            return new MapVO(dimension, dimension, resultMap, resultFixed);
+        } catch (Exception e) {
+            throw new MapQueryException("This coordinate out of the map : " + coordinateVO);
+        }
+    }
 }
