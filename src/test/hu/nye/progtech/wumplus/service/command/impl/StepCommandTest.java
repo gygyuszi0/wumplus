@@ -34,13 +34,16 @@ class StepCommandTest {
     @Mock
     private StepPerformer stepPerformerMock;
 
-    private GameState gameState = new GameState(null, new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2)), false, false);
+    private GameState gameState;
 
     private String STEP_CORRECT = CommandConst.STEP;
     private String STEP_WRONG = "LYJHCXF";
 
     @BeforeEach
     void setUp() {
+        PlayerVO PLAYER = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2));
+        PLAYER.setNonStatic(3, false, 0, 0);
+        gameState = new GameState(null, PLAYER, false, false);
         underTest = new StepCommand(gameState, stepPerformerMock);
     }
 
@@ -67,9 +70,6 @@ class StepCommandTest {
         // then
         Assertions.assertEquals(result, false);
     }
-
-
-
 
     @Test
     void processCorrect() throws PerformerException, MapQueryException, PlayerDeadException {
@@ -106,8 +106,56 @@ class StepCommandTest {
         given(stepPerformerMock.perform(any(), any())).willThrow(new PerformerException("You can't step to the wall."));
         // when
         underTest.process(STEP_CORRECT);
-        GameState expected = new GameState(null, new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2)), false, false);
+        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2));
+        expectedPlayer.setNonStatic(3,false, 0, 0);
+        GameState expected = new GameState(null, expectedPlayer, false, false);
         // then
         Assertions.assertEquals(expected, gameState);
+    }
+
+    @Test
+    void processPit() throws PlayerDeadException, PerformerException, MapQueryException {
+        System.out.println("[TEST\t] : Perform a correct step command to the pit");
+
+        // given
+        System.out.println("\t\t\tGIVEN\t:" + gameState);
+        System.out.println("\t\t\t\t\t:" + STEP_CORRECT);
+
+        PlayerVO PLAYER_STEPED = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,1));
+        PLAYER_STEPED.setNonStatic(2,false, 0, 1);
+        given(stepPerformerMock.perform(any(), any())).willReturn(PLAYER_STEPED);
+
+        // when
+        underTest.process(STEP_CORRECT);
+        GameState expected = new GameState(null, PLAYER_STEPED, false, false);
+        System.out.println("\t\t\tWHEN\t:" + underTest.getGameState());
+        System.out.println("\t\t\t\t\t:" + expected);
+
+        // then
+        Assertions.assertEquals(expected, gameState);
+        verify(stepPerformerMock).perform(any(), any());
+    }
+
+    @Test
+    void processWumpus() throws PlayerDeadException, PerformerException, MapQueryException {
+        System.out.println("[TEST\t] : Step to the wumpus, then player die");
+
+        // given
+        System.out.println("\t\t\tGIVEN\t:" + gameState);
+        System.out.println("\t\t\t\t\t:" + STEP_CORRECT);
+        
+        given(stepPerformerMock.perform(any(), any())).willThrow(new PlayerDeadException("Step to Wumpus, player is dead."));
+        // when
+        underTest.process(STEP_CORRECT);
+        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2));
+        expectedPlayer.setNonStatic(3,false, 0, 0);
+        GameState expected = new GameState(null, expectedPlayer, false, false);
+        expected.setPlayerDead(true);
+        System.out.println("\t\t\tWHEN\t:" + underTest.getGameState());
+        System.out.println("\t\t\t\t\t:" + expected);
+
+        // then
+        Assertions.assertEquals(expected, gameState);
+        
     }
 }
