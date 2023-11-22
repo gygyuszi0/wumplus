@@ -18,7 +18,7 @@ public class LootPerformer {
         if (frontOfElement.equals(Element.GOLD)) {
             return MapQuery.setElementByCoordinate(mapVO, frontOfCoordinate, Element.SPACE);
         } else {
-            throw new PerformerException("There are not old front of the player.");
+            throw new PerformerException("There are not gold front of the player.");
         }
     }
 }
