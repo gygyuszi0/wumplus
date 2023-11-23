@@ -1,9 +1,12 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
 import hu.nye.progtech.wumplus.model.GameState;
+import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
+import hu.nye.progtech.wumplus.service.exception.PerformerException;
 
 public class LootCommand implements Command {
 
@@ -23,7 +26,16 @@ public class LootCommand implements Command {
 
     @Override
     public void process(String input) {
+        try {
+            MapVO newMapVO =  lootPerformer.perform(gameState.getPlayerVO(), gameState.getMapVO());
 
+            PlayerVO newPlayerVo = gameState.getPlayerVO();
+            newPlayerVo.setHaveGold(true);
+            gameState.setPlayerVO(newPlayerVo);
+            gameState.setMapVO(newMapVO);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public GameState getGameState() {
