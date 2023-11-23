@@ -1,9 +1,6 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
-import hu.nye.progtech.wumplus.model.CoordinateVO;
-import hu.nye.progtech.wumplus.model.GameState;
-import hu.nye.progtech.wumplus.model.MapVO;
-import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.*;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
 import hu.nye.progtech.wumplus.service.exception.MapQueryException;
@@ -90,12 +87,16 @@ class LootCommandTest {
         // given
         System.out.println("\t\t\tGIVEN\t:" + underTest.getGameState());
         System.out.println("\t\t\t\t\t:" + underTest.getGameState());
-        given(lootPerformer.perform(any(), any())).willReturn(MAP_EXPECTED_CORRECT);
+        PlayerVO returnedPlayer = new PlayerVO(PLAYER_CORRECT.getName(), PLAYER_CORRECT.getDirection(), PLAYER_CORRECT.getCoordinate());
+        returnedPlayer.setHaveGold(true);
+        given(lootPerformer.perform(any(), any())).willReturn(new PlayerWithMap(returnedPlayer, MAP_EXPECTED_CORRECT));
         // when
         underTest.process(LOOT_CORRECT);
+
         PlayerVO expectedPayer = new PlayerVO(PLAYER_CORRECT.getName(), PLAYER_CORRECT.getDirection(), PLAYER_CORRECT.getCoordinate());
         expectedPayer.setHaveGold(true);
         GameState expected = new GameState(MAP_EXPECTED_CORRECT, expectedPayer, false, false);
+
         System.out.println("\t\t\tWHEN\t:" + expected);
         System.out.println("\t\t\t\t\t:" + underTest.getGameState());        
         // then

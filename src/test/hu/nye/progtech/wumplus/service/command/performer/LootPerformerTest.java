@@ -1,5 +1,6 @@
 package hu.nye.progtech.wumplus.service.command.performer;
 
+import hu.nye.progtech.wumplus.model.PlayerWithMap;
 import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
 import org.junit.jupiter.api.Assertions;
@@ -51,8 +52,11 @@ class LootPerformerTest {
         System.out.println("\t\t\tGIVEN\t:" + MAP);
         System.out.println("\t\t\t\t\t:" + PLAYER_CORRECT);
         // when
-        MapVO result = underTest.perform(PLAYER_CORRECT, MAP);
-        MapVO expected = new MapVO(6, 6, 
+        PlayerWithMap result = underTest.perform(PLAYER_CORRECT, MAP);
+
+        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2,3));
+        expectedPlayer.setNonStatic(0,true,0,0);
+        MapVO expectedMap = new MapVO(6, 6,
             new char[][] {
                 {'W', 'W', 'W', 'W', 'W', 'W'},
                 {'W', '_', '_', '_', '_', 'W'},
@@ -70,6 +74,7 @@ class LootPerformerTest {
                 {true, true, true, true, true, true}
             }
         );
+        PlayerWithMap expected = new PlayerWithMap(expectedPlayer, expectedMap);
         System.out.println("\t\t\tWHEN\t:" + result);
         System.out.println("\t\t\t\t\t:" + expected);
         // then

@@ -94,7 +94,7 @@ public class PlayerVO {
     }
 
     public CoordinateVO getCoordinate() {
-        return coordinate;
+        return new CoordinateVO(coordinate.getCoordX(), coordinate.getCoordY());
     }
 
     public Integer getNumberOfArrows() {
