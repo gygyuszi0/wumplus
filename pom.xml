@@ -94,7 +94,8 @@
                         <exclude>hu/nye/progtech/wumplus/Main.*</exclude>
                         <exclude>hu/nye/progtech/wumplus/model/*</exclude>
                         <exclude>hu/nye/progtech/wumplus/model/constants/*</exclude>
-                        <exclude>hu/nye/progtech/wumplus/service/exception/*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/ui/*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/service/util/IOService.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

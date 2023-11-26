@@ -2,6 +2,7 @@ package hu.nye.progtech.wumplus;
 
 import java.io.FileNotFoundException;
 import java.util.List;
+import java.util.Scanner;
 
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.conduct.Conductor;
@@ -24,5 +25,17 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Conductor conductor = new CunductorImpl();
         conductor.mainLoop();
+
+//        Scanner scanner = new Scanner(System.in);
+//
+//        // kérünk a felhasználótól egy szöveget
+//        System.out.print("Írj be egy szöveget: ");
+//        String userInput = scanner.nextLine();
+//
+//        // kiírjuk a beolvasott szöveget
+//        System.out.println("Beolvasott szöveg: " + userInput);
+//
+//        // ne felejtsük el lezárni a scannert
+//        scanner.close();
     }
 }
