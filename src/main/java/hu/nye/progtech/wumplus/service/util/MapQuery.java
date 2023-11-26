@@ -116,4 +116,39 @@ public class MapQuery {
             throw new MapQueryException("This coordinate out of the map : " + coordinateVO);
         }
     }
+
+    public static char[] getRow(MapVO mapVO, Integer row) throws MapQueryException {
+        char[][] map = mapVO.getMap();
+
+        try {
+            return map[row];
+        } catch (Exception e) {
+            throw new MapQueryException("This coordinate out of the map : " + row);
+        }
+
+    }
+
+    public static Character elementFromIndex(char[] array, Integer index, Element element, boolean direction) throws MapQueryException {
+        Integer directionSign = direction ? 1 : -1;
+        Integer maxElement = array.length;
+        Character result;
+
+        try {
+            result = array[index];
+        } catch (Exception e) {
+            throw new MapQueryException("The given index is out of the array");
+        }
+
+        int i = index;
+        while (i < maxElement && i > 0) {
+            result = array[i];
+            i = i + directionSign;
+        }
+        if (result.equals(element)) {
+            return result;
+        }
+        else {
+            throw new MapQueryException("The given element is not found");
+        }
+    }
 }

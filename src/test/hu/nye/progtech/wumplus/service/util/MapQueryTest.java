@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import hu.nye.progtech.wumplus.model.MapVO;
 
+import java.util.Arrays;
 import java.util.List;
 
 class MapQueryTest {
@@ -112,14 +113,42 @@ class MapQueryTest {
         Assertions.assertEquals(result, expected);
     }
 
-//    @Test
-//    void setElementByCoordinateWrong() {
-//        System.out.println("[TEST\t] : Set element to the coordinate, if the coordinate is wrong.");
-//        // given
-//        CoordinateVO coordinateVO = new CoordinateVO(-1,1);
-//        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
-//        System.out.println("\t\t\t\t\t:" + coordinateVO);
-//        // when - given
-//
-//    }
+    @Test
+    void setElementByCoordinateWrong() {
+        System.out.println("[TEST\t] : Set element to the coordinate, if the coordinate is wrong.");
+        // given
+        CoordinateVO coordinateVO = new CoordinateVO(-1,1);
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + coordinateVO);
+        // when - given
+        Exception result = Assertions.assertThrows(MapQueryException.class,
+                () -> MapQuery.setElementByCoordinate(MAPVO, coordinateVO, Element.WUMP));
+    }
+
+    @Test
+    void getRowCorrect() throws MapQueryException {
+        System.out.println("[TEST\t] : Get correct row from MapVO ");
+        // given
+        Integer row = 1;
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + row);
+        // when
+        char[] result = MapQuery.getRow(MAPVO, row);
+        char[] expected = new char[]{'W', '_', '_'};
+        System.out.println("\t\t\tWHEN\t:" + Arrays.toString(result));
+        System.out.println("\t\t\t\t\t:" + Arrays.toString(expected));
+        // then
+        Assertions.assertEquals(Arrays.equals(expected, result), true);
+    }
+
+    @Test
+    void getRowWrong() throws MapQueryException {
+        System.out.println("[TEST\t] : Get wrong row from MapVO ");
+        // given
+        Integer row = -1;
+        System.out.println("\t\t\tGIVEN\t:" + MAPVO);
+        System.out.println("\t\t\t\t\t:" + row);
+        // when - then
+        Assertions.assertThrows(MapQueryException.class, () -> MapQuery.getRow(MAPVO, row));
+    }
 }
