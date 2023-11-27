@@ -1,7 +1,5 @@
 package hu.nye.progtech.wumplus.conduct;
 
-import hu.nye.progtech.wumplus.conduct.CunductorImpl;
-
 import hu.nye.progtech.wumplus.model.constants.MenuOptions;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import hu.nye.progtech.wumplus.ui.MenuPrompt;

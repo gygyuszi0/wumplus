@@ -32,17 +32,5 @@ public class Main {
 
         Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, ioService);
         conductor.mainLoop();
-
-//        Scanner scanner = new Scanner(System.in);
-//
-//        // kérünk a felhasználótól egy szöveget
-//        System.out.print("Írj be egy szöveget: ");
-//        String userInput = scanner.nextLine();
-//
-//        // kiírjuk a beolvasott szöveget
-//        System.out.println("Beolvasott szöveg: " + userInput);
-//
-//        // ne felejtsük el lezárni a scannert
-//        scanner.close();
     }
 }
