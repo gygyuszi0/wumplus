@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.service.util.IOService;
+import hu.nye.progtech.wumplus.ui.MenuPrompt;
+import hu.nye.progtech.wumplus.ui.PlayerNamePrompt;
 import hu.nye.progtech.wumplus.conduct.Conductor;
 import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 //import hu.nye.progtech.wumplus.service.map.MapReadException;
@@ -23,7 +26,11 @@ public class Main {
      *
      */
     public static void main(String[] args) throws FileNotFoundException {
-        Conductor conductor = new CunductorImpl();
+        IOService ioService = new IOService();  
+        MenuPrompt menuPrompt = new MenuPrompt(ioService);  
+        PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
+
+        Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, ioService);
         conductor.mainLoop();
 
 //        Scanner scanner = new Scanner(System.in);

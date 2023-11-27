@@ -1,20 +1,29 @@
 package hu.nye.progtech.wumplus.conduct;
 
 import hu.nye.progtech.wumplus.model.constants.MenuOptions;
+import hu.nye.progtech.wumplus.service.util.IOService;
 import hu.nye.progtech.wumplus.ui.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.PlayerNamePrompt;
 public class CunductorImpl implements Conductor{
 
     private String playerName;
-    public CunductorImpl() {
-    }
+
+    private final MenuPrompt menuPrompt;
+    private final PlayerNamePrompt playerNamePrompt;    
+    private final IOService ioService;  
+
+    public CunductorImpl(MenuPrompt menuPrompt, PlayerNamePrompt playerNamePrompt, IOService ioService) {   
+        this.menuPrompt = menuPrompt;
+        this.playerNamePrompt = playerNamePrompt;
+        this.ioService = ioService;
+    }   
 
     @Override
     public void mainLoop() {
-        this.playerName = PlayerNamePrompt.getPlayerName();
+        this.playerName = playerNamePrompt.getPlayerName();
         Integer choice;
         do {
-            choice = MenuPrompt.readChoice();
+            choice = menuPrompt.readChoice();
         } while (!choice.equals(MenuOptions.EXIT));
     }
 }
