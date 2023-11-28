@@ -4,7 +4,11 @@ import hu.nye.progtech.wumplus.model.constants.MenuOptions;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import hu.nye.progtech.wumplus.ui.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.PlayerNamePrompt;
-public class CunductorImpl implements Conductor{
+
+/**
+ * Conductor implementáció.
+ */
+public class CunductorImpl implements Conductor {
 
     private String playerName;
 

@@ -2,6 +2,9 @@ package hu.nye.progtech.wumplus.model;
 
 import java.util.Objects;
 
+/**
+ * Playert és Mapet tartalmazó osztály.
+ */
 public class PlayerWithMap {
 
     private final PlayerVO playerVO;
@@ -23,8 +26,12 @@ public class PlayerWithMap {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PlayerWithMap that = (PlayerWithMap) o;
         return Objects.equals(playerVO, that.playerVO) && Objects.equals(mapVO, that.mapVO);
     }

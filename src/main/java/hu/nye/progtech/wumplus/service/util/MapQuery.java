@@ -102,6 +102,17 @@ public class MapQuery {
         return result;
     }
 
+    /**
+     * Beállítja az adott koordináta elemet.
+     *
+     * @param mapVO Melyik mapen
+     * @param coordinateVO Melyik koordináta
+     * @param element Milyen elem legyen
+
+     * @return A beállított mapVO-t adja vissza.
+     *
+     * @throws MapQueryException ha nincs ilyen koordináta a map-en.
+     */
     public static MapVO setElementByCoordinate(MapVO mapVO, CoordinateVO coordinateVO, Character element) throws MapQueryException {
         char[][] resultMap = mapVO.getMap();
         boolean[][] resultFixed = mapVO.getFixed();
@@ -117,6 +128,16 @@ public class MapQuery {
         }
     }
 
+    /**
+     * Visszaadja a megadott sorban lévő elemeket.
+     *
+     * @param mapVO Melyik mapen
+     * @param row Melyik sor?
+     *
+     * @return A sorban lévő elemeket.
+     *
+     * @throws MapQueryException ha nincs ilyen sor a map-en.
+     */
     public static char[] getRow(MapVO mapVO, Integer row) throws MapQueryException {
         char[][] map = mapVO.getMap();
 
@@ -128,6 +149,18 @@ public class MapQuery {
 
     }
 
+    /**
+     * Visszaadja az adott indextől egy irányba elhelyezkedő első elemet.
+     *
+     * @param array Melyik tömb elemi
+     * @param index Melyik indextől
+     * @param element Melyik elem?
+     * @param direction Melyik irányba?
+     *
+     * @return A megadott indextől egy irányba elhelyezkedő első elem.
+     *
+     * @throws MapQueryException ha nincs ilyen index a tömbben.
+     */
     public static Character elementFromIndex(char[] array, Integer index, Element element, boolean direction) throws MapQueryException {
         Integer directionSign = direction ? 1 : -1;
         Integer maxElement = array.length;
@@ -146,8 +179,7 @@ public class MapQuery {
         }
         if (result.equals(element)) {
             return result;
-        }
-        else {
+        } else {
             throw new MapQueryException("The given element is not found");
         }
     }

@@ -9,6 +9,9 @@ import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
 
+/**
+ * Loot parancsot.
+ */
 public class LootCommand implements Command {
 
     private final GameState gameState;

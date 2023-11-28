@@ -2,10 +2,13 @@ package hu.nye.progtech.wumplus.ui;
 
 import hu.nye.progtech.wumplus.service.util.IOService;
 
+/**
+ * Játékos nevének bekérése.
+ */
 public class PlayerNamePrompt {
-    private final String PROMPT_LINE1 = "Wumplus game -------------------------------";
-    private final String PROMPT_LINE2 = "> player name: ";
-    private final String PROMPT = PROMPT_LINE1 + "\n" + PROMPT_LINE2;
+    private final String promptLine1 = "Wumplus game -------------------------------";
+    private final String promptLine2 = "> player name: ";
+    private final String prompt = promptLine1 + "\n" + promptLine2;
 
     private final IOService ioService;
 
@@ -13,8 +16,13 @@ public class PlayerNamePrompt {
         this.ioService = ioService;
     }
 
+    /**
+     * Játékos nevének bekérése.
+     *
+     * @return Játékos neve.
+     */
     public String getPlayerName() {
-        ioService.writeConsole(PROMPT);
+        ioService.writeConsole(prompt);
         String playerName = ioService.readConsole();
         return playerName;
     }

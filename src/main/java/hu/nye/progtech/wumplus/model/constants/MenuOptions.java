@@ -1,5 +1,8 @@
 package hu.nye.progtech.wumplus.model.constants;
 
+/**
+ * Menu elemek osztálya.
+ */
 public class MenuOptions {
 
     public static final Integer CREATE_NEW_MAP = 1;
