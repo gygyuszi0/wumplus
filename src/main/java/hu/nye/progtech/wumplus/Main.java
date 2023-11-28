@@ -7,6 +7,7 @@ import java.util.Scanner;
 import hu.nye.progtech.wumplus.conduct.Conductor;
 import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import hu.nye.progtech.wumplus.ui.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.PlayerNamePrompt;
@@ -26,7 +27,12 @@ public class Main {
      *
      */
     public static void main(String[] args) throws FileNotFoundException {
-        IOService ioService = new IOService();  
+        DatabaseService databaseService = new DatabaseService();
+        databaseService.create();
+
+
+
+        IOService ioService = new IOService();
         MenuPrompt menuPrompt = new MenuPrompt(ioService);  
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
 

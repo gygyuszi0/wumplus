@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.service.map;
+package hu.nye.progtech.wumplus.service.persister.map;
 
 import java.util.List;
 

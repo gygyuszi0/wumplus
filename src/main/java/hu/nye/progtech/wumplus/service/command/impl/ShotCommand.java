@@ -5,6 +5,9 @@ import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.performer.ShotPerformer;
 
+/**
+ * Shot parancs.
+ */
 public class ShotCommand implements Command {
     private final GameState gameState;
     private final ShotPerformer shotPerformer;

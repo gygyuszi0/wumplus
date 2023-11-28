@@ -1,9 +1,9 @@
-package hu.nye.progtech.wumplus.service.map.impl;
+package hu.nye.progtech.wumplus.service.persister.map.impl;
 
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.constants.Element;
 import hu.nye.progtech.wumplus.service.exception.MapValidationException;
-import hu.nye.progtech.wumplus.service.map.MapValidator;
+import hu.nye.progtech.wumplus.service.persister.map.MapValidator;
 import hu.nye.progtech.wumplus.service.util.NumberOfElement;
 
 /**

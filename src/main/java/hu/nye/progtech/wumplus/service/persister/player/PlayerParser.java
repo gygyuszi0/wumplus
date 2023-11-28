@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.service.player;
+package hu.nye.progtech.wumplus.service.persister.player;
 
 import java.util.List;
 import java.util.StringTokenizer;
@@ -10,7 +10,7 @@ import hu.nye.progtech.wumplus.model.constants.Element;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.MapParseException;
 import hu.nye.progtech.wumplus.service.exception.PlayerParserException;
-import hu.nye.progtech.wumplus.service.map.MapParser;
+import hu.nye.progtech.wumplus.service.persister.map.MapParser;
 import hu.nye.progtech.wumplus.service.util.Converter;
 import hu.nye.progtech.wumplus.service.util.NumberOfElement;
 

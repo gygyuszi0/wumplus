@@ -5,6 +5,7 @@ import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.MapParseException;
 import hu.nye.progtech.wumplus.service.exception.PlayerParserException;
+import hu.nye.progtech.wumplus.service.persister.player.PlayerParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

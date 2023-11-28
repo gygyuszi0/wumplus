@@ -1,6 +1,7 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
 import hu.nye.progtech.wumplus.service.exception.MapValidationException;
+import hu.nye.progtech.wumplus.service.persister.map.impl.DefaultMapValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

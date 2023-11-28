@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.service.map;
+package hu.nye.progtech.wumplus.service.persister.map;
 
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.service.exception.MapValidationException;

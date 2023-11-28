@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.service.map;
+package hu.nye.progtech.wumplus.service.persister.map;
 
 import static hu.nye.progtech.wumplus.model.constants.Element.STATIC_ELEMENT;
 import static hu.nye.progtech.wumplus.model.constants.Element.VALID_ROW_REGEX;

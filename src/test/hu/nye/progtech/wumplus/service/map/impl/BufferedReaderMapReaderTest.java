@@ -1,6 +1,7 @@
 package hu.nye.progtech.wumplus.service.map.impl;
 
 import hu.nye.progtech.wumplus.service.exception.MapReadException;
+import hu.nye.progtech.wumplus.service.persister.map.impl.BufferedReaderMapReader;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

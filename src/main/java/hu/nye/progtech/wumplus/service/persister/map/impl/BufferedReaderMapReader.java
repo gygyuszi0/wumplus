@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.service.map.impl;
+package hu.nye.progtech.wumplus.service.persister.map.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.nye.progtech.wumplus.service.exception.MapReadException;
-import hu.nye.progtech.wumplus.service.map.MapReader;
+import hu.nye.progtech.wumplus.service.persister.map.MapReader;
 
 /**
  * Default mapReader, bufferedReder segíŧségével olvas.
