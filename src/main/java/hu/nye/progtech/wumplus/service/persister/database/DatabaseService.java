@@ -1,5 +1,11 @@
 package hu.nye.progtech.wumplus.service.persister.database;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
@@ -8,8 +14,9 @@ import hu.nye.progtech.wumplus.model.constants.DBQuery;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.util.MapQuery;
 
-import java.sql.*;
-
+/**
+ * Database műveletek.
+ */
 public class DatabaseService {
     private final String jdbcUrl;
     private final String resourceUrl;
@@ -25,6 +32,14 @@ public class DatabaseService {
         }
     }
 
+    /**
+     * Játékos és map mentése.
+     *
+     * @param playerVO melyik játékost
+     * @param mapVO melyik mapet
+     *
+     * @throws DBServiceException hibás adatbázis művelet.
+     */
     public void save(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
         if (haveThisPlayerHighScore(playerVO)) {
             updatePlayerHighScore(playerVO);
@@ -191,6 +206,15 @@ public class DatabaseService {
         }
     }
 
+    /**
+     * Játékosnévhez tartozó map és játékos állapot olvasása ha van.
+     *
+     * @param playerName melyik játékos?
+     *
+     * @return Beolvasott map és játékos állapot.
+     *
+     * @throws DBServiceException hibás adatbázis művelet.
+     */
     public PlayerWithMap load(String playerName) throws DBServiceException {
         PlayerVO playerVO = loadPlayerFromSavedPlayer(playerName);
         MapVO mapVO = loadMapFromSavedMap(playerName);
@@ -210,7 +234,7 @@ public class DatabaseService {
             Integer loadedArrow = resultSet.getInt(DBQuery.SAVED_PLAYER_NUM_ARROW);
             Boolean loadedGold = resultSet.getBoolean(DBQuery.SAVED_PLAYER_HAVE_GOLD);
             PlayerVO playerVO = new PlayerVO(playerName, loadedDirection, new CoordinateVO(coordX, coordY));
-            playerVO.setNonStatic(loadedArrow, loadedGold, 0,0);
+            playerVO.setNonStatic(loadedArrow, loadedGold, 0, 0);
             return playerVO;
         } catch (SQLException e) {
             throw new DBServiceException("Error when load player from saved player: " + e.getMessage());
@@ -230,6 +254,7 @@ public class DatabaseService {
             throw new DBServiceException("Error when load map from saved map: " + e.getMessage());
         }
     }
+
     public void delete() {
         System.out.println("Deleted from database");
     }
@@ -238,6 +263,9 @@ public class DatabaseService {
         System.out.println("Updated in database");
     }
 
+    /**
+     * Database létrehozása.
+     */
     public void create() {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             // Kapcsolat létrejött, itt végezze el a szükséges műveleteket

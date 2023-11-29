@@ -40,9 +40,9 @@ public class Main {
         };
 
         boolean[][] fixed = new boolean[3][3];
-        MapVO mapVO = new MapVO(3,3, map, fixed);
+        MapVO mapVO = new MapVO(3, 3, map, fixed);
         PlayerVO playerVO = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(0, 0));
-        playerVO.setNonStatic(3,false, 2, 4);
+        playerVO.setNonStatic(3, false, 2, 4);
 
         DatabaseService databaseService = new DatabaseService();
         databaseService.save(playerVO, mapVO);

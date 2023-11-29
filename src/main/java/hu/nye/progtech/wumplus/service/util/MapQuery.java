@@ -184,6 +184,13 @@ public class MapQuery {
         }
     }
 
+    /**
+     * MapVO tömböt stringként átalakítja.
+     *
+     * @param mapVO melyik mapet?
+     *
+     * @return Konvertált String.
+     */
     public static String serializeMap(MapVO mapVO) {
         StringBuilder result = new StringBuilder();
         char[][] map = mapVO.getMap();
@@ -196,6 +203,13 @@ public class MapQuery {
         return result.toString();
     }
 
+    /**
+     * Stringként átalakított mapVO-t visszaadja.
+     *
+     * @param map Melyik string?
+     *
+     * @return új mapvo
+     */
     public static MapVO deserializeMap(String map) {
         String[] rows = map.split("\n");
         char[][] resultMap = new char[rows.length][rows[0].length()];
