@@ -10,6 +10,7 @@ import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.PlayerWithMap;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
@@ -46,7 +47,9 @@ public class Main {
         DatabaseService databaseService = new DatabaseService();
         databaseService.save(playerVO, mapVO);
 
-
+        PlayerWithMap loadedPlayer = databaseService.load("teszt");
+        System.out.println(loadedPlayer.getPlayerVO());
+        System.out.println(loadedPlayer.getMapVO());
 
         IOService ioService = new IOService();
         MenuPrompt menuPrompt = new MenuPrompt(ioService);  

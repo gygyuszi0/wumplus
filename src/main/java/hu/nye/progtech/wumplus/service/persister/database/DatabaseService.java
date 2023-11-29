@@ -1,12 +1,13 @@
 package hu.nye.progtech.wumplus.service.persister.database;
 
+import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.PlayerWithMap;
 import hu.nye.progtech.wumplus.model.constants.DBQuery;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.util.MapQuery;
 
-import java.net.URL;
 import java.sql.*;
 
 public class DatabaseService {
@@ -95,7 +96,7 @@ public class DatabaseService {
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
 
-            String selectQuery = DBQuery.HAVE_PLAYER_IN_SAVED_PLAYER;
+            String selectQuery = DBQuery.SELECT_PLAYER_IN_SAVED_PLAYER;
             PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
             preparedStatement.setString(1, playerVO.getName());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -190,10 +191,45 @@ public class DatabaseService {
         }
     }
 
-    public void load() {
-        System.out.println("Loaded from database");
+    public PlayerWithMap load(String playerName) throws DBServiceException {
+        PlayerVO playerVO = loadPlayerFromSavedPlayer(playerName);
+        MapVO mapVO = loadMapFromSavedMap(playerName);
+        return new PlayerWithMap(playerVO, mapVO);
     }
 
+    private PlayerVO loadPlayerFromSavedPlayer(String playerName) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String selectQuery = DBQuery.SELECT_PLAYER_IN_SAVED_PLAYER;
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, playerName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            Character loadedDirection = resultSet.getString(DBQuery.SAVED_PLAYER_DIR).charAt(0);
+            Integer coordX = resultSet.getInt(DBQuery.SAVED_PLAYER_POS_X);
+            Integer coordY = resultSet.getInt(DBQuery.SAVED_PLAYER_POS_Y);
+            Integer loadedArrow = resultSet.getInt(DBQuery.SAVED_PLAYER_NUM_ARROW);
+            Boolean loadedGold = resultSet.getBoolean(DBQuery.SAVED_PLAYER_HAVE_GOLD);
+            PlayerVO playerVO = new PlayerVO(playerName, loadedDirection, new CoordinateVO(coordX, coordY));
+            playerVO.setNonStatic(loadedArrow, loadedGold, 0,0);
+            return playerVO;
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when load player from saved player: " + e.getMessage());
+        }
+    }
+
+    private MapVO loadMapFromSavedMap(String playerName) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String selectQuery = DBQuery.SELECT_PLAYER_IN_SAVED_MAP;
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, playerName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            String loadedMap = resultSet.getString(DBQuery.SAVED_MAP_MAP);
+            return MapQuery.deserializeMap(loadedMap);
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when load map from saved map: " + e.getMessage());
+        }
+    }
     public void delete() {
         System.out.println("Deleted from database");
     }

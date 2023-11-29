@@ -207,8 +207,9 @@ public class MapQuery {
                 resultMap[i][j] = row.charAt(j);
                 if (row.charAt(j) == Element.WALL || row.charAt(j) == Element.PIT) {
                     resultFixed[i][j] = true;
+                } else {
+                    resultFixed[i][j] = false;
                 }
-                resultFixed[i][j] = false;
             }
         }
 
