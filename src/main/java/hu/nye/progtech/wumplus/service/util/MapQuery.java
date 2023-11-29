@@ -183,4 +183,35 @@ public class MapQuery {
             throw new MapQueryException("The given element is not found");
         }
     }
+
+    public static String serializeMap(MapVO mapVO) {
+        StringBuilder result = new StringBuilder();
+        char[][] map = mapVO.getMap();
+        for (char[] row : map) {
+            for (char element : row) {
+                result.append(element);
+            }
+            result.append('\n');
+        }
+        return result.toString();
+    }
+
+    public static MapVO deserializeMap(String map) {
+        String[] rows = map.split("\n");
+        char[][] resultMap = new char[rows.length][rows[0].length()];
+        boolean[][] resultFixed = new boolean[rows.length][rows[0].length()];
+
+        for (int i = 0; i < rows.length; i++) {
+            String row = rows[i];
+            for (int j = 0; j < row.length(); j++) {
+                resultMap[i][j] = row.charAt(j);
+                if (row.charAt(j) == Element.WALL || row.charAt(j) == Element.PIT) {
+                    resultFixed[i][j] = true;
+                }
+                resultFixed[i][j] = false;
+            }
+        }
+
+        return new MapVO(resultMap.length, resultMap[0].length, resultMap, resultFixed);
+    }
 }

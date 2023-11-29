@@ -9,4 +9,8 @@ public class DBQuery {
     public static final String HAVE_PLAYER_IN_SAVED_PLAYER = "SELECT * FROM saved_player WHERE name = ?";
     public static final String INSERT_PLAYER_IN_SAVED_PLAYER = "INSERT INTO saved_player (name, dir, pos_x, pos_y, num_arrow, have_gold) VALUES (?, ?, ?, ?, ?, ?)";
     public static final String UPDATE_PLAYER_IN_SAVED_PLAYER = "UPDATE saved_player SET dir = ?, pos_x = ?, pos_y = ?, num_arrow = ?, have_gold = ? WHERE name = ?";
+
+    public static final String SELECT_PLAYER_IN_SAVED_MAP = "SELECT * FROM saved_map WHERE name = ?";
+    public static final String INSERT_PLAYER_IN_SAVED_MAP = "INSERT INTO saved_map (name, map, dim) VALUES (?, ?, ?)";
+    public static final String UPDATE_PLAYER_IN_SAVED_MAP = "UPDATE saved_map SET map = ?, dim = ? WHERE name = ?";
 }

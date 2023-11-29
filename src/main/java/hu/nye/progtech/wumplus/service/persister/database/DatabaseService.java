@@ -4,6 +4,7 @@ import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.constants.DBQuery;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
+import hu.nye.progtech.wumplus.service.util.MapQuery;
 
 import java.net.URL;
 import java.sql.*;
@@ -34,6 +35,12 @@ public class DatabaseService {
         } else {
             insertPlayerSavedPlayer(playerVO);
         }
+        if (haveThisPlayerSavedMap(playerVO)) {
+            updatePlayerSavedMap(playerVO, mapVO);
+        } else {
+            insertPlayerSavedMap(playerVO, mapVO);
+        }
+
     }
 
     private boolean haveThisPlayerHighScore(PlayerVO playerVO) throws DBServiceException {
@@ -135,6 +142,54 @@ public class DatabaseService {
             throw new DBServiceException("Error when insert player saved state: " + e.getMessage());
         }
     }
+
+    private boolean haveThisPlayerSavedMap(PlayerVO playerVO) throws DBServiceException {
+        boolean result = false;
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+
+            String selectQuery = DBQuery.SELECT_PLAYER_IN_SAVED_MAP;
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, playerVO.getName());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            result = resultSet.next();
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when search player saved map: " + e.getMessage());
+        }
+        return result;
+    }
+
+    private void updatePlayerSavedMap(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String updateQuery = DBQuery.UPDATE_PLAYER_IN_SAVED_MAP;
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+            preparedStatement.setString(1, MapQuery.serializeMap(mapVO));
+            preparedStatement.setInt(2, mapVO.getNumberOfRows());
+            preparedStatement.setString(3, playerVO.getName());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when update player saved map: " + e.getMessage());
+        }
+    }
+
+    private void insertPlayerSavedMap(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String insertQuery = DBQuery.INSERT_PLAYER_IN_SAVED_MAP;
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, playerVO.getName());
+            preparedStatement.setString(2, MapQuery.serializeMap(mapVO));
+            preparedStatement.setInt(3, mapVO.getNumberOfRows());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when insert player saved map: " + e.getMessage());
+        }
+    }
+
     public void load() {
         System.out.println("Loaded from database");
     }

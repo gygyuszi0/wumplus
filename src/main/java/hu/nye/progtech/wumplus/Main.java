@@ -1,6 +1,7 @@
 package hu.nye.progtech.wumplus;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,7 +32,12 @@ public class Main {
      *
      */
     public static void main(String[] args) throws FileNotFoundException, DBServiceException {
-        char[][] map = new char[3][3];
+        char[][] map = new char[][]{
+                {'W', 'W', '_'},
+                {'W', 'P', '_'},
+                {'_', 'G', 'U'}
+        };
+
         boolean[][] fixed = new boolean[3][3];
         MapVO mapVO = new MapVO(3,3, map, fixed);
         PlayerVO playerVO = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(0, 0));
