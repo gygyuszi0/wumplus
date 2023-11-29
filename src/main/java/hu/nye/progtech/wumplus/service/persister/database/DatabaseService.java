@@ -2,6 +2,7 @@ package hu.nye.progtech.wumplus.service.persister.database;
 
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.model.constants.DBQuery;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 
 import java.net.URL;
@@ -20,7 +21,6 @@ public class DatabaseService {
         } catch (ClassNotFoundException e) {
             throw new DBServiceException("SQLite JDBC Driver nem található.");
         }
-
     }
 
     public void save(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
@@ -28,6 +28,11 @@ public class DatabaseService {
             updatePlayerHighScore(playerVO);
         } else {
             insertPlayerHighScore(playerVO);
+        }
+        if (haveThisPlayerSavedPlayer(playerVO)) {
+            updatePlayerSavedPlayer(playerVO);
+        } else {
+            insertPlayerSavedPlayer(playerVO);
         }
     }
 
@@ -75,6 +80,59 @@ public class DatabaseService {
             preparedStatement.close();
         } catch (SQLException e) {
             throw new DBServiceException("Error when insert player high score: " + e.getMessage());
+        }
+    }
+
+    private boolean haveThisPlayerSavedPlayer(PlayerVO playerVO) throws DBServiceException {
+        boolean result = false;
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+
+            String selectQuery = DBQuery.HAVE_PLAYER_IN_SAVED_PLAYER;
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, playerVO.getName());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            result = resultSet.next();
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when search player saved state: " + e.getMessage());
+        }
+        return result;
+    }
+
+    private void updatePlayerSavedPlayer(PlayerVO playerVO) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String updateQuery = DBQuery.UPDATE_PLAYER_IN_SAVED_PLAYER;
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+            preparedStatement.setString(1, playerVO.getDirection().toString());
+            preparedStatement.setInt(2, playerVO.getCoordX());
+            preparedStatement.setInt(3, playerVO.getCoordY());
+            preparedStatement.setInt(4, playerVO.getNumberOfArrows());
+            preparedStatement.setBoolean(5, playerVO.getHaveGold());
+            preparedStatement.setString(6, playerVO.getName());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when update player saved state: " + e.getMessage());
+        }
+    }
+
+    private void insertPlayerSavedPlayer(PlayerVO playerVO) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String insertQuery = DBQuery.INSERT_PLAYER_IN_SAVED_PLAYER;
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, playerVO.getName());
+            preparedStatement.setString(2, playerVO.getDirection().toString());
+            preparedStatement.setInt(3, playerVO.getCoordX());
+            preparedStatement.setInt(4, playerVO.getCoordY());
+            preparedStatement.setInt(5, playerVO.getNumberOfArrows());
+            preparedStatement.setBoolean(6, playerVO.getHaveGold());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when insert player saved state: " + e.getMessage());
         }
     }
     public void load() {

@@ -128,4 +128,13 @@ public class PlayerVO {
     public void setNumberOfSteps(Integer numberOfSteps) {
         this.numberOfSteps = numberOfSteps;
     }
+
+    public Integer getCoordX() {
+        return coordinate.getCoordX();
+    }
+
+    public Integer getCoordY() {
+        return coordinate.getCoordY();
+    }
+
 }
