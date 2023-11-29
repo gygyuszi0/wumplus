@@ -2,6 +2,7 @@ package hu.nye.progtech.wumplus.service.persister.database;
 
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
+import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 
 import java.net.URL;
 import java.sql.*;
@@ -10,37 +11,72 @@ public class DatabaseService {
     private final String jdbcUrl;
     private final String resourceUrl;
 
-    public DatabaseService() {
+    public DatabaseService() throws DBServiceException {
         this.resourceUrl = getClass().getClassLoader().getResource("").getPath();
         this.jdbcUrl = "jdbc:sqlite:" + resourceUrl + "wumpus";
 
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
-            System.err.println("SQLite JDBC Driver nem található.");
-            e.printStackTrace();
-            return;
+            throw new DBServiceException("SQLite JDBC Driver nem található.");
         }
+
+    }
+
+    public void save(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
+        if (haveThisPlayerHighScore(playerVO)) {
+            updatePlayerHighScore(playerVO);
+        } else {
+            insertPlayerHighScore(playerVO);
+        }
+    }
+
+    private boolean haveThisPlayerHighScore(PlayerVO playerVO) throws DBServiceException {
+        boolean result = false;
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
-            // Kapcsolat létrejött, itt végezze el a szükséges műveleteket
-            connection.setAutoCommit(false);
-            String insertQuery = "INSERT INTO high_score (player_name, won_game) VALUES (?, ?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-            preparedStatement.setString(1, "John Doe");
-            preparedStatement.setInt(2, 100);
+
+            String selectQuery = "SELECT * FROM high_score WHERE player_name = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, playerVO.getName());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            result = resultSet.next();
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when search player high score: " + e.getMessage());
+        }
+
+
+        return result;
+    }
+
+    private void updatePlayerHighScore(PlayerVO playerVO) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String updateQuery = "UPDATE high_score SET won_game = ? WHERE player_name = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+            preparedStatement.setInt(1, playerVO.getScore());
+            preparedStatement.setString(2, playerVO.getName());
             preparedStatement.executeUpdate();
             preparedStatement.close();
-            connection.commit();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new DBServiceException("Error when update player high score: " + e.getMessage());
         }
     }
 
-    public void save() {
-        System.out.println("Saved to database");
+    private void insertPlayerHighScore(PlayerVO playerVO) throws DBServiceException {
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+            String insertQuery = "INSERT INTO high_score (player_name, won_game) VALUES (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setString(1, playerVO.getName());
+            preparedStatement.setInt(2, playerVO.getScore());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when insert player high score: " + e.getMessage());
+        }
     }
-
     public void load() {
         System.out.println("Loaded from database");
     }
