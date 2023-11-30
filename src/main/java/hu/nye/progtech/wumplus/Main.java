@@ -33,26 +33,8 @@ public class Main {
      *
      */
     public static void main(String[] args) throws FileNotFoundException, DBServiceException {
-        char[][] map = new char[][]{
-                {'W', 'W', '_'},
-                {'W', 'P', '_'},
-                {'_', 'G', 'U'}
-        };
-
-        boolean[][] fixed = new boolean[3][3];
-        MapVO mapVO = new MapVO(3, 3, map, fixed);
-        PlayerVO playerVO = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(0, 0));
-        playerVO.setNonStatic(3, false, 2, 4);
-
-        DatabaseService databaseService = new DatabaseService();
-        databaseService.save(playerVO, mapVO);
-
-        PlayerWithMap loadedPlayer = databaseService.load("teszt");
-        System.out.println(loadedPlayer.getPlayerVO());
-        System.out.println(loadedPlayer.getMapVO());
-
         IOService ioService = new IOService();
-        MenuPrompt menuPrompt = new MenuPrompt(ioService);  
+        MenuPrompt menuPrompt = new MenuPrompt(ioService);
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
 
         Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, ioService);

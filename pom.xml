@@ -101,6 +101,8 @@
                         <exclude>hu/nye/progtech/wumplus/model/constants/*</exclude>
                         <exclude>hu/nye/progtech/wumplus/ui/*</exclude>
                         <exclude>hu/nye/progtech/wumplus/service/util/IOService.*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/service/exception/*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/service/persister/database/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

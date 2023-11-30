@@ -1,12 +1,12 @@
 package hu.nye.progtech.wumplus.service.persister.database;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.MapVO;
@@ -56,6 +56,13 @@ public class DatabaseService {
 
     }
 
+    /**
+     * Új maximális pont mentése, +1 a régihez képest.
+     *
+     * @param playerVO Melyik játékos
+     *
+     * @throws DBServiceException hibás adatbázis művelet.
+     */
     public void saveHighScore(PlayerVO playerVO) throws DBServiceException {
         Integer playerHighScore = selectThisPLayerHighScore(playerVO.getName());
 
@@ -66,6 +73,13 @@ public class DatabaseService {
         }
     }
 
+    /**
+     * Ponttábla betöltése.
+     *
+     * @return ponttábla
+     *
+     * @throws DBServiceException hibás adatbázis művelet.
+     */
     public List<List<String>> loadHighScore() throws DBServiceException {
         List<List<String>> result = new ArrayList<>();
 
@@ -78,7 +92,7 @@ public class DatabaseService {
             while (resultSet.next()) {
                 List<String> row = new ArrayList<>();
                 row.add(resultSet.getString(DBQuery.HIGH_SCORE_PLAYER_NAME));
-                row.add(String.valueOf( resultSet.getInt(DBQuery.HIGH_SCORE_WON_GAME)));
+                row.add(String.valueOf(resultSet.getInt(DBQuery.HIGH_SCORE_WON_GAME)));
                 result.add(row);
             }
             preparedStatement.close();

@@ -69,7 +69,7 @@ public class MapQuery {
         try {
             result = map[fieldY][fieldX];
         } catch (Exception e) {
-            throw new MapQueryException("This coordinate out of the map : " + coordinateVO);
+            throw new MapQueryException("This coordinate is out of the map : " + coordinateVO);
         }
 
         return result;
@@ -150,41 +150,6 @@ public class MapQuery {
     }
 
     /**
-     * Visszaadja az adott indextől egy irányba elhelyezkedő első elemet.
-     *
-     * @param array Melyik tömb elemi
-     * @param index Melyik indextől
-     * @param element Melyik elem?
-     * @param direction Melyik irányba?
-     *
-     * @return A megadott indextől egy irányba elhelyezkedő első elem.
-     *
-     * @throws MapQueryException ha nincs ilyen index a tömbben.
-     */
-    public static Character elementFromIndex(char[] array, Integer index, Element element, boolean direction) throws MapQueryException {
-        Integer directionSign = direction ? 1 : -1;
-        Integer maxElement = array.length;
-        Character result;
-
-        try {
-            result = array[index];
-        } catch (Exception e) {
-            throw new MapQueryException("The given index is out of the array");
-        }
-
-        int i = index;
-        while (i < maxElement && i > 0) {
-            result = array[i];
-            i = i + directionSign;
-        }
-        if (result.equals(element)) {
-            return result;
-        } else {
-            throw new MapQueryException("The given element is not found");
-        }
-    }
-
-    /**
      * MapVO tömböt stringként átalakítja.
      *
      * @param mapVO melyik mapet?
@@ -211,22 +176,25 @@ public class MapQuery {
      * @return új mapvo
      */
     public static MapVO deserializeMap(String map) {
-        String[] rows = map.split("\n");
-        char[][] resultMap = new char[rows.length][rows[0].length()];
-        boolean[][] resultFixed = new boolean[rows.length][rows[0].length()];
+        if (!map.isEmpty()) {
+            String[] rows = map.split("\n");
+            char[][] resultMap = new char[rows.length][rows[0].length()];
+            boolean[][] resultFixed = new boolean[rows.length][rows[0].length()];
 
-        for (int i = 0; i < rows.length; i++) {
-            String row = rows[i];
-            for (int j = 0; j < row.length(); j++) {
-                resultMap[i][j] = row.charAt(j);
-                if (row.charAt(j) == Element.WALL || row.charAt(j) == Element.PIT) {
-                    resultFixed[i][j] = true;
-                } else {
-                    resultFixed[i][j] = false;
+            for (int i = 0; i < rows.length; i++) {
+                String row = rows[i];
+                for (int j = 0; j < row.length(); j++) {
+                    resultMap[i][j] = row.charAt(j);
+                    if (row.charAt(j) == Element.WALL || row.charAt(j) == Element.PIT) {
+                        resultFixed[i][j] = true;
+                    } else {
+                        resultFixed[i][j] = false;
+                    }
                 }
             }
+            return new MapVO(resultMap.length, resultMap[0].length, resultMap, resultFixed);
+        } else {
+            return new MapVO(0, 0, new char[1][0], new boolean[1][0]);
         }
-
-        return new MapVO(resultMap.length, resultMap[0].length, resultMap, resultFixed);
     }
 }
