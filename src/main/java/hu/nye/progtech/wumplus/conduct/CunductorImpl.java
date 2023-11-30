@@ -20,20 +20,15 @@ import java.util.Optional;
 public class CunductorImpl implements Conductor {
 
     private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CunductorImpl.class);
-    private String playerName;
-
     private Optional<GameState> gameState;
 
     private final MenuPrompt menuPrompt;
     private final PlayerNamePrompt playerNamePrompt;    
-    private final IOService ioService;
-
     private final List<OptionPerformer> optionPerformers;
 
-    public CunductorImpl(MenuPrompt menuPrompt, PlayerNamePrompt playerNamePrompt, IOService ioService, List<OptionPerformer> optionPerformers) {
+    public CunductorImpl(MenuPrompt menuPrompt, PlayerNamePrompt playerNamePrompt, List<OptionPerformer> optionPerformers) {
         this.menuPrompt = menuPrompt;
         this.playerNamePrompt = playerNamePrompt;
-        this.ioService = ioService;
         this.optionPerformers = optionPerformers;
         this.gameState = Optional.empty();
     }

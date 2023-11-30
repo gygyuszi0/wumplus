@@ -31,7 +31,7 @@ public class OptionReadFromFile implements OptionPerformer  {
         try {
             List<String> rawMap = readFromFile(inputFile);
             
-            PlayerWithMap playerWithMap = parsePlayerMap(rawMap);
+            PlayerWithMap playerWithMap = parsePlayerMap(rawMap, gameState.get().getPlayerName());
             PlayerVO playerVO = playerWithMap.getPlayerVO();
             MapVO mapVO = playerWithMap.getMapVO();
 
@@ -59,8 +59,8 @@ public class OptionReadFromFile implements OptionPerformer  {
         return rawMap;
     }
 
-    private PlayerWithMap parsePlayerMap(List<String> rawMap) throws MapParseException, PlayerParserException {
-        PlayerParser playerParser = new PlayerParser(rawMap.get(0));
+    private PlayerWithMap parsePlayerMap(List<String> rawMap, String name) throws MapParseException, PlayerParserException {
+        PlayerParser playerParser = new PlayerParser(name);
         MapParser mapParser = new MapParser(rawMap);
         PlayerVO  playerVO = playerParser.parsePlayer(rawMap);
         MapVO  mapVO = mapParser.parseMap(rawMap);

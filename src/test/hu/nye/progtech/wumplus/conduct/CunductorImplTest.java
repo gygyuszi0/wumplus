@@ -25,7 +25,6 @@ class ConductorImplTest {
     @Mock
     private PlayerNamePrompt playerNamePromptMock;
     @Mock
-    private IOService ioServiceMock;
 
     private CunductorImpl underTest;
 
@@ -33,7 +32,7 @@ class ConductorImplTest {
 
     @BeforeEach
     void setUp() {
-        underTest = new CunductorImpl(menuPromptMock, playerNamePromptMock, ioServiceMock, optionPerformers);
+        underTest = new CunductorImpl(menuPromptMock, playerNamePromptMock, optionPerformers);
     }
 
     @Test
@@ -48,6 +47,6 @@ class ConductorImplTest {
         // then
         verify(playerNamePromptMock).getPlayerName();
         verify(menuPromptMock, times(2)).readChoice();
-        verifyNoMoreInteractions(playerNamePromptMock, menuPromptMock, ioServiceMock);
+        verifyNoMoreInteractions(playerNamePromptMock, menuPromptMock);
     }
 }

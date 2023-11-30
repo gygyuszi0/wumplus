@@ -50,7 +50,7 @@ public class Main {
             );
 
 
-        Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, ioService, optionPerformers);
+        Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, optionPerformers);
         conductor.mainLoop();
     }
 }
