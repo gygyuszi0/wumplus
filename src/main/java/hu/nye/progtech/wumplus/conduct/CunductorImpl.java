@@ -42,12 +42,20 @@ public class CunductorImpl implements Conductor {
         Integer choice;
         do {
             choice = menuPrompt.readChoice();
-            if (gameState.isPresent()) {
-                gameState = optionPerformers.get(choice - 1).perform(gameState);
+            if (isCorrectOption(choice)) {
+                if (gameState.isPresent()) {
+                    gameState = optionPerformers.get(choice - 1).perform(gameState);
+                } else {
+                    LOGGER.error("There is no game data. Exit.");
+                    choice = MenuOptions.EXIT;
+                }
             } else {
-                LOGGER.error("There is no game data. Exit.");
-                choice = MenuOptions.EXIT;
+                LOGGER.error("Wrong option selected.");
             }
         } while (!choice.equals(MenuOptions.EXIT));
+    }
+
+    boolean isCorrectOption(Integer choice) {
+        return choice >= 1 && choice <= optionPerformers.size();
     }
 }
