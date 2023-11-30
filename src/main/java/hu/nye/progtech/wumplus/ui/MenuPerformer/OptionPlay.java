@@ -8,6 +8,6 @@ import java.util.Optional;
 public class OptionPlay implements OptionPerformer {
     @Override
     public Optional<GameState> perform(Optional<GameState> gameState) {
-        return null;
+        return Optional.empty();
     }
 }

@@ -25,6 +25,7 @@ public class OptionLoadDatabase implements OptionPerformer {
             if (!gameState.isEmpty()) {
                 PlayerWithMap playerWithMap = databaseService.load(gameState.get().getPlayerName());
                 GameState result = new GameState(playerWithMap.getMapVO(), playerWithMap.getPlayerVO(), false, false);
+                LOGGER.info("Loaded from database: " + result);
                 return Optional.of(result);
             } else {
                 return Optional.empty();
