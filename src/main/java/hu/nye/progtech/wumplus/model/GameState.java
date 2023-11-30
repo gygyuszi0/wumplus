@@ -90,4 +90,8 @@ public class GameState {
                 ", playerDead=" + playerDead +
                 '}';
     }
+
+    public String getPlayerName() {
+        return playerVO.getName();
+    }
 }

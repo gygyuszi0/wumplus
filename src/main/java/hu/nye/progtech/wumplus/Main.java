@@ -15,6 +15,7 @@ import hu.nye.progtech.wumplus.model.constants.PlayerConst;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import hu.nye.progtech.wumplus.service.util.IOService;
+import hu.nye.progtech.wumplus.ui.MenuPerformer.*;
 import hu.nye.progtech.wumplus.ui.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.PlayerNamePrompt;
 //import hu.nye.progtech.wumplus.service.map.MapReadException;
@@ -36,8 +37,18 @@ public class Main {
         IOService ioService = new IOService();
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
+        DatabaseService databaseService = new DatabaseService();
+        List<OptionPerformer> optionPerformers = Arrays.asList(
+                new OptionCreateNewMap(),
+                new OptionReadFromFile(),
+                new OptionLoadDatabase(databaseService),
+                new OptionSaveToDatabase(),
+                new OptionPlay(),
+                new OptionExit()
+            );
 
-        Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, ioService);
+
+        Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, ioService, optionPerformers);
         conductor.mainLoop();
     }
 }
