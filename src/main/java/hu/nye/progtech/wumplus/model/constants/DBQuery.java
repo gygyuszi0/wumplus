@@ -5,11 +5,13 @@ package hu.nye.progtech.wumplus.model.constants;
  */
 public class DBQuery {
 
-    public static final String SELECT_PLAYER_FROM_HIGH_SCORE = "SELECT * FROM high_score WHEN player_name == ?";
-    public static final String INSERT_PLAYER_TO_HIGH_SCORE = "INSERT INTO high_score (player_name, score) VALUES (?, ?)";
-    public static final String UPDATE_PLAYER_SCORE_IN_HIGH_SCORE = "UPDATE high_score SET won_game = ? WHERE player_name = ?";
-
-
+    public static final String HIGH_SCORE = "high_score";
+    public static final String HIGH_SCORE_PLAYER_NAME = "player_name";
+    public static final String HIGH_SCORE_WON_GAME = "won_game";
+    public static final String SELECT_PLAYER_FROM_HIGH_SCORE = "SELECT * FROM " + HIGH_SCORE + " WHERE " + HIGH_SCORE_PLAYER_NAME + " = ?";
+    public static final String INSERT_PLAYER_TO_HIGH_SCORE = "INSERT INTO " + HIGH_SCORE + " (" + HIGH_SCORE_PLAYER_NAME + ", " + HIGH_SCORE_WON_GAME + ") VALUES (?, ?)";
+    public static final String UPDATE_PLAYER_SCORE_IN_HIGH_SCORE = "UPDATE " + HIGH_SCORE + " SET " + HIGH_SCORE_WON_GAME + " = ? WHERE " + HIGH_SCORE_PLAYER_NAME + " = ?";
+    public static final String SELECT_ALL_FROM_HIGH_SCORE = "SELECT * FROM " + HIGH_SCORE + " ORDER BY " + HIGH_SCORE_WON_GAME + " DESC";
 
     public static final String SAVED_PLAYER_NAME = "name";
     public static final String SELECT_PLAYER_IN_SAVED_PLAYER = "SELECT * FROM saved_player WHERE " + SAVED_PLAYER_NAME + " = ?";

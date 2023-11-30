@@ -1,5 +1,7 @@
 package hu.nye.progtech.wumplus.service.persister.database;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -41,11 +43,6 @@ public class DatabaseService {
      * @throws DBServiceException hibás adatbázis művelet.
      */
     public void save(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
-        if (haveThisPlayerHighScore(playerVO)) {
-            updatePlayerHighScore(playerVO);
-        } else {
-            insertPlayerHighScore(playerVO);
-        }
         if (haveThisPlayerSavedPlayer(playerVO)) {
             updatePlayerSavedPlayer(playerVO);
         } else {
@@ -57,6 +54,40 @@ public class DatabaseService {
             insertPlayerSavedMap(playerVO, mapVO);
         }
 
+    }
+
+    public void saveHighScore(PlayerVO playerVO) throws DBServiceException {
+        Integer playerHighScore = selectThisPLayerHighScore(playerVO.getName());
+
+        if (haveThisPlayerHighScore(playerVO)) {
+            updatePlayerHighScore(playerVO, playerHighScore);
+        } else {
+            insertPlayerHighScore(playerVO, playerHighScore);
+        }
+    }
+
+    public List<List<String>> loadHighScore() throws DBServiceException {
+        List<List<String>> result = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+
+            String selectQuery = DBQuery.SELECT_ALL_FROM_HIGH_SCORE;
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                List<String> row = new ArrayList<>();
+                row.add(resultSet.getString(DBQuery.HIGH_SCORE_PLAYER_NAME));
+                row.add(String.valueOf( resultSet.getInt(DBQuery.HIGH_SCORE_WON_GAME)));
+                result.add(row);
+            }
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            throw new DBServiceException("Error when load high score: " + e.getMessage());
+        }
+
+        return result;
     }
 
     private boolean haveThisPlayerHighScore(PlayerVO playerVO) throws DBServiceException {
@@ -80,11 +111,11 @@ public class DatabaseService {
         return result;
     }
 
-    private void updatePlayerHighScore(PlayerVO playerVO) throws DBServiceException {
+    private void updatePlayerHighScore(PlayerVO playerVO, Integer oldHighScore) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String updateQuery = "UPDATE high_score SET won_game = ? WHERE player_name = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
-            preparedStatement.setInt(1, playerVO.getScore());
+            preparedStatement.setInt(1, oldHighScore + 1);
             preparedStatement.setString(2, playerVO.getName());
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -93,12 +124,12 @@ public class DatabaseService {
         }
     }
 
-    private void insertPlayerHighScore(PlayerVO playerVO) throws DBServiceException {
+    private void insertPlayerHighScore(PlayerVO playerVO, Integer oldHighScore) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String insertQuery = "INSERT INTO high_score (player_name, won_game) VALUES (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
             preparedStatement.setString(1, playerVO.getName());
-            preparedStatement.setInt(2, playerVO.getScore());
+            preparedStatement.setInt(2, oldHighScore + 1);
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
@@ -122,6 +153,29 @@ public class DatabaseService {
         } catch (SQLException e) {
             throw new DBServiceException("Error when search player saved state: " + e.getMessage());
         }
+        return result;
+    }
+
+    private Integer selectThisPLayerHighScore(String playerName) {
+
+        Integer result = 0;
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
+
+            String selectQuery = DBQuery.SELECT_PLAYER_FROM_HIGH_SCORE;
+            PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+            preparedStatement.setString(1, playerName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                result = resultSet.getInt(DBQuery.HIGH_SCORE_WON_GAME);
+            }
+            preparedStatement.close();
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return result;
     }
 
