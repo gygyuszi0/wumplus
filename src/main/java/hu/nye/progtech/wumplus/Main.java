@@ -44,7 +44,7 @@ public class Main {
                 new OptionCreateNewMap(),
                 new OptionReadFromFile(),
                 new OptionLoadDatabase(databaseService),
-                new OptionSaveToDatabase(),
+                new OptionSaveToDatabase(databaseService),
                 new OptionPlay(),
                 new OptionExit()
             );
