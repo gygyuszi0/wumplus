@@ -21,7 +21,6 @@ public class CunductorImpl implements Conductor {
 
     private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CunductorImpl.class);
     private Optional<GameState> gameState;
-
     private final MenuPrompt menuPrompt;
     private final PlayerNamePrompt playerNamePrompt;    
     private final List<OptionPerformer> optionPerformers;
