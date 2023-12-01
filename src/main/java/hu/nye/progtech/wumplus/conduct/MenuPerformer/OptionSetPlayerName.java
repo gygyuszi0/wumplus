@@ -1,11 +1,10 @@
-package hu.nye.progtech.wumplus.ui.MenuPerformer;
+package hu.nye.progtech.wumplus.conduct.MenuPerformer;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.constants.PlayerConst;
-import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 
 import java.util.Optional;
 

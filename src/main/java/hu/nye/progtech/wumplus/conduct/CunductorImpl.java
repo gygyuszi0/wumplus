@@ -2,15 +2,12 @@ package hu.nye.progtech.wumplus.conduct;
 
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.constants.MenuOptions;
-import hu.nye.progtech.wumplus.service.exception.DBServiceException;
-import hu.nye.progtech.wumplus.service.util.IOService;
-import hu.nye.progtech.wumplus.ui.MenuPerformer.OptionPerformer;
-import hu.nye.progtech.wumplus.ui.MenuPerformer.OptionSetPlayerName;
-import hu.nye.progtech.wumplus.ui.MenuPrompt;
-import hu.nye.progtech.wumplus.ui.PlayerNamePrompt;
+import hu.nye.progtech.wumplus.conduct.MenuPerformer.OptionPerformer;
+import hu.nye.progtech.wumplus.conduct.MenuPerformer.OptionSetPlayerName;
+import hu.nye.progtech.wumplus.ui.Menu.MenuPrompt;
+import hu.nye.progtech.wumplus.ui.Menu.PlayerNamePrompt;
 import org.slf4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 

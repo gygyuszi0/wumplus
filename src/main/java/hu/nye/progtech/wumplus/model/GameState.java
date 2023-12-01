@@ -12,6 +12,7 @@ public class GameState {
     private boolean mapCompleted;
 
     private boolean playerDead;
+    private boolean playerWon;
 
     public GameState(MapVO mapVO, PlayerVO playerVO, boolean shouldExit, boolean mapCompleted) {
         this.mapVO = mapVO;
@@ -19,6 +20,7 @@ public class GameState {
         this.shouldExit = shouldExit;
         this.mapCompleted = mapCompleted;
         this.playerDead = false;
+        this.playerWon = false;
     }
 
     public MapVO getMapVO() {
@@ -93,5 +95,29 @@ public class GameState {
 
     public String getPlayerName() {
         return playerVO.getName();
+    }
+
+    public boolean isPlayerWon() {
+        return playerWon;
+    }
+
+    public void setPlayerWon(boolean playerWon) {
+        this.playerWon = playerWon;
+    }
+
+    public char[][] getMapElement() {
+        return mapVO.getMap();
+    }
+
+    public int getPlayerX() {
+        return playerVO.getCoordX();
+    }
+
+    public int getPlayerY() {
+        return playerVO.getCoordY();
+    }
+
+    public boolean mapIsEmpty() {
+        return false;
     }
 }

@@ -1,11 +1,11 @@
 package hu.nye.progtech.wumplus.ui;
 
+import hu.nye.progtech.wumplus.ui.Menu.MenuPrompt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import hu.nye.progtech.wumplus.service.util.IOService;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;

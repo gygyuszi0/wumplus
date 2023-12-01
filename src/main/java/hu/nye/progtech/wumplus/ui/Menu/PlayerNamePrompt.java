@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.ui;
+package hu.nye.progtech.wumplus.ui.Menu;
 
 import hu.nye.progtech.wumplus.service.util.IOService;
 

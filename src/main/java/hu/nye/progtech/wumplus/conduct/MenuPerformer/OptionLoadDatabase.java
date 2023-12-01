@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.ui.MenuPerformer;
+package hu.nye.progtech.wumplus.conduct.MenuPerformer;
 
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.PlayerWithMap;

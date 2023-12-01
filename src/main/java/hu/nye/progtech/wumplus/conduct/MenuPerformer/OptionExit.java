@@ -1,7 +1,6 @@
-package hu.nye.progtech.wumplus.ui.MenuPerformer;
+package hu.nye.progtech.wumplus.conduct.MenuPerformer;
 
 import hu.nye.progtech.wumplus.model.GameState;
-import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import org.slf4j.Logger;
 
 import java.util.Optional;
