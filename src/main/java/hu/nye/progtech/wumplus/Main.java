@@ -12,6 +12,7 @@ import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import hu.nye.progtech.wumplus.ui.Game.CommandPrompt;
+import hu.nye.progtech.wumplus.ui.Game.HudWriter;
 import hu.nye.progtech.wumplus.ui.Game.MapWriter;
 import hu.nye.progtech.wumplus.ui.Menu.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.Menu.PlayerNamePrompt;
@@ -37,8 +38,9 @@ public class Main {
         DatabaseService databaseService = new DatabaseService();
 
         MapWriter  mapWriter = new MapWriter(ioService);
+        HudWriter hudWriter  = new HudWriter(ioService);
         CommandPrompt commandPrompt = new CommandPrompt(ioService);
-        ControllerImpl  gameController = new ControllerImpl(mapWriter, commandPrompt);
+        ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt);
 
         List<OptionPerformer> optionPerformers = Arrays.asList(
                 new OptionCreateNewMap(),

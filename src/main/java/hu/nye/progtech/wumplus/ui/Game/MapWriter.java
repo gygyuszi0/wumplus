@@ -1,6 +1,7 @@
 package hu.nye.progtech.wumplus.ui.Game;
 
 import hu.nye.progtech.wumplus.model.*;
+import hu.nye.progtech.wumplus.service.exception.GameUiException;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import org.slf4j.Logger;
 
@@ -17,7 +18,7 @@ public class MapWriter {
         this.ioService = ioService;
     }
 
-    public void writeMap(Optional<GameState> gameState) {
+    public void writeMap(Optional<GameState> gameState) throws GameUiException {
         if (gameState.isPresent()) {
             char[][] map = putPlayerToMap(gameState);
             String mapString = mapToString(map);
@@ -27,13 +28,17 @@ public class MapWriter {
         }
     }
 
-    private char[][] putPlayerToMap(Optional<GameState> gameState) {
+    private char[][] putPlayerToMap(Optional<GameState> gameState) throws GameUiException {
         if (gameState.isPresent()) {
-            char[][] result = gameState.get().getMapElement();
-            Integer playerX = gameState.get().getPlayerX();
-            Integer playerY = gameState.get().getPlayerY();
-            result[playerX][playerY] = 'H';
-            return result;
+            try {
+                char[][] result = gameState.get().getMapElement();
+                Integer playerX = gameState.get().getPlayerX();
+                Integer playerY = gameState.get().getPlayerY();
+                result[playerX][playerY] = 'H';
+                return result;
+            } catch (Exception e) {
+                throw new GameUiException("Player is outside the map.");
+            }
         } else {
             logger.error("Game state is not present.");
             return new char[1][0];
@@ -45,6 +50,7 @@ public class MapWriter {
         for (char[] row : map) {
             for (char cell : row) {
                 sb.append(cell);
+                sb.append(' ');
             }
             sb.append("\n");
         }

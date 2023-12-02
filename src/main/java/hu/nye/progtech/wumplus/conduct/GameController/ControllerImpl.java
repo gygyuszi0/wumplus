@@ -3,6 +3,7 @@ package hu.nye.progtech.wumplus.conduct.GameController;
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.ui.Game.CommandPrompt;
 import hu.nye.progtech.wumplus.ui.Game.MapWriter;
+import hu.nye.progtech.wumplus.ui.Game.HudWriter;
 import org.slf4j.Logger;
 
 import java.util.Optional;
@@ -12,11 +13,13 @@ public class ControllerImpl implements Controller {
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(ControllerImpl.class);
 
     private final MapWriter mapWriter;
+    private final HudWriter hudWriter;
 
     private final CommandPrompt commandPrompt;
 
-    public ControllerImpl(MapWriter mapWriter, CommandPrompt commandPrompt) {
+    public ControllerImpl(MapWriter mapWriter, HudWriter hudWriter, CommandPrompt commandPrompt) {
         this.mapWriter = mapWriter;
+        this.hudWriter = hudWriter;
         this.commandPrompt = commandPrompt;
     }
 
@@ -24,25 +27,21 @@ public class ControllerImpl implements Controller {
     public Optional<GameState> startGame(Optional<GameState> gameState) {
         logger.info("Game started");
 
-        if (mapExist(gameState)) {
-            while (!gameState.get().isShouldExit()) {
-                mapWriter.writeMap(gameState);
+        try {
+            if (gameState.isPresent()) {
+                while (!gameState.get().isShouldExit()) {
+                    mapWriter.writeMap(gameState);
+                    hudWriter.writeHud(gameState);
 
-                String command = commandPrompt.readCommand();
+                    String command = commandPrompt.readCommand();
+                }
+            } else {
+                logger.error("Game state is not present.");
             }
-        } else {
-            logger.error("Game state is not present.");
+        } catch (Exception e) {
+            logger.error("Error in game : " + e.getMessage());
         }
 
         return gameState;
-    }
-
-    private boolean mapExist(Optional<GameState> gameState) {
-        if (gameState.isPresent()) {
-            char[][] result =gameState.get().getMapElement();
-            return result.length > 5;
-        } else {
-            return false;
-        }
     }
 }
