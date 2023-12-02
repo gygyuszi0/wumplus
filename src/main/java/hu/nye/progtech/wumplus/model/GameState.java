@@ -8,19 +8,21 @@ import java.util.Objects;
 public class GameState {
     private MapVO mapVO;
     private PlayerVO playerVO;
-    private boolean shouldExit;
+//    private boolean shouldExit;
     private boolean mapCompleted;
 
     private boolean playerDead;
     private boolean playerWon;
 
+    private boolean givUp;
+
     public GameState(MapVO mapVO, PlayerVO playerVO, boolean shouldExit, boolean mapCompleted) {
         this.mapVO = mapVO;
         this.playerVO = playerVO;
-        this.shouldExit = shouldExit;
         this.mapCompleted = mapCompleted;
         this.playerDead = false;
         this.playerWon = false;
+        this.givUp = false;
     }
 
     public MapVO getMapVO() {
@@ -40,13 +42,8 @@ public class GameState {
     }
 
     public boolean isShouldExit() {
-        return shouldExit;
+        return givUp || playerDead || playerWon;
     }
-
-    public void setShouldExit(boolean shouldExit) {
-        this.shouldExit = shouldExit;
-    }
-
     public boolean isMapCompleted() {
         return mapCompleted;
     }
@@ -63,6 +60,15 @@ public class GameState {
         this.playerDead = playerDead;
     }
 
+    public GameState deepcCopy() {
+        GameState result = new GameState(mapVO.deepCopy(), playerVO.deepCopy(), false, mapCompleted);
+        result.setPlayerDead(playerDead);
+        result.setPlayerWon(playerWon);
+        result.setGivUp(givUp);
+        return result;
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -72,14 +78,14 @@ public class GameState {
             return false;
         }
         GameState gameState = (GameState) o;
-        return shouldExit == gameState.shouldExit && mapCompleted == gameState.mapCompleted &&
+        return mapCompleted == gameState.mapCompleted &&
                 playerDead == gameState.playerDead && Objects.equals(mapVO, gameState.mapVO) &&
                 Objects.equals(playerVO, gameState.playerVO);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mapVO, playerVO, shouldExit, mapCompleted, playerDead);
+        return Objects.hash(mapVO, playerVO, mapCompleted, playerDead);
     }
 
     @Override
@@ -87,7 +93,6 @@ public class GameState {
         return "GameState{" +
                 "mapVO=" + mapVO +
                 ", playerVO=" + playerVO +
-                ", shouldExit=" + shouldExit +
                 ", mapCompleted=" + mapCompleted +
                 ", playerDead=" + playerDead +
                 '}';
@@ -117,7 +122,11 @@ public class GameState {
         return playerVO.getCoordY();
     }
 
-    public boolean mapIsEmpty() {
-        return false;
+    public boolean isGivUp() {
+        return givUp;
+    }
+
+    public void setGivUp(boolean givUp) {
+        this.givUp = givUp;
     }
 }

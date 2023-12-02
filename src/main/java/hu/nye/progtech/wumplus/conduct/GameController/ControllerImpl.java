@@ -33,7 +33,7 @@ public class ControllerImpl implements Controller {
     public Optional<GameState> startGame(final Optional<GameState> gameState) {
         logger.info("Game started");
 
-        Optional<GameState> gamestateForProcess = gameState;
+        Optional<GameState> gamestateForProcess = Optional.of(gameState.get().deepcCopy());
 
         try {
             if (gamestateForProcess.isPresent()) {
@@ -44,6 +44,10 @@ public class ControllerImpl implements Controller {
                     String command = commandPrompt.readCommand();
 
                     gamestateForProcess = executeCommand(command, gamestateForProcess);
+                }
+                if (gamestateForProcess.get().isGivUp()) {
+                    logger.info("Game gave up");
+                    return gameState;
                 }
             } else {
                 logger.error("Game state is not present.");

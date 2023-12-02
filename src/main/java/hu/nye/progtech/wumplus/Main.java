@@ -9,6 +9,7 @@ import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 import hu.nye.progtech.wumplus.conduct.GameController.ControllerImpl;
 import hu.nye.progtech.wumplus.conduct.MenuPerformer.*;
 import hu.nye.progtech.wumplus.service.command.Command;
+import hu.nye.progtech.wumplus.service.command.impl.GiveUpCommand;
 import hu.nye.progtech.wumplus.service.command.impl.LootCommand;
 import hu.nye.progtech.wumplus.service.command.impl.StepCommand;
 import hu.nye.progtech.wumplus.service.command.impl.TurnCommand;
@@ -54,7 +55,8 @@ public class Main {
         List<Command> commands = Arrays.asList(
                 new LootCommand(lootPerformer),
                 new StepCommand(stepPerformer),
-                new TurnCommand(turnPerformer)
+                new TurnCommand(turnPerformer),
+                new GiveUpCommand()
         );
         ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt, commands);
 

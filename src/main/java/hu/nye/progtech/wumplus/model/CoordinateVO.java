@@ -55,4 +55,8 @@ public class CoordinateVO {
                 ", y=" + coordY +
                 '}';
     }
+
+    public CoordinateVO deepCopy() {
+        return new CoordinateVO(coordX, coordY);
+    }
 }

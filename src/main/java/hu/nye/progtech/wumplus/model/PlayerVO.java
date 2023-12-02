@@ -137,4 +137,10 @@ public class PlayerVO {
         return coordinate.getCoordY();
     }
 
+    public PlayerVO deepCopy() {
+        PlayerVO playerVO = new PlayerVO(name, direction, coordinate.deepCopy());
+        playerVO.setNonStatic(numberOfArrows, haveGold, score, numberOfSteps);
+        return playerVO;
+    }
+
 }

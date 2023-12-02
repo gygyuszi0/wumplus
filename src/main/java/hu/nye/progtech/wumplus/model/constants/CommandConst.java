@@ -9,6 +9,8 @@ public class CommandConst {
     public static final String LOOT = "loot";
     public static final String SHOT = "shot";
 
+    public static final String GIVE_UP = "give up";
+
     public static final Character TURN_RIGHT = 'R';
     public static final Character TURN_LEFT = 'L';
 

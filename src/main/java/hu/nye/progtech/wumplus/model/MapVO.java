@@ -60,6 +60,9 @@ public final class MapVO {
         return result;
     }
 
+    public MapVO deepCopy() {
+        return new MapVO(numberOfRows, numberOfColumns, deepCopy(map), deepCopy(fixed));
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) {
