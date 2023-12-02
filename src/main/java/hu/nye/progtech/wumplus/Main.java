@@ -9,10 +9,7 @@ import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 import hu.nye.progtech.wumplus.conduct.GameController.ControllerImpl;
 import hu.nye.progtech.wumplus.conduct.MenuPerformer.*;
 import hu.nye.progtech.wumplus.service.command.Command;
-import hu.nye.progtech.wumplus.service.command.impl.GiveUpCommand;
-import hu.nye.progtech.wumplus.service.command.impl.LootCommand;
-import hu.nye.progtech.wumplus.service.command.impl.StepCommand;
-import hu.nye.progtech.wumplus.service.command.impl.TurnCommand;
+import hu.nye.progtech.wumplus.service.command.impl.*;
 import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
 import hu.nye.progtech.wumplus.service.command.performer.StepPerformer;
 import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
@@ -56,7 +53,8 @@ public class Main {
                 new LootCommand(lootPerformer),
                 new StepCommand(stepPerformer),
                 new TurnCommand(turnPerformer),
-                new GiveUpCommand()
+                new GiveUpCommand(),
+                new PauseCommand()
         );
         ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt, commands);
 

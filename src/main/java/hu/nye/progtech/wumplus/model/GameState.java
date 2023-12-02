@@ -13,8 +13,9 @@ public class GameState {
 
     private boolean playerDead;
     private boolean playerWon;
-
     private boolean givUp;
+
+    private boolean pause;
 
     public GameState(MapVO mapVO, PlayerVO playerVO, boolean shouldExit, boolean mapCompleted) {
         this.mapVO = mapVO;
@@ -42,7 +43,7 @@ public class GameState {
     }
 
     public boolean isShouldExit() {
-        return givUp || playerDead || playerWon;
+        return givUp || pause || playerDead || playerWon;
     }
     public boolean isMapCompleted() {
         return mapCompleted;
@@ -65,28 +66,23 @@ public class GameState {
         result.setPlayerDead(playerDead);
         result.setPlayerWon(playerWon);
         result.setGivUp(givUp);
+        result.setPause(pause);
         return result;
-
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         GameState gameState = (GameState) o;
-        return mapCompleted == gameState.mapCompleted &&
-                playerDead == gameState.playerDead && Objects.equals(mapVO, gameState.mapVO) &&
-                Objects.equals(playerVO, gameState.playerVO);
+        return mapCompleted == gameState.mapCompleted && playerDead == gameState.playerDead && playerWon == gameState.playerWon && givUp == gameState.givUp && pause == gameState.pause && Objects.equals(mapVO, gameState.mapVO) && Objects.equals(playerVO, gameState.playerVO);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(mapVO, playerVO, mapCompleted, playerDead);
+        return Objects.hash(mapVO, playerVO, mapCompleted, playerDead, playerWon, givUp, pause);
     }
+
 
     @Override
     public String toString() {
@@ -95,6 +91,9 @@ public class GameState {
                 ", playerVO=" + playerVO +
                 ", mapCompleted=" + mapCompleted +
                 ", playerDead=" + playerDead +
+                ", playerWon=" + playerWon +
+                ", givUp=" + givUp +
+                ", pause=" + pause +
                 '}';
     }
 
@@ -128,5 +127,13 @@ public class GameState {
 
     public void setGivUp(boolean givUp) {
         this.givUp = givUp;
+    }
+
+    public boolean isPause() {
+        return pause;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
     }
 }

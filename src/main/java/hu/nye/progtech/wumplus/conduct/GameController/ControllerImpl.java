@@ -49,6 +49,11 @@ public class ControllerImpl implements Controller {
                     logger.info("Game gave up");
                     return gameState;
                 }
+                if (gamestateForProcess.get().isPause()) {
+                    logger.info("Game paused");
+                    gamestateForProcess.get().setPause(false);
+                    return gamestateForProcess;
+                }
             } else {
                 logger.error("Game state is not present.");
             }
