@@ -28,7 +28,7 @@ public class TurnPerformer {
         Integer newDirectionIndex = Math.floorMod(currentDirectionIndex + turnSignal, PlayerConst.CORRECT_DIRECTIONS.size());
         Character newDirection = PlayerConst.CORRECT_DIRECTIONS.get(newDirectionIndex);
 
-        PlayerVO result = new PlayerVO(existing.getName(), newDirection, existing.getCoordinate());
+        PlayerVO result = new PlayerVO(existing.getName(), newDirection, existing.getCoordinate(), existing.getStartCoordinate());
         result.setNonStatic(existing.getNumberOfArrows(), existing.getHaveGold(),
                 existing.getScore(), existing.getNumberOfSteps());
 

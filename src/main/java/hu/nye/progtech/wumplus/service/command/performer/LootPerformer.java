@@ -32,7 +32,7 @@ public class LootPerformer {
         if (frontOfElement.equals(Element.GOLD)) {
 
             MapVO newMapVO = MapQuery.setElementByCoordinate(mapVO, frontOfCoordinate, Element.SPACE);
-            PlayerVO newPlayerVO = new PlayerVO(playerVO.getName(), playerVO.getDirection(), playerVO.getCoordinate());
+            PlayerVO newPlayerVO = playerVO.deepCopy();
             newPlayerVO.setNonStatic(playerVO.getNumberOfArrows(), true, playerVO.getScore(), playerVO.getNumberOfSteps());
 
 

@@ -37,7 +37,7 @@ public class StepPerformer {
         } else if (frontOfElement.equals(Element.WUMP)) {
             throw new PlayerDeadException("Step to Wumpus, player is dead.");
         } else {
-            PlayerVO result = new PlayerVO(playerVO.getName(), playerVO.getDirection(), frontOfCoordinate);
+            PlayerVO result = new PlayerVO(playerVO.getName(), playerVO.getDirection(), frontOfCoordinate, playerVO.getStartCoordinate());
             result.setNonStatic(playerVO.getNumberOfArrows(), playerVO.getHaveGold(), playerVO.getScore(), playerVO.getNumberOfSteps() + 1);
 
             if (frontOfElement.equals(Element.PIT)) {

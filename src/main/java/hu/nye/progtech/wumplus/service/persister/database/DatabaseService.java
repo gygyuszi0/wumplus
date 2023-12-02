@@ -301,7 +301,8 @@ public class DatabaseService {
             Integer coordY = resultSet.getInt(DBQuery.SAVED_PLAYER_POS_Y);
             Integer loadedArrow = resultSet.getInt(DBQuery.SAVED_PLAYER_NUM_ARROW);
             Boolean loadedGold = resultSet.getBoolean(DBQuery.SAVED_PLAYER_HAVE_GOLD);
-            PlayerVO playerVO = new PlayerVO(playerName, loadedDirection, new CoordinateVO(coordX, coordY));
+            // frissíteni a db-t
+            PlayerVO playerVO = new PlayerVO(playerName, loadedDirection, new CoordinateVO(coordX, coordY), new CoordinateVO(coordX, coordY));
             playerVO.setNonStatic(loadedArrow, loadedGold, 0, 0);
             return playerVO;
         } catch (SQLException e) {

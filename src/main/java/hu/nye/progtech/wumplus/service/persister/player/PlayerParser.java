@@ -64,15 +64,14 @@ public class PlayerParser {
         Character playerDirectionValue = playerDirectionBlock.charAt(0);
         isCorrectDirection(playerDirectionValue);
 
-        PlayerVO result = new PlayerVO(playerName, playerDirectionValue, playerCoordinate);
+        PlayerVO result = new PlayerVO(playerName, playerDirectionValue, playerCoordinate, playerCoordinate);
 
         return result;
     }
 
     private PlayerVO setGameLogicInformation(PlayerVO playerVO, MapVO mapVO) {
         Integer numberOfWumpus = NumberOfElement.count(mapVO, Element.WUMP);
-        PlayerVO result = new PlayerVO(playerVO.getName(), playerVO.getDirection(),
-                playerVO.getCoordinate());
+        PlayerVO result = playerVO.deepCopy();
         result.setNumberOfArrows(numberOfWumpus);
         return result;
     }

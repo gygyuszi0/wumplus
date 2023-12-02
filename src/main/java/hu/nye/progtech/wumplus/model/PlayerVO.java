@@ -14,6 +14,8 @@ public class PlayerVO {
     private final Character direction;
     private final CoordinateVO coordinate; // 0-tól indexel
 
+    private final CoordinateVO startCoordinate; // 0-tól indexel
+
     // Játéklogia elemei
     private Integer numberOfArrows;
     private Boolean haveGold;
@@ -21,7 +23,7 @@ public class PlayerVO {
     private Integer numberOfSteps;
 
 
-    public PlayerVO(String name, Character direction, CoordinateVO coordinate) {
+    public PlayerVO(String name, Character direction, CoordinateVO coordinate, CoordinateVO base) {
         this.name = name;
         this.direction = direction;
         this.coordinate = coordinate;
@@ -30,6 +32,11 @@ public class PlayerVO {
         this.haveGold = false;
         this.score = 0;
         this.numberOfSteps = 0;
+        this.startCoordinate = base;
+    }
+
+    public CoordinateVO getStartCoordinate() {
+        return startCoordinate.deepCopy();
     }
 
     @Override
@@ -138,7 +145,7 @@ public class PlayerVO {
     }
 
     public PlayerVO deepCopy() {
-        PlayerVO playerVO = new PlayerVO(name, direction, coordinate.deepCopy());
+        PlayerVO playerVO = new PlayerVO(name, direction, coordinate.deepCopy(), startCoordinate.deepCopy());
         playerVO.setNonStatic(numberOfArrows, haveGold, score, numberOfSteps);
         return playerVO;
     }
