@@ -1,5 +1,6 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
+import java.util.Optional;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
@@ -14,14 +15,11 @@ import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
  */
 public class TurnCommand implements Command {
 
-    private final GameState gameState;
-
     private final TurnPerformer turnPerformer;
 
 
-    public TurnCommand(GameState gameState, TurnPerformer turnPerformer) {
-        this.gameState = gameState;
-        this.turnPerformer = turnPerformer;
+    public TurnCommand(TurnPerformer turnPerformer) {
+           this.turnPerformer = turnPerformer;
     }
 
     private static final String TURN_PATTERN = String.format("^%s [%c,%c]",
@@ -35,23 +33,19 @@ public class TurnCommand implements Command {
     }
 
     @Override
-    public void process(String input) {
+    public Optional<GameState> process(String input, Optional<GameState> safeGameState)  {
         StringTokenizer tokenizer = new StringTokenizer(input, " ");
         String command = tokenizer.nextToken();
         Character direction = tokenizer.nextToken().charAt(0);
 
-        PlayerVO newPlayer = turnPerformer.perform(gameState.getPlayerVO(), direction);
-        gameState.setPlayerVO(newPlayer);
-    }
+        if (safeGameState.isPresent()) {
+            GameState gameState = safeGameState.get();
+            PlayerVO newPlayer = turnPerformer.perform(gameState.getPlayerVO(), direction);
+            gameState.setPlayerVO(newPlayer);
 
-    @Override
-    public String toString() {
-        return "TurnCommand{" +
-                "gameState=" + gameState +
-                '}';
-    }
-
-    public GameState getGameState() {
-        return gameState;
+            return Optional.of(gameState);
+        } else {
+            return safeGameState;
+        }
     }
 }

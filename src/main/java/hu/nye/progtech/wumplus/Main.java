@@ -8,6 +8,13 @@ import hu.nye.progtech.wumplus.conduct.Conductor;
 import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 import hu.nye.progtech.wumplus.conduct.GameController.ControllerImpl;
 import hu.nye.progtech.wumplus.conduct.MenuPerformer.*;
+import hu.nye.progtech.wumplus.service.command.Command;
+import hu.nye.progtech.wumplus.service.command.impl.LootCommand;
+import hu.nye.progtech.wumplus.service.command.impl.StepCommand;
+import hu.nye.progtech.wumplus.service.command.impl.TurnCommand;
+import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
+import hu.nye.progtech.wumplus.service.command.performer.StepPerformer;
+import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import hu.nye.progtech.wumplus.service.util.IOService;
@@ -40,7 +47,16 @@ public class Main {
         MapWriter  mapWriter = new MapWriter(ioService);
         HudWriter hudWriter  = new HudWriter(ioService);
         CommandPrompt commandPrompt = new CommandPrompt(ioService);
-        ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt);
+
+        LootPerformer lootPerformer = new LootPerformer();
+        StepPerformer  stepPerformer = new StepPerformer();
+        TurnPerformer  turnPerformer = new TurnPerformer();
+        List<Command> commands = Arrays.asList(
+                new LootCommand(lootPerformer),
+                new StepCommand(stepPerformer),
+                new TurnCommand(turnPerformer)
+        );
+        ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt, commands);
 
         List<OptionPerformer> optionPerformers = Arrays.asList(
                 new OptionCreateNewMap(),

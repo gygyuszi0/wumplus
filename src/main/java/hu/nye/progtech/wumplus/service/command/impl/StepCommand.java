@@ -13,18 +13,19 @@ import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
 import hu.nye.progtech.wumplus.service.exception.PlayerDeadException;
 import hu.nye.progtech.wumplus.service.util.MapQuery;
+import org.slf4j.Logger;
+
+import java.util.Optional;
 
 /**
  * Lépés parancs.
  */
 public class StepCommand implements Command {
 
-    private final GameState gameState;
-
+    private final Logger logger = org.slf4j.LoggerFactory.getLogger(StepCommand.class);
     private final StepPerformer stepPerformer;
 
-    public StepCommand(GameState gameState, StepPerformer stepPerformer) {
-        this.gameState = gameState;
+    public StepCommand(StepPerformer stepPerformer) {
         this.stepPerformer = stepPerformer;
     }
 
@@ -34,22 +35,29 @@ public class StepCommand implements Command {
     }
 
     @Override
-    public void process(String input) {
-        try {
-            PlayerVO stepedPlayer = stepPerformer.perform(gameState.getPlayerVO(), gameState.getMapVO());
-            gameState.setPlayerVO(stepedPlayer);
-        } catch (PerformerException e) {
-            System.out.println("Can't perform this step");
-            System.out.println(e.getMessage());
-        } catch (PlayerDeadException e) {
-            System.out.println("Player is dead.");
-            gameState.setPlayerDead(true);
-        } catch (MapQueryException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+    public Optional<GameState> process(String input, Optional<GameState> safeGameState) {
+        if  (safeGameState.isPresent()) {
+            try {
+                GameState gameState = safeGameState.get();
+                PlayerVO stepedPlayer = stepPerformer.perform(gameState.getPlayerVO(), gameState.getMapVO());
+                gameState.setPlayerVO(stepedPlayer);
 
-    public GameState getGameState() {
-        return gameState;
+                return Optional.of(gameState);
+            } catch (PerformerException e) {
+                logger.error("Can't perform this step" + e.getMessage());
+                return safeGameState;
+            } catch (PlayerDeadException e) {
+                logger.error("Player is dead");
+                GameState gameState = safeGameState.get();
+                gameState.setPlayerDead(true);
+                return Optional.of(gameState);
+            } catch (MapQueryException e) {
+                logger.error("Error in map query" + e.getMessage());
+                return safeGameState;
+            }
+        } else {
+            logger.error("No game state");
+            return Optional.empty();
+        }
     }
 }

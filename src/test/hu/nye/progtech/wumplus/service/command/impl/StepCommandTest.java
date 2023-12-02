@@ -25,6 +25,7 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 import java.util.Map;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 class StepCommandTest {
@@ -44,7 +45,7 @@ class StepCommandTest {
         PlayerVO PLAYER = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2));
         PLAYER.setNonStatic(3, false, 0, 0);
         gameState = new GameState(null, PLAYER, false, false);
-        underTest = new StepCommand(gameState, stepPerformerMock);
+        underTest = new StepCommand(stepPerformerMock);
     }
 
     @Test
@@ -84,9 +85,8 @@ class StepCommandTest {
         given(stepPerformerMock.perform(any(), any())).willReturn(PLAYER_STEPED);
 
         // when
-        underTest.process(STEP_CORRECT);
-        GameState expected = new GameState(null, PLAYER_STEPED, false, false);
-        System.out.println("\t\t\tWHEN\t:" + underTest.getGameState());
+        Optional<GameState> result = underTest.process(STEP_CORRECT, Optional.of(gameState));
+        Optional<GameState> expected = Optional.of(new GameState(null, PLAYER_STEPED, false, false));
         System.out.println("\t\t\t\t\t:" + expected);
 
         // then
@@ -105,12 +105,13 @@ class StepCommandTest {
         
         given(stepPerformerMock.perform(any(), any())).willThrow(new PerformerException("You can't step to the wall."));
         // when
-        underTest.process(STEP_CORRECT);
+        Optional<GameState> result = underTest.process(STEP_CORRECT, Optional.of(gameState));
+
         PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2));
         expectedPlayer.setNonStatic(3,false, 0, 0);
-        GameState expected = new GameState(null, expectedPlayer, false, false);
+        Optional<GameState> expected = Optional.of(new GameState(null, expectedPlayer, false, false));
         // then
-        Assertions.assertEquals(expected, gameState);
+        Assertions.assertEquals(expected, result);
     }
 
     @Test
@@ -126,13 +127,11 @@ class StepCommandTest {
         given(stepPerformerMock.perform(any(), any())).willReturn(PLAYER_STEPED);
 
         // when
-        underTest.process(STEP_CORRECT);
-        GameState expected = new GameState(null, PLAYER_STEPED, false, false);
-        System.out.println("\t\t\tWHEN\t:" + underTest.getGameState());
-        System.out.println("\t\t\t\t\t:" + expected);
+        Optional<GameState> result = underTest.process(STEP_CORRECT, Optional.of(gameState));
+        Optional<GameState> expected = Optional.of(new GameState(null, PLAYER_STEPED, false, false));
 
         // then
-        Assertions.assertEquals(expected, gameState);
+        Assertions.assertEquals(expected, result);
         verify(stepPerformerMock).perform(any(), any());
     }
 
@@ -146,12 +145,11 @@ class StepCommandTest {
         
         given(stepPerformerMock.perform(any(), any())).willThrow(new PlayerDeadException("Step to Wumpus, player is dead."));
         // when
-        underTest.process(STEP_CORRECT);
+        Optional<GameState> result = underTest.process(STEP_CORRECT, Optional.of(gameState));
         PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,2));
         expectedPlayer.setNonStatic(3,false, 0, 0);
         GameState expected = new GameState(null, expectedPlayer, false, false);
         expected.setPlayerDead(true);
-        System.out.println("\t\t\tWHEN\t:" + underTest.getGameState());
         System.out.println("\t\t\t\t\t:" + expected);
 
         // then

@@ -17,6 +17,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Map;
+import java.util.Optional;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -50,14 +51,14 @@ class TurnCommandTest {
         }
     );
 
-    private final GameState GAME_STATE = new GameState(mapVO, PLAYER, false, false);
+    private final Optional<GameState> GAME_STATE = Optional.of(new GameState(mapVO, PLAYER, false, false));
     @Mock
     private TurnPerformer TURN_PREFORMER;
 
 
     @BeforeEach
     void setUp() {
-        underTest = new TurnCommand(GAME_STATE, TURN_PREFORMER);
+        underTest = new TurnCommand(TURN_PREFORMER);
     }
 
     @Test
@@ -108,13 +109,11 @@ class TurnCommandTest {
         System.out.println("\t\t\tGIVEN\t:" + PLAYER);
         System.out.println("\t\t\t\t\t:" + CORRECT_TURN_LEFT);
         // when
-        underTest.process(CORRECT_TURN_LEFT);
-        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,1));
-        GameState expected = new GameState(mapVO, expectedPlayer, false, false);
-        System.out.println("\t\t\tWHEN\t:" + GAME_STATE);
-        System.out.println("\t\t\t\t\t:" + underTest.getGameState());
+        Optional<GameState> result = underTest.process(CORRECT_TURN_LEFT, GAME_STATE);
+        Optional<GameState> expected = Optional.of(new GameState(mapVO, new PlayerVO("teszt", PlayerConst.WEST, new CoordinateVO(1,1)), false, false));
+        System.out.println("\t\t\tWHEN\t:" + result.get());
+        System.out.println("\t\t\t\t\t:" + expected.get());
         // then
-        Assertions.assertEquals(underTest.getGameState(), expected);
-        verify(TURN_PREFORMER).perform(PLAYER, CommandConst.TURN_LEFT);
+        Assertions.assertEquals(result, expected);
     }
 }

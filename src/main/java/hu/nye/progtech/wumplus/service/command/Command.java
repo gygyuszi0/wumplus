@@ -1,5 +1,9 @@
 package hu.nye.progtech.wumplus.service.command;
 
+import hu.nye.progtech.wumplus.model.GameState;
+
+import java.util.Optional;
+
 /**
  * Interface that represents a command which the user can use to
  * interact with the game.
@@ -19,6 +23,6 @@ public interface Command {
      *
      * @param input the input as a string to be processed
      */
-    void process(String input);
+    Optional<GameState> process(String input, Optional<GameState> gameState);
 
 }

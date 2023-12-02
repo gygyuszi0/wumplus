@@ -12,6 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -53,7 +55,7 @@ class LootCommandTest {
     @BeforeEach
     void setUp() {
         gameState = new GameState(null, PLAYER_CORRECT, false, false);
-        underTest = new LootCommand(gameState, lootPerformer);
+        underTest = new LootCommand(lootPerformer);
     }
 
     @Test
@@ -85,21 +87,17 @@ class LootCommandTest {
     void processCorrect() throws PerformerException, MapQueryException {
         System.out.println("[TEST\t] : Process a correct loot command");
         // given
-        System.out.println("\t\t\tGIVEN\t:" + underTest.getGameState());
-        System.out.println("\t\t\t\t\t:" + underTest.getGameState());
+        System.out.println("\t\t\tGIVEN\t:" + Optional.of(GAMESTATE_CORRECT_ECPECTED));
+
         PlayerVO returnedPlayer = new PlayerVO(PLAYER_CORRECT.getName(), PLAYER_CORRECT.getDirection(), PLAYER_CORRECT.getCoordinate());
         returnedPlayer.setHaveGold(true);
         given(lootPerformer.perform(any(), any())).willReturn(new PlayerWithMap(returnedPlayer, MAP_EXPECTED_CORRECT));
         // when
-        underTest.process(LOOT_CORRECT);
-
-        PlayerVO expectedPayer = new PlayerVO(PLAYER_CORRECT.getName(), PLAYER_CORRECT.getDirection(), PLAYER_CORRECT.getCoordinate());
-        expectedPayer.setHaveGold(true);
-        GameState expected = new GameState(MAP_EXPECTED_CORRECT, expectedPayer, false, false);
-
+        Optional<GameState> result = underTest.process(LOOT_CORRECT, Optional.of(gameState));
+        Optional<GameState> expected = Optional.of(GAMESTATE_CORRECT_ECPECTED);
         System.out.println("\t\t\tWHEN\t:" + expected);
-        System.out.println("\t\t\t\t\t:" + underTest.getGameState());        
+        System.out.println("\t\t\t\t\t:" + result);
         // then
-        Assertions.assertEquals(expected, underTest.getGameState());
+        Assertions.assertEquals(expected, result);
     }
 }

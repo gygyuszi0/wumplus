@@ -34,7 +34,7 @@ public class MapWriter {
                 char[][] result = gameState.get().getMapElement();
                 Integer playerX = gameState.get().getPlayerX();
                 Integer playerY = gameState.get().getPlayerY();
-                result[playerX][playerY] = 'H';
+                result[playerY][playerX] = 'H';
                 return result;
             } catch (Exception e) {
                 throw new GameUiException("Player is outside the map.");
