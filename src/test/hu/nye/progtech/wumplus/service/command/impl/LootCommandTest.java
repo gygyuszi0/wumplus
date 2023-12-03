@@ -1,106 +1,114 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
 import hu.nye.progtech.wumplus.model.*;
-import hu.nye.progtech.wumplus.model.constants.PlayerConst;
+import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
 import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class LootCommandTest {
+public class LootCommandTest {
 
+    @Mock
+    private LootPerformer lootPerformerMock;
+
+    @Mock
+    private Logger loggerMock;
+
+    @Mock
+    private PlayerVO playerVOMock;
+
+    @Mock
+    private MapVO mapVOMock;
+
+    @Mock
+    private GameState gameStateMock;
 
     private LootCommand underTest;
-    @Mock
-    private LootPerformer lootPerformer;
-    private GameState gameState;
 
-    private String LOOT_CORRECT = "loot";
-    private String LOOT_WRONG = "YDFXGFD";
-
-    private MapVO MAP_EXPECTED_CORRECT = new MapVO(6, 6, 
-        new char[][] {
-            {'W', 'W', 'W', 'W', 'W', 'W'},
-            {'W', '_', '_', '_', '_', 'W'},
-            {'W', 'U', '_', 'P', '_', 'W'},
-            {'W', '_', '_', '_', '_', 'W'},
-            {'W', '_', '_', 'P', '_', 'W'},
-            {'W', 'W', 'W', 'W', 'W', 'W'}
-        },
-        new boolean[][] {
-            {true, true, true, true, true, true},
-            {true, false, false, false, false, true},
-            {true, false, false, true, false, true},
-            {true, false, false, false, false, true},
-            {true, false, false, true, false, true},
-            {true, true, true, true, true, true}
-        }
-    );
-    private PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2, 3), new CoordinateVO(1, 1));
-
-    private GameState GAMESTATE_CORRECT_ECPECTED = new GameState(MAP_EXPECTED_CORRECT,PLAYER_CORRECT, false, false);
-    
     @BeforeEach
-    void setUp() {
-        gameState = new GameState(null, PLAYER_CORRECT, false, false);
-        underTest = new LootCommand(lootPerformer);
+    public void setUp() {
+        underTest = new LootCommand(lootPerformerMock);
     }
 
     @Test
-    void canProcessCorrect() {
-        System.out.println("[TEST\t] : Can process a correct loot command");
+    public void testCanProcessWithValidInput() {
         // given
-        System.out.println("\t\t\tGIVEN\t:" + LOOT_CORRECT);
-        // then
-        boolean result = underTest.canProcess(LOOT_CORRECT);
-        System.out.println("\t\t\tWHEN\t:" + result);
+        String validInput = CommandConst.LOOT;
+
         // when
-        Assertions.assertEquals(result, true);
-        
+        boolean result = underTest.canProcess(validInput);
+
+        // then
+        assertTrue(result);
     }
 
     @Test
-    void canProcessWrong() {
-        System.out.println("[TEST\t] : Can process a wrong loot command");
+    public void testCanProcessWithInvalidInput() {
         // given
-        System.out.println("\t\t\tGIVEN\t:" + LOOT_WRONG);
-        // then
-        boolean result = underTest.canProcess(LOOT_WRONG);
-        System.out.println("\t\t\tWHEN\t:" + result);
+        String invalidInput = "INVALID";
+
         // when
-        Assertions.assertEquals(result, false);
+        boolean result = underTest.canProcess(invalidInput);
+
+        // then
+        assertFalse(result);
     }
 
     @Test
-    void processCorrect() throws PerformerException, MapQueryException {
-        System.out.println("[TEST\t] : Process a correct loot command");
+    public void testProcessWithGameStatePresent() throws PerformerException, MapQueryException {
         // given
-        System.out.println("\t\t\tGIVEN\t:" + Optional.of(GAMESTATE_CORRECT_ECPECTED));
-        PlayerVO returnedPlayer = PLAYER_CORRECT.deepCopy();
-        returnedPlayer.setHaveGold(true);
-        given(lootPerformer.perform(any(), any())).willReturn(new PlayerWithMap(returnedPlayer, MAP_EXPECTED_CORRECT));
+        when(lootPerformerMock.perform(any(PlayerVO.class), any(MapVO.class))).thenReturn(new PlayerWithMap(playerVOMock, mapVOMock));
+        when(gameStateMock.getPlayerVO()).thenReturn(playerVOMock);
+        when(gameStateMock.getMapVO()).thenReturn(mapVOMock);
+
         // when
-        Optional<GameState> result = underTest.process(LOOT_CORRECT, Optional.of(gameState));
+        Optional<GameState> result = underTest.process(CommandConst.LOOT, Optional.of(gameStateMock));
 
-        PlayerVO expectedPlayer = PLAYER_CORRECT.deepCopy();
-        expectedPlayer.setHaveGold(true);
-        Optional<GameState> expected = Optional.of(new GameState(MAP_EXPECTED_CORRECT, expectedPlayer, false, false));
-
-        System.out.println("\t\t\tWHEN\t:" + expected.get().getPlayerVO());
-        System.out.println("\t\t\t\t\t:" + result.get().getPlayerVO());
         // then
-        Assertions.assertEquals(expected, result);
+        assertTrue(result.isPresent());
+        verify(lootPerformerMock, times(1)).perform(playerVOMock, mapVOMock);
+        verify(gameStateMock, times(1)).setPlayerVO(playerVOMock);
+        verify(gameStateMock, times(1)).setMapVO(mapVOMock);
+        verifyNoInteractions(loggerMock);
+    }
+
+    @Test
+    public void testProcessWithGameStateNotPresent() {
+        // given
+        Optional<GameState> gameState = Optional.empty();
+
+        // when
+        Optional<GameState> result = underTest.process(CommandConst.LOOT, gameState);
+
+        // then
+        assertFalse(result.isPresent());
+    }
+
+    @Test
+    public void testProcessWithError() throws PerformerException, MapQueryException {
+        // given
+        when(lootPerformerMock.perform(any(PlayerVO.class), any(MapVO.class))).thenThrow(PerformerException.class);
+        when(gameStateMock.getPlayerVO()).thenReturn(playerVOMock);
+        when(gameStateMock.getMapVO()).thenReturn(mapVOMock);
+
+        // when
+        Optional<GameState> result = underTest.process(CommandConst.LOOT, Optional.of(gameStateMock));
+
+        // then
+        assertTrue(result.isPresent());
+        assertEquals(Optional.of(gameStateMock), result);
     }
 }

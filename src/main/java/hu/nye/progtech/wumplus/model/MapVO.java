@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Map objektum.
  */
-public final class MapVO {
+public class MapVO {
 
     private final int numberOfRows;
     private final int numberOfColumns;
