@@ -16,7 +16,7 @@ public class OptionSaveToDatabase implements OptionPerformer {
 
     private final DatabaseService databaseService;
 
-    Logger logger = org.slf4j.LoggerFactory.getLogger(OptionSaveToDatabase.class);
+    private Logger logger = org.slf4j.LoggerFactory.getLogger(OptionSaveToDatabase.class);
 
     public OptionSaveToDatabase(DatabaseService databaseService) {
         this.databaseService = databaseService;
@@ -36,8 +36,12 @@ public class OptionSaveToDatabase implements OptionPerformer {
             }
 
         } catch (DBServiceException e) {
-            logger.error("Error saving to database", e);
+            logger.error("Error saving to database");
             return gameState;
         }
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 }

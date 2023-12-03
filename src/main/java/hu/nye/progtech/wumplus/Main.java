@@ -1,6 +1,8 @@
 package hu.nye.progtech.wumplus;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,6 +27,7 @@ import hu.nye.progtech.wumplus.service.command.performer.StepPerformer;
 import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
+import hu.nye.progtech.wumplus.service.persister.map.impl.BufferedReaderMapReader;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import hu.nye.progtech.wumplus.ui.game.CommandPrompt;
 import hu.nye.progtech.wumplus.ui.game.HudWriter;
@@ -67,9 +70,15 @@ public class Main {
         );
         ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt, commands);
 
+        String inputFile = Main.class.getClassLoader().getResource("").getPath() + "wumpuszinput.txt";;
+        FileReader fileReader = new FileReader(inputFile);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedReaderMapReader mapReader = new BufferedReaderMapReader(bufferedReader);
+
+
         List<OptionPerformer> optionPerformers = Arrays.asList(
                 new OptionCreateNewMap(),
-                new OptionReadFromFile(),
+                new OptionReadFromFile(mapReader),
                 new OptionLoadDatabase(databaseService),
                 new OptionSaveToDatabase(databaseService),
                 new OptionPlay(gameController),

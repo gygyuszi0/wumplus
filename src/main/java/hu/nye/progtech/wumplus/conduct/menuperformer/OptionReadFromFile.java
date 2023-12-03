@@ -26,13 +26,19 @@ import org.slf4j.Logger;
  */
 public class OptionReadFromFile implements OptionPerformer  {
 
-    private final Logger logger = org.slf4j.LoggerFactory.getLogger(OptionReadFromFile.class);
+    private Logger logger = org.slf4j.LoggerFactory.getLogger(OptionReadFromFile.class);
+
+    private final BufferedReaderMapReader bufferedReaderMapReader;
+
+    public OptionReadFromFile(BufferedReaderMapReader bufferedReaderMapReader) {
+        this.bufferedReaderMapReader = bufferedReaderMapReader;
+    }
 
     @Override
     public Optional<GameState> perform(Optional<GameState> gameState) {
         String inputFile = getClass().getClassLoader().getResource("").getPath() + "wumpuszinput.txt";
         try {
-            List<String> rawMap = readFromFile(inputFile);
+            List<String> rawMap = readFromFile();
             
             PlayerWithMap playerWithMap = parsePlayerMap(rawMap, gameState.get().getPlayerName());
             PlayerVO playerVO = playerWithMap.getPlayerVO();
@@ -54,11 +60,8 @@ public class OptionReadFromFile implements OptionPerformer  {
         }
     }
 
-    private List<String> readFromFile(String inputFile) throws FileNotFoundException, MapReadException {
-        FileReader fileReader = new FileReader(inputFile);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        BufferedReaderMapReader mapReader = new BufferedReaderMapReader(bufferedReader);
-        List<String> rawMap = mapReader.readMap();
+    private List<String> readFromFile() throws FileNotFoundException, MapReadException {
+        List<String> rawMap = bufferedReaderMapReader.readMap();
         return rawMap;
     }
 
@@ -77,5 +80,13 @@ public class OptionReadFromFile implements OptionPerformer  {
         boolean mapValid = mapValidator.validateMap(mapVO);
         boolean playerValid = playerMapValidator.validateMap(mapVO);
         return mapValid && playerValid;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 }
