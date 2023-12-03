@@ -1,11 +1,14 @@
 package hu.nye.progtech.wumplus.ui.menu;
 
+import java.util.List;
+
 import hu.nye.progtech.wumplus.service.util.IOService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
+/**
+ * Write high scores to the console.
+ */
 public class LeaderBoardWriter {
 
     public static final String BANNER = "---------- Top players ----------\n";
@@ -19,7 +22,13 @@ public class LeaderBoardWriter {
     public LeaderBoardWriter(IOService ioService) {
         this.ioService = ioService;
     }
-    public void printHighScores(List<List<String>> playersScore){
+
+    /**
+     * Prints the high scores to the console.
+     *
+     * @param playersScore scoeres of the players
+     */
+    public void printHighScores(List<List<String>> playersScore) {
         ioService.writeConsole(BANNER);
         try {
             ioService.writeConsole(HEADER);

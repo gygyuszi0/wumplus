@@ -1,6 +1,7 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
-import com.sun.source.tree.Tree;
+import java.util.Optional;
+
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.PlayerVO;
@@ -15,7 +16,6 @@ import hu.nye.progtech.wumplus.service.exception.PlayerDeadException;
 import hu.nye.progtech.wumplus.service.util.MapQuery;
 import org.slf4j.Logger;
 
-import java.util.Optional;
 
 /**
  * Lépés parancs.

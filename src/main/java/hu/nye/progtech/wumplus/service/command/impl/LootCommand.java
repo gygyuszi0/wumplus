@@ -1,5 +1,7 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
+import java.util.Optional;
+
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
@@ -10,14 +12,10 @@ import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
 import org.slf4j.Logger;
 
-import java.util.Optional;
-
 /**
  * Loot parancsot.
  */
 public class LootCommand implements Command {
-
-//    private final GameState gameState;
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(LootCommand.class);
     private final LootPerformer lootPerformer;

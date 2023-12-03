@@ -8,11 +8,9 @@ import java.util.Objects;
 public class GameState {
     private MapVO mapVO;
     private PlayerVO playerVO;
-//    private boolean shouldExit;
     private boolean mapCompleted;
 
     private boolean playerDead;
-//    private boolean playerWon;
     private boolean givUp;
 
     private boolean pause;
@@ -22,7 +20,6 @@ public class GameState {
         this.playerVO = playerVO;
         this.mapCompleted = mapCompleted;
         this.playerDead = false;
-//        this.playerWon = false;
         this.givUp = false;
     }
 
@@ -45,6 +42,7 @@ public class GameState {
     public boolean isShouldExit() {
         return givUp || pause || playerDead || isPlayerWon();
     }
+
     public boolean isMapCompleted() {
         return mapCompleted;
     }
@@ -61,10 +59,14 @@ public class GameState {
         this.playerDead = playerDead;
     }
 
+    /**
+     * Másolat létrehozása.
+     *
+     * @return új objektum
+     */
     public GameState deepcCopy() {
         GameState result = new GameState(mapVO.deepCopy(), playerVO.deepCopy(), false, mapCompleted);
         result.setPlayerDead(playerDead);
-//        result.setPlayerWon(playerWon);
         result.setGivUp(givUp);
         result.setPause(pause);
         return result;
@@ -72,10 +74,16 @@ public class GameState {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         GameState gameState = (GameState) o;
-        return mapCompleted == gameState.mapCompleted && playerDead == gameState.playerDead && givUp == gameState.givUp && pause == gameState.pause && Objects.equals(mapVO, gameState.mapVO) && Objects.equals(playerVO, gameState.playerVO);
+        return mapCompleted == gameState.mapCompleted && playerDead == gameState.playerDead &&
+                givUp == gameState.givUp && pause == gameState.pause &&
+                Objects.equals(mapVO, gameState.mapVO) && Objects.equals(playerVO, gameState.playerVO);
     }
 
     @Override

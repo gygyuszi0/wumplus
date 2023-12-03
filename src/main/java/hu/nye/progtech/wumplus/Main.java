@@ -6,10 +6,20 @@ import java.util.List;
 
 import hu.nye.progtech.wumplus.conduct.Conductor;
 import hu.nye.progtech.wumplus.conduct.CunductorImpl;
-import hu.nye.progtech.wumplus.conduct.GameController.ControllerImpl;
-import hu.nye.progtech.wumplus.conduct.MenuPerformer.*;
+import hu.nye.progtech.wumplus.conduct.gamecontroller.ControllerImpl;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionCreateNewMap;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionExit;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionLoadDatabase;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionPerformer;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionPlay;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionReadFromFile;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionSaveToDatabase;
 import hu.nye.progtech.wumplus.service.command.Command;
-import hu.nye.progtech.wumplus.service.command.impl.*;
+import hu.nye.progtech.wumplus.service.command.impl.GiveUpCommand;
+import hu.nye.progtech.wumplus.service.command.impl.LootCommand;
+import hu.nye.progtech.wumplus.service.command.impl.PauseCommand;
+import hu.nye.progtech.wumplus.service.command.impl.StepCommand;
+import hu.nye.progtech.wumplus.service.command.impl.TurnCommand;
 import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
 import hu.nye.progtech.wumplus.service.command.performer.StepPerformer;
 import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
@@ -18,13 +28,10 @@ import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import hu.nye.progtech.wumplus.ui.game.CommandPrompt;
 import hu.nye.progtech.wumplus.ui.game.HudWriter;
-import hu.nye.progtech.wumplus.ui.menu.LeaderBoardWriter;
 import hu.nye.progtech.wumplus.ui.game.MapWriter;
+import hu.nye.progtech.wumplus.ui.menu.LeaderBoardWriter;
 import hu.nye.progtech.wumplus.ui.menu.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.menu.PlayerNamePrompt;
-//import hu.nye.progtech.wumplus.service.map.MapReadException;
-//import hu.nye.progtech.wumplus.service.map.impl.DefaultMapParser;
-//import hu.nye.progtech.wumplus.service.map.impl.MapFromFile;
 
 
 /**

@@ -1,15 +1,18 @@
-package hu.nye.progtech.wumplus.conduct.GameController;
-
-import hu.nye.progtech.wumplus.model.GameState;
-import hu.nye.progtech.wumplus.service.command.Command;
-import hu.nye.progtech.wumplus.ui.game.CommandPrompt;
-import hu.nye.progtech.wumplus.ui.game.MapWriter;
-import hu.nye.progtech.wumplus.ui.game.HudWriter;
-import org.slf4j.Logger;
+package hu.nye.progtech.wumplus.conduct.gamecontroller;
 
 import java.util.List;
 import java.util.Optional;
 
+import hu.nye.progtech.wumplus.model.GameState;
+import hu.nye.progtech.wumplus.service.command.Command;
+import hu.nye.progtech.wumplus.ui.game.CommandPrompt;
+import hu.nye.progtech.wumplus.ui.game.HudWriter;
+import hu.nye.progtech.wumplus.ui.game.MapWriter;
+import org.slf4j.Logger;
+
+/**
+ * Implementation of the {@link Controller} interface.
+ */
 public class ControllerImpl implements Controller {
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(ControllerImpl.class);

@@ -1,4 +1,6 @@
-package hu.nye.progtech.wumplus.conduct.MenuPerformer;
+package hu.nye.progtech.wumplus.conduct.menuperformer;
+
+import java.util.Optional;
 
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.MapVO;
@@ -7,8 +9,9 @@ import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import org.slf4j.Logger;
 
-import java.util.Optional;
-
+/**
+ * Perform save to database option.
+ */
 public class OptionSaveToDatabase implements OptionPerformer {
 
     private final DatabaseService databaseService;

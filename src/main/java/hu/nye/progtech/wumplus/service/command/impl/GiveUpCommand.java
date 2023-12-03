@@ -1,11 +1,14 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
+import java.util.Optional;
+
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.Command;
 
-import java.util.Optional;
-
+/**
+ * Give Up the game.
+ */
 public class GiveUpCommand implements Command {
 
     @Override

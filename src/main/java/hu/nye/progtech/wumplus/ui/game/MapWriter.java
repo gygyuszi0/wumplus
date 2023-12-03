@@ -1,12 +1,15 @@
 package hu.nye.progtech.wumplus.ui.game;
 
-import hu.nye.progtech.wumplus.model.*;
+import java.util.Optional;
+
+import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.service.exception.GameUiException;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import org.slf4j.Logger;
 
-import java.util.Optional;
-
+/**
+ * Writes the map to the console.
+ */
 public class MapWriter {
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(MapWriter.class);
@@ -17,6 +20,13 @@ public class MapWriter {
         this.ioService = ioService;
     }
 
+    /**
+     * Writes the map to the console.
+     *
+     * @param gameState gameState of the map
+     *
+     * @throws GameUiException bad map format
+     */
     public void writeMap(Optional<GameState> gameState) throws GameUiException {
         if (gameState.isPresent()) {
             char[][] map = putPlayerToMap(gameState);

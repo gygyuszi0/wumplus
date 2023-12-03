@@ -1,13 +1,16 @@
 package hu.nye.progtech.wumplus.ui.game;
 
+import java.util.Optional;
+
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import org.slf4j.Logger;
 
-import java.util.Optional;
-
+/**
+ * Write player's information to the console.
+ */
 public class HudWriter {
     public static final String SEPARATOR = "------------------------------\n";
     public static final String DIRECTION = "Direction: ";
@@ -23,7 +26,11 @@ public class HudWriter {
         this.ioService = ioService;
     }
 
-
+    /**
+     * Writes the HUD to the console.
+     *
+     * @param gameState gameState of the HUD
+     */
     public void writeHud(Optional<GameState> gameState) {
         if (gameState.isPresent()) {
             PlayerVO player = gameState.get().getPlayerVO();

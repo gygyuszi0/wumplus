@@ -1,8 +1,8 @@
 package hu.nye.progtech.wumplus.service.command;
 
-import hu.nye.progtech.wumplus.model.GameState;
-
 import java.util.Optional;
+
+import hu.nye.progtech.wumplus.model.GameState;
 
 /**
  * Interface that represents a command which the user can use to

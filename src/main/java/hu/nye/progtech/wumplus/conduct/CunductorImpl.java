@@ -1,24 +1,26 @@
 package hu.nye.progtech.wumplus.conduct;
 
+import java.util.List;
+import java.util.Optional;
+
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionPerformer;
+import hu.nye.progtech.wumplus.conduct.menuperformer.OptionSetPlayerName;
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.constants.MenuOptions;
-import hu.nye.progtech.wumplus.conduct.MenuPerformer.OptionPerformer;
-import hu.nye.progtech.wumplus.conduct.MenuPerformer.OptionSetPlayerName;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import hu.nye.progtech.wumplus.ui.menu.LeaderBoardWriter;
 import hu.nye.progtech.wumplus.ui.menu.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.menu.PlayerNamePrompt;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.List;
-import java.util.Optional;
 
 /**
  * Conductor implementáció.
  */
 public class CunductorImpl implements Conductor {
 
-    private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(CunductorImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(CunductorImpl.class);
     private Optional<GameState> gameState;
     private final MenuPrompt menuPrompt;
     private final PlayerNamePrompt playerNamePrompt;    
@@ -27,6 +29,7 @@ public class CunductorImpl implements Conductor {
     private final DatabaseService databaseService;
 
     private final LeaderBoardWriter leaderBoardWriter;
+
     public CunductorImpl(MenuPrompt menuPrompt, PlayerNamePrompt playerNamePrompt,
                          List<OptionPerformer> optionPerformers, DatabaseService dbService,
                          LeaderBoardWriter leaderBoardWriter) {
@@ -56,15 +59,15 @@ public class CunductorImpl implements Conductor {
                             List<List<String>> highScores = databaseService.loadHighScore();
                             leaderBoardWriter.printHighScores(highScores);
                         } catch (Exception e) {
-                            LOGGER.error("Error in loading high scores : " + e.getMessage());
+                            logger.error("Error in loading high scores : " + e.getMessage());
                         }
                     }
                 } else {
-                    LOGGER.error("There is no game data. Exit.");
+                    logger.error("There is no game data. Exit.");
                     choice = MenuOptions.EXIT;
                 }
             } else {
-                LOGGER.error("Wrong option selected.");
+                logger.error("Wrong option selected.");
             }
         } while (!choice.equals(MenuOptions.EXIT));
     }

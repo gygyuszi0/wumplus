@@ -144,6 +144,11 @@ public class PlayerVO {
         return coordinate.getCoordY();
     }
 
+    /**
+     * Copy the object.
+     *
+     * @return new object
+     */
     public PlayerVO deepCopy() {
         PlayerVO playerVO = new PlayerVO(name, direction, coordinate.deepCopy(), startCoordinate.deepCopy());
         playerVO.setNonStatic(numberOfArrows, haveGold, score, numberOfSteps);

@@ -1,11 +1,14 @@
-package hu.nye.progtech.wumplus.conduct.MenuPerformer;
-
-import hu.nye.progtech.wumplus.conduct.GameController.Controller;
-import hu.nye.progtech.wumplus.model.GameState;
-import org.slf4j.Logger;
+package hu.nye.progtech.wumplus.conduct.menuperformer;
 
 import java.util.Optional;
 
+import hu.nye.progtech.wumplus.conduct.gamecontroller.Controller;
+import hu.nye.progtech.wumplus.model.GameState;
+import org.slf4j.Logger;
+
+/**
+ * Perform play game menu option.
+ */
 public class OptionPlay implements OptionPerformer {
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(OptionPlay.class);

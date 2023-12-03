@@ -1,10 +1,13 @@
-package hu.nye.progtech.wumplus.conduct.MenuPerformer;
+package hu.nye.progtech.wumplus.conduct.menuperformer;
+
+import java.util.Optional;
 
 import hu.nye.progtech.wumplus.model.GameState;
 import org.slf4j.Logger;
 
-import java.util.Optional;
-
+/**
+ * Perform create new map option.
+ */
 public class OptionCreateNewMap implements OptionPerformer {
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(OptionCreateNewMap.class);

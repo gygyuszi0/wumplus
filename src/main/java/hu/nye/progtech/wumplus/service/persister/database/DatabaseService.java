@@ -124,6 +124,7 @@ public class DatabaseService {
 
         return result;
     }
+    
     private void updatePlayerHighScore(PlayerVO playerVO, Integer oldHighScore) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String updateQuery = "UPDATE high_score SET won_game = ? WHERE player_name = ?";
@@ -136,6 +137,7 @@ public class DatabaseService {
             throw new DBServiceException("Error when update player high score: " + e.getMessage());
         }
     }
+
     private void insertPlayerHighScore(PlayerVO playerVO, Integer oldHighScore) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String insertQuery = "INSERT INTO high_score (player_name, won_game) VALUES (?, ?)";
@@ -167,6 +169,7 @@ public class DatabaseService {
         }
         return result;
     }
+
     private Integer selectThisPLayerHighScore(String playerName) {
 
         Integer result = 0;
@@ -189,6 +192,7 @@ public class DatabaseService {
 
         return result;
     }
+
     private void updatePlayerSavedPlayer(PlayerVO playerVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String updateQuery = DBQuery.UPDATE_PLAYER_IN_SAVED_PLAYER;
@@ -207,6 +211,7 @@ public class DatabaseService {
             throw new DBServiceException("Error when update player saved state: " + e.getMessage());
         }
     }
+
     private void insertPlayerSavedPlayer(PlayerVO playerVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String insertQuery = DBQuery.INSERT_PLAYER_IN_SAVED_PLAYER;
@@ -244,6 +249,7 @@ public class DatabaseService {
         }
         return result;
     }
+
     private void updatePlayerSavedMap(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String updateQuery = DBQuery.UPDATE_PLAYER_IN_SAVED_MAP;
@@ -257,6 +263,7 @@ public class DatabaseService {
             throw new DBServiceException("Error when update player saved map: " + e.getMessage());
         }
     }
+
     private void insertPlayerSavedMap(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String insertQuery = DBQuery.INSERT_PLAYER_IN_SAVED_MAP;

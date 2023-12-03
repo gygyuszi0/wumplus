@@ -1,13 +1,16 @@
 package hu.nye.progtech.wumplus.service.command.impl;
 
+import java.util.Optional;
+
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Optional;
-
+/**
+ * Pause the game.
+ */
 public class PauseCommand implements Command {
 
     private final Logger logger = LoggerFactory.getLogger(PauseCommand.class);

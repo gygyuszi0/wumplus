@@ -1,4 +1,10 @@
-package hu.nye.progtech.wumplus.conduct.MenuPerformer;
+package hu.nye.progtech.wumplus.conduct.menuperformer;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.List;
+import java.util.Optional;
 
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.MapVO;
@@ -15,12 +21,9 @@ import hu.nye.progtech.wumplus.service.persister.map.impl.PlayerMapValidator;
 import hu.nye.progtech.wumplus.service.persister.player.PlayerParser;
 import org.slf4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.List;
-import java.util.Optional;
-
+/**
+ * Perform read from file option.
+ */
 public class OptionReadFromFile implements OptionPerformer  {
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(OptionReadFromFile.class);
