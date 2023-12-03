@@ -23,7 +23,7 @@ public class PauseCommand implements Command {
     @Override
     public Optional<GameState> process(String input, Optional<GameState> gameState) {
         if (gameState.isPresent()) {
-            GameState result = gameState.get().deepcCopy();
+            GameState result = gameState.get().deepCopy();
             result.setPause(true);
             return Optional.of(result);
         } else {

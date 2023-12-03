@@ -36,7 +36,7 @@ public class ControllerImpl implements Controller {
     public Optional<GameState> startGame(final Optional<GameState> gameState) {
         logger.info("Game started");
 
-        Optional<GameState> gamestateForProcess = Optional.of(gameState.get().deepcCopy());
+        Optional<GameState> gamestateForProcess = Optional.of(gameState.get().deepCopy());
 
         try {
             if (gamestateForProcess.isPresent()) {

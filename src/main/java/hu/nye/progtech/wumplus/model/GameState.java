@@ -64,7 +64,7 @@ public class GameState {
      *
      * @return új objektum
      */
-    public GameState deepcCopy() {
+    public GameState deepCopy() {
         GameState result = new GameState(mapVO.deepCopy(), playerVO.deepCopy(), false, mapCompleted);
         result.setPlayerDead(playerDead);
         result.setGiveUp(givUp);
