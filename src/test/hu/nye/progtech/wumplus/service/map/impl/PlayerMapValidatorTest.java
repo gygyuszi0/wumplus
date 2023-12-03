@@ -28,12 +28,12 @@ class PlayerMapValidatorTest {
         {true,  true,   true,   true,   true,   true},
     };
 
-    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1,1));
-    private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(0,1));
-    private static final PlayerVO PLAYER_ON_PIT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(4,3));
-    private static final PlayerVO PLAYER_ON_WUMPUS = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1,4));
-    private static final PlayerVO PLAYER_NOT_ON_MAPX6 = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(6,4));
-    private static final PlayerVO PLAYER_NOT_ON_MAPX = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(-1,4));
+    private static final PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1,1), new CoordinateVO(1, 1));
+    private static final PlayerVO PLAYER_ON_WALL = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(0,1), new CoordinateVO(1, 1));
+    private static final PlayerVO PLAYER_ON_PIT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(4,3), new CoordinateVO(1, 1));
+    private static final PlayerVO PLAYER_ON_WUMPUS = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1,4), new CoordinateVO(1, 1));
+    private static final PlayerVO PLAYER_NOT_ON_MAPX6 = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(6,4), new CoordinateVO(1, 1));
+    private static final PlayerVO PLAYER_NOT_ON_MAPX = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(-1,4), new CoordinateVO(1, 1));
 
     private static final MapVO MAPVO = new MapVO(6, 6, MAP, FIXED);
     private static PlayerMapValidator underTest;

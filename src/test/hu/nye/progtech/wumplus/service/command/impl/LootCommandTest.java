@@ -48,7 +48,7 @@ class LootCommandTest {
             {true, true, true, true, true, true}
         }
     );
-    private PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2, 3));
+    private PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2, 3), new CoordinateVO(1, 1));
 
     private GameState GAMESTATE_CORRECT_ECPECTED = new GameState(MAP_EXPECTED_CORRECT,PLAYER_CORRECT, false, false);
     
@@ -88,15 +88,18 @@ class LootCommandTest {
         System.out.println("[TEST\t] : Process a correct loot command");
         // given
         System.out.println("\t\t\tGIVEN\t:" + Optional.of(GAMESTATE_CORRECT_ECPECTED));
-
-        PlayerVO returnedPlayer = new PlayerVO(PLAYER_CORRECT.getName(), PLAYER_CORRECT.getDirection(), PLAYER_CORRECT.getCoordinate());
+        PlayerVO returnedPlayer = PLAYER_CORRECT.deepCopy();
         returnedPlayer.setHaveGold(true);
         given(lootPerformer.perform(any(), any())).willReturn(new PlayerWithMap(returnedPlayer, MAP_EXPECTED_CORRECT));
         // when
         Optional<GameState> result = underTest.process(LOOT_CORRECT, Optional.of(gameState));
-        Optional<GameState> expected = Optional.of(GAMESTATE_CORRECT_ECPECTED);
-        System.out.println("\t\t\tWHEN\t:" + expected);
-        System.out.println("\t\t\t\t\t:" + result);
+
+        PlayerVO expectedPlayer = PLAYER_CORRECT.deepCopy();
+        expectedPlayer.setHaveGold(true);
+        Optional<GameState> expected = Optional.of(new GameState(MAP_EXPECTED_CORRECT, expectedPlayer, false, false));
+
+        System.out.println("\t\t\tWHEN\t:" + expected.get().getPlayerVO());
+        System.out.println("\t\t\t\t\t:" + result.get().getPlayerVO());
         // then
         Assertions.assertEquals(expected, result);
     }

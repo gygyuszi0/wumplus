@@ -20,10 +20,10 @@ class StepPerformerTest {
 
     private StepPerformer underTest;
 
-    private PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1, 1));
-    private PlayerVO PLAYER_WALL = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1, 1));
-    private PlayerVO PLAYER_PIT = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(3, 3));
-    private PlayerVO PLAYER_WUMPUS = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1, 3));
+    private PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1, 1), new CoordinateVO(1, 1));
+    private PlayerVO PLAYER_WALL = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1, 1), new CoordinateVO(1, 1));
+    private PlayerVO PLAYER_PIT = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(3, 3), new CoordinateVO(1, 1));
+    private PlayerVO PLAYER_WUMPUS = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1, 3), new CoordinateVO(1, 1));
 
     private MapVO MAP = new MapVO(6, 6, 
         new char[][] {
@@ -57,7 +57,7 @@ class StepPerformerTest {
         System.out.println("\t\t\t\t\t:" + MAP);
         // when
         PlayerVO result = underTest.perform(PLAYER_CORRECT, MAP);
-        PlayerVO expected = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(2, 1));
+        PlayerVO expected = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(2, 1), new CoordinateVO(1, 1));
         expected.setNonStatic(0, false, 0, 1);
         System.out.println("\t\t\tWHEN\t:" + result);
         System.out.println("\t\t\t\t\t:" + expected);
@@ -86,7 +86,7 @@ class StepPerformerTest {
         System.out.println("\t\t\t\t\t:" + MAP);
         // when
         PlayerVO result = underTest.perform(PLAYER_PIT, MAP);
-        PlayerVO expected = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(3,2));
+        PlayerVO expected = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(3,2), new CoordinateVO(1, 1));
         expected.setNonStatic(2, false, 0, 1);
         System.out.println("\t\t\tWHEN\t:" + result);
         System.out.println("\t\t\t\t\t:" + expected);

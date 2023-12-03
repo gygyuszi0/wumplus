@@ -31,7 +31,7 @@ class TurnCommandTest {
     private final String CORRECT_TURN_RIGHT = "turn R";
     private final String WRONG_DIRECTION = "turn Z";
     private final String WRONG_COMMAND = "xzy R";
-    private final PlayerVO PLAYER = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1, 1));
+    private final PlayerVO PLAYER = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1, 1), new CoordinateVO(1, 1));
     private final MapVO mapVO = new MapVO(6,6 ,
         new char[][] {
             {'W', 'W', 'W', 'W', 'W', 'W'},
@@ -105,14 +105,15 @@ class TurnCommandTest {
     void process() {
         System.out.println("[TEST\t] : TurnCommand do a correct turn");
         // given
-        given(TURN_PREFORMER.perform(PLAYER, CommandConst.TURN_LEFT)).willReturn(new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,1)));
+        given(TURN_PREFORMER.perform(PLAYER, CommandConst.TURN_LEFT)).willReturn(new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,1), new CoordinateVO(1, 1)));
         System.out.println("\t\t\tGIVEN\t:" + PLAYER);
         System.out.println("\t\t\t\t\t:" + CORRECT_TURN_LEFT);
         // when
         Optional<GameState> result = underTest.process(CORRECT_TURN_LEFT, GAME_STATE);
-        Optional<GameState> expected = Optional.of(new GameState(mapVO, new PlayerVO("teszt", PlayerConst.WEST, new CoordinateVO(1,1)), false, false));
-        System.out.println("\t\t\tWHEN\t:" + result.get());
-        System.out.println("\t\t\t\t\t:" + expected.get());
+        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1,1), new CoordinateVO(1, 1));
+        Optional<GameState> expected = Optional.of(new GameState(mapVO, expectedPlayer , false, false));
+        System.out.println("\t\t\tWHEN\t:" + result.get().getPlayerVO());
+        System.out.println("\t\t\t\t\t:" + expected.get().getPlayerVO());
         // then
         Assertions.assertEquals(result, expected);
     }

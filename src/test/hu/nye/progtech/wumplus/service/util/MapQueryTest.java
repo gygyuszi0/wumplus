@@ -41,8 +41,8 @@ class MapQueryTest {
 
     private static final MapVO MAPVO = new MapVO(3, 3, MAP, FIXED);
 
-    private static final PlayerVO PLAYER_EAST = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1, 1));
-    private static final PlayerVO PLAYER_NORTH = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1, 1));
+    private static final PlayerVO PLAYER_EAST = new PlayerVO("teszt", PlayerConst.EAST, new CoordinateVO(1, 1), new CoordinateVO(1, 1));
+    private static final PlayerVO PLAYER_NORTH = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(1, 1), new CoordinateVO(1, 1));
 
     @BeforeEach
     void setUp() {

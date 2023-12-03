@@ -59,7 +59,7 @@ class PlayerParserTest {
         System.out.println("\t\t\t\t\t:" + RAW_MAP);
         // when
         PlayerVO result = underTest.parsePlayer(RAW_MAP);
-        PlayerVO expected = new PlayerVO(TEST_PLAYER, PlayerConst.EAST, new CoordinateVO(1, 4));
+        PlayerVO expected = new PlayerVO(TEST_PLAYER, PlayerConst.EAST, new CoordinateVO(1, 4), new CoordinateVO(1, 1));
         System.out.println("\t\t\tWHEN\t:" + result);
         // then
         Assertions.assertEquals(expected, result);
@@ -73,7 +73,7 @@ class PlayerParserTest {
         System.out.println("\t\t\t\t\t:" + RAW_MAP_NOT_ZERO_WUMPUS);
         // when
         PlayerVO result = underTest.parsePlayer(RAW_MAP_NOT_ZERO_WUMPUS);
-        PlayerVO expected = new PlayerVO(TEST_PLAYER, PlayerConst.EAST, new CoordinateVO(1, 4));
+        PlayerVO expected = new PlayerVO(TEST_PLAYER, PlayerConst.EAST, new CoordinateVO(1, 4), new CoordinateVO(1, 1));
         expected.setNumberOfArrows(1);
         System.out.println("\t\t\tWHEN\t:" + result);
         // then

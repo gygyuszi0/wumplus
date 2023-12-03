@@ -35,8 +35,8 @@ class LootPerformerTest {
         }
     );
 
-    private PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2, 3));
-    private PlayerVO PLAYER_WRONG = new PlayerVO("teszt", PlayerConst.SOUTH, new CoordinateVO(2, 3));
+    private PlayerVO PLAYER_CORRECT = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2, 3), new CoordinateVO(1, 1));
+    private PlayerVO PLAYER_WRONG = new PlayerVO("teszt", PlayerConst.SOUTH, new CoordinateVO(2, 3), new CoordinateVO(1, 1));
 
 
     private LootPerformer underTest;
@@ -54,7 +54,7 @@ class LootPerformerTest {
         // when
         PlayerWithMap result = underTest.perform(PLAYER_CORRECT, MAP);
 
-        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2,3));
+        PlayerVO expectedPlayer = new PlayerVO("teszt", PlayerConst.NORTH, new CoordinateVO(2,3), new CoordinateVO(1, 1));
         expectedPlayer.setNonStatic(0,true,0,0);
         MapVO expectedMap = new MapVO(6, 6,
             new char[][] {
