@@ -67,7 +67,7 @@ public class GameState {
     public GameState deepcCopy() {
         GameState result = new GameState(mapVO.deepCopy(), playerVO.deepCopy(), false, mapCompleted);
         result.setPlayerDead(playerDead);
-        result.setGivUp(givUp);
+        result.setGiveUp(givUp);
         result.setPause(pause);
         return result;
     }
@@ -124,11 +124,11 @@ public class GameState {
         return playerVO.getCoordY();
     }
 
-    public boolean isGivUp() {
+    public boolean isGiveUp() {
         return givUp;
     }
 
-    public void setGivUp(boolean givUp) {
+    public void setGiveUp(boolean givUp) {
         this.givUp = givUp;
     }
 

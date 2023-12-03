@@ -20,7 +20,7 @@ public class GiveUpCommand implements Command {
     public Optional<GameState> process(String input, Optional<GameState> gameState) {
         if (gameState.isPresent()) {
             GameState result = gameState.get();
-            result.setGivUp(true);
+            result.setGiveUp(true);
             return Optional.of(result);
         } else {
             return Optional.empty();
