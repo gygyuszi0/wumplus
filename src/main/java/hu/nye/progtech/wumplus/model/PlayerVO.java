@@ -150,4 +150,17 @@ public class PlayerVO {
         return playerVO;
     }
 
+    public boolean isWon() {
+        return coordinate.equals(startCoordinate) && haveGold;
+    }
+
+    public Integer getBaseX() {
+        return startCoordinate.getCoordX();
+    }
+
+    public Integer getBaseY() {
+        return startCoordinate.getCoordY();
+    }
+
+
 }

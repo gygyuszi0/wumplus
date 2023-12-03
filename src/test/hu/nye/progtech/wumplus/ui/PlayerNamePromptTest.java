@@ -1,7 +1,7 @@
 package hu.nye.progtech.wumplus.ui;
 
 import hu.nye.progtech.wumplus.service.util.IOService;
-import hu.nye.progtech.wumplus.ui.Menu.PlayerNamePrompt;
+import hu.nye.progtech.wumplus.ui.menu.PlayerNamePrompt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

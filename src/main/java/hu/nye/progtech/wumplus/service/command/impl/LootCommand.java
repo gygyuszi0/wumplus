@@ -50,7 +50,7 @@ public class LootCommand implements Command {
             }
         } catch (Exception e) {
             logger.error("Error in game : " + e.getMessage());
-            return Optional.empty();
+            return safeGgameState;
         }
     }
 }

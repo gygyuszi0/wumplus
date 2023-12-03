@@ -124,7 +124,6 @@ public class DatabaseService {
 
         return result;
     }
-
     private void updatePlayerHighScore(PlayerVO playerVO, Integer oldHighScore) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String updateQuery = "UPDATE high_score SET won_game = ? WHERE player_name = ?";
@@ -137,7 +136,6 @@ public class DatabaseService {
             throw new DBServiceException("Error when update player high score: " + e.getMessage());
         }
     }
-
     private void insertPlayerHighScore(PlayerVO playerVO, Integer oldHighScore) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String insertQuery = "INSERT INTO high_score (player_name, won_game) VALUES (?, ?)";
@@ -169,7 +167,6 @@ public class DatabaseService {
         }
         return result;
     }
-
     private Integer selectThisPLayerHighScore(String playerName) {
 
         Integer result = 0;
@@ -192,7 +189,6 @@ public class DatabaseService {
 
         return result;
     }
-
     private void updatePlayerSavedPlayer(PlayerVO playerVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String updateQuery = DBQuery.UPDATE_PLAYER_IN_SAVED_PLAYER;
@@ -202,14 +198,15 @@ public class DatabaseService {
             preparedStatement.setInt(3, playerVO.getCoordY());
             preparedStatement.setInt(4, playerVO.getNumberOfArrows());
             preparedStatement.setBoolean(5, playerVO.getHaveGold());
-            preparedStatement.setString(6, playerVO.getName());
+            preparedStatement.setInt(6, playerVO.getBaseX());
+            preparedStatement.setInt(7, playerVO.getBaseY());
+            preparedStatement.setString(8, playerVO.getName());
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
             throw new DBServiceException("Error when update player saved state: " + e.getMessage());
         }
     }
-
     private void insertPlayerSavedPlayer(PlayerVO playerVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String insertQuery = DBQuery.INSERT_PLAYER_IN_SAVED_PLAYER;
@@ -220,6 +217,8 @@ public class DatabaseService {
             preparedStatement.setInt(4, playerVO.getCoordY());
             preparedStatement.setInt(5, playerVO.getNumberOfArrows());
             preparedStatement.setBoolean(6, playerVO.getHaveGold());
+            preparedStatement.setInt(7, playerVO.getBaseX());
+            preparedStatement.setInt(8, playerVO.getBaseY());
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException e) {
@@ -245,7 +244,6 @@ public class DatabaseService {
         }
         return result;
     }
-
     private void updatePlayerSavedMap(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String updateQuery = DBQuery.UPDATE_PLAYER_IN_SAVED_MAP;
@@ -259,7 +257,6 @@ public class DatabaseService {
             throw new DBServiceException("Error when update player saved map: " + e.getMessage());
         }
     }
-
     private void insertPlayerSavedMap(PlayerVO playerVO, MapVO mapVO) throws DBServiceException {
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String insertQuery = DBQuery.INSERT_PLAYER_IN_SAVED_MAP;
@@ -301,8 +298,11 @@ public class DatabaseService {
             Integer coordY = resultSet.getInt(DBQuery.SAVED_PLAYER_POS_Y);
             Integer loadedArrow = resultSet.getInt(DBQuery.SAVED_PLAYER_NUM_ARROW);
             Boolean loadedGold = resultSet.getBoolean(DBQuery.SAVED_PLAYER_HAVE_GOLD);
-            // frissíteni a db-t
-            PlayerVO playerVO = new PlayerVO(playerName, loadedDirection, new CoordinateVO(coordX, coordY), new CoordinateVO(coordX, coordY));
+            Integer loadedBaseX = resultSet.getInt(DBQuery.SAVED_PLAYER_BASE_X);
+            Integer loadedBaseY = resultSet.getInt(DBQuery.SAVED_PLAYER_BASE_Y);
+            PlayerVO playerVO = new PlayerVO(playerName, loadedDirection,
+                    new CoordinateVO(coordX, coordY), new
+                    CoordinateVO(loadedBaseX, loadedBaseY));
             playerVO.setNonStatic(loadedArrow, loadedGold, 0, 0);
             return playerVO;
         } catch (SQLException e) {

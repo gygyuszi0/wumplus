@@ -2,8 +2,10 @@ package hu.nye.progtech.wumplus.conduct;
 
 import hu.nye.progtech.wumplus.model.constants.MenuOptions;
 import hu.nye.progtech.wumplus.conduct.MenuPerformer.OptionPerformer;
-import hu.nye.progtech.wumplus.ui.Menu.MenuPrompt;
-import hu.nye.progtech.wumplus.ui.Menu.PlayerNamePrompt;
+import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
+import hu.nye.progtech.wumplus.ui.menu.LeaderBoardWriter;
+import hu.nye.progtech.wumplus.ui.menu.MenuPrompt;
+import hu.nye.progtech.wumplus.ui.menu.PlayerNamePrompt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,14 +26,18 @@ class ConductorImplTest {
     @Mock
     private PlayerNamePrompt playerNamePromptMock;
     @Mock
+    private DatabaseService databaseService;
+    @Mock
+    private LeaderBoardWriter leaderBoardWriter;
 
     private CunductorImpl underTest;
 
     private List<OptionPerformer> optionPerformers = new ArrayList<>();
 
+
     @BeforeEach
     void setUp() {
-        underTest = new CunductorImpl(menuPromptMock, playerNamePromptMock, optionPerformers);
+        underTest = new CunductorImpl(menuPromptMock, playerNamePromptMock, optionPerformers, databaseService, leaderBoardWriter);
     }
 
     @Test

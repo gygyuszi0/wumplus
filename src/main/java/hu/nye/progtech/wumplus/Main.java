@@ -16,11 +16,12 @@ import hu.nye.progtech.wumplus.service.command.performer.TurnPerformer;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
 import hu.nye.progtech.wumplus.service.util.IOService;
-import hu.nye.progtech.wumplus.ui.Game.CommandPrompt;
-import hu.nye.progtech.wumplus.ui.Game.HudWriter;
-import hu.nye.progtech.wumplus.ui.Game.MapWriter;
-import hu.nye.progtech.wumplus.ui.Menu.MenuPrompt;
-import hu.nye.progtech.wumplus.ui.Menu.PlayerNamePrompt;
+import hu.nye.progtech.wumplus.ui.game.CommandPrompt;
+import hu.nye.progtech.wumplus.ui.game.HudWriter;
+import hu.nye.progtech.wumplus.ui.menu.LeaderBoardWriter;
+import hu.nye.progtech.wumplus.ui.game.MapWriter;
+import hu.nye.progtech.wumplus.ui.menu.MenuPrompt;
+import hu.nye.progtech.wumplus.ui.menu.PlayerNamePrompt;
 //import hu.nye.progtech.wumplus.service.map.MapReadException;
 //import hu.nye.progtech.wumplus.service.map.impl.DefaultMapParser;
 //import hu.nye.progtech.wumplus.service.map.impl.MapFromFile;
@@ -44,6 +45,7 @@ public class Main {
 
         MapWriter  mapWriter = new MapWriter(ioService);
         HudWriter hudWriter  = new HudWriter(ioService);
+        LeaderBoardWriter leaderBoardWriter = new LeaderBoardWriter(ioService);
         CommandPrompt commandPrompt = new CommandPrompt(ioService);
 
         LootPerformer lootPerformer = new LootPerformer();
@@ -68,7 +70,9 @@ public class Main {
             );
 
 
-        Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt, optionPerformers);
+        Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt,
+                optionPerformers, databaseService, leaderBoardWriter);
+
         conductor.mainLoop();
     }
 }

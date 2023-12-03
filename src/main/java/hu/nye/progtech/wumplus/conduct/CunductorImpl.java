@@ -4,8 +4,10 @@ import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.constants.MenuOptions;
 import hu.nye.progtech.wumplus.conduct.MenuPerformer.OptionPerformer;
 import hu.nye.progtech.wumplus.conduct.MenuPerformer.OptionSetPlayerName;
-import hu.nye.progtech.wumplus.ui.Menu.MenuPrompt;
-import hu.nye.progtech.wumplus.ui.Menu.PlayerNamePrompt;
+import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
+import hu.nye.progtech.wumplus.ui.menu.LeaderBoardWriter;
+import hu.nye.progtech.wumplus.ui.menu.MenuPrompt;
+import hu.nye.progtech.wumplus.ui.menu.PlayerNamePrompt;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -22,11 +24,18 @@ public class CunductorImpl implements Conductor {
     private final PlayerNamePrompt playerNamePrompt;    
     private final List<OptionPerformer> optionPerformers;
 
-    public CunductorImpl(MenuPrompt menuPrompt, PlayerNamePrompt playerNamePrompt, List<OptionPerformer> optionPerformers) {
+    private final DatabaseService databaseService;
+
+    private final LeaderBoardWriter leaderBoardWriter;
+    public CunductorImpl(MenuPrompt menuPrompt, PlayerNamePrompt playerNamePrompt,
+                         List<OptionPerformer> optionPerformers, DatabaseService dbService,
+                         LeaderBoardWriter leaderBoardWriter) {
         this.menuPrompt = menuPrompt;
         this.playerNamePrompt = playerNamePrompt;
         this.optionPerformers = optionPerformers;
         this.gameState = Optional.empty();
+        this.databaseService = dbService;
+        this.leaderBoardWriter = leaderBoardWriter;
     }
 
     @Override
@@ -41,6 +50,15 @@ public class CunductorImpl implements Conductor {
             if (isCorrectOption(choice)) {
                 if (gameState.isPresent()) {
                     gameState = optionPerformers.get(choice - 1).perform(gameState);
+
+                    if (gameState.get().isPlayerWon()) {
+                        try {
+                            List<List<String>> highScores = databaseService.loadHighScore();
+                            leaderBoardWriter.printHighScores(highScores);
+                        } catch (Exception e) {
+                            LOGGER.error("Error in loading high scores : " + e.getMessage());
+                        }
+                    }
                 } else {
                     LOGGER.error("There is no game data. Exit.");
                     choice = MenuOptions.EXIT;

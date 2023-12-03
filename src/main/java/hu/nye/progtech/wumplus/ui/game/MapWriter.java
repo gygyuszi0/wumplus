@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.ui.Game;
+package hu.nye.progtech.wumplus.ui.game;
 
 import hu.nye.progtech.wumplus.model.*;
 import hu.nye.progtech.wumplus.service.exception.GameUiException;
@@ -10,7 +10,6 @@ import java.util.Optional;
 public class MapWriter {
 
     private final Logger logger = org.slf4j.LoggerFactory.getLogger(MapWriter.class);
-
 
     private final IOService  ioService;
 

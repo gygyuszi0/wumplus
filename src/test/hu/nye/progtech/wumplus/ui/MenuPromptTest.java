@@ -1,6 +1,6 @@
 package hu.nye.progtech.wumplus.ui;
 
-import hu.nye.progtech.wumplus.ui.Menu.MenuPrompt;
+import hu.nye.progtech.wumplus.ui.menu.MenuPrompt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

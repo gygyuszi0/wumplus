@@ -1,4 +1,4 @@
-package hu.nye.progtech.wumplus.ui.Game;
+package hu.nye.progtech.wumplus.ui.game;
 
 import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.GameState;

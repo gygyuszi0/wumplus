@@ -12,7 +12,7 @@ public class OptionExit implements OptionPerformer {
     @Override
     public Optional<GameState> perform(Optional<GameState> gameState){
         LOGGER.info("Exit");
-        return Optional.empty();
+        return gameState;
 
     }
 }

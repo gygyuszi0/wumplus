@@ -22,12 +22,20 @@ public class DBQuery {
     public static final String SAVED_PLAYER_POS_Y = "pos_y";
     public static final String SAVED_PLAYER_NUM_ARROW = "num_arrow";
     public static final String SAVED_PLAYER_HAVE_GOLD = "have_gold";
-    public static final String INSERT_PLAYER_IN_SAVED_PLAYER = "INSERT INTO saved_player (" + SAVED_PLAYER_NAME + ", " +
-            SAVED_PLAYER_DIR + ", " + SAVED_PLAYER_POS_X + ", " + SAVED_PLAYER_POS_Y + ", " + SAVED_PLAYER_NUM_ARROW +
-            ", " + SAVED_PLAYER_HAVE_GOLD + ") VALUES (?, ?, ?, ?, ?, ?)";
-    public static final String UPDATE_PLAYER_IN_SAVED_PLAYER = "UPDATE saved_player SET " + SAVED_PLAYER_DIR +
-            " = ?, " + SAVED_PLAYER_POS_X + " = ?, " + SAVED_PLAYER_POS_Y + " = ?, " + SAVED_PLAYER_NUM_ARROW +
-            " = ?, " + SAVED_PLAYER_HAVE_GOLD + " = ? WHERE " + SAVED_PLAYER_NAME + " = ?";
+
+    public static final String SAVED_PLAYER_BASE_X = "base_x";
+    public static final String SAVED_PLAYER_BASE_Y = "base_y";
+    public static final String INSERT_PLAYER_IN_SAVED_PLAYER = "INSERT INTO saved_player (" +
+            SAVED_PLAYER_NAME + ", " + SAVED_PLAYER_DIR + ", " + SAVED_PLAYER_POS_X + ", " +
+            SAVED_PLAYER_POS_Y + ", " + SAVED_PLAYER_NUM_ARROW + ", " +
+            SAVED_PLAYER_HAVE_GOLD + ", " + SAVED_PLAYER_BASE_X + ", " +
+            SAVED_PLAYER_BASE_Y + ") VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public static final String UPDATE_PLAYER_IN_SAVED_PLAYER = "UPDATE saved_player SET " +
+            SAVED_PLAYER_DIR + " = ?, " + SAVED_PLAYER_POS_X + " = ?, " +
+            SAVED_PLAYER_POS_Y + " = ?, " + SAVED_PLAYER_NUM_ARROW + " = ?, " +
+            SAVED_PLAYER_HAVE_GOLD + " = ?, " + SAVED_PLAYER_BASE_X + " = ?, " +
+            SAVED_PLAYER_BASE_Y + " = ? " +
+            "WHERE " + SAVED_PLAYER_NAME + " = ?";
 
     public static final String SAVED_MAP_MAP = "map";
     public static final String SELECT_PLAYER_IN_SAVED_MAP = "SELECT * FROM saved_" + SAVED_MAP_MAP + " WHERE " +

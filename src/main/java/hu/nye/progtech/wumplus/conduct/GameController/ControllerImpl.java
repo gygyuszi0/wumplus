@@ -2,9 +2,9 @@ package hu.nye.progtech.wumplus.conduct.GameController;
 
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.service.command.Command;
-import hu.nye.progtech.wumplus.ui.Game.CommandPrompt;
-import hu.nye.progtech.wumplus.ui.Game.MapWriter;
-import hu.nye.progtech.wumplus.ui.Game.HudWriter;
+import hu.nye.progtech.wumplus.ui.game.CommandPrompt;
+import hu.nye.progtech.wumplus.ui.game.MapWriter;
+import hu.nye.progtech.wumplus.ui.game.HudWriter;
 import org.slf4j.Logger;
 
 import java.util.List;
@@ -40,13 +40,10 @@ public class ControllerImpl implements Controller {
                 while (!gamestateForProcess.get().isShouldExit()) {
                     mapWriter.writeMap(gamestateForProcess);
                     hudWriter.writeHud(gamestateForProcess);
-
                     String command = commandPrompt.readCommand();
-
                     gamestateForProcess = executeCommand(command, gamestateForProcess);
                 }
-                if (gamestateForProcess.get().isPause()) {
-                    logger.info("Game paused");
+                if (gamestateForProcess.get().isPause() || gamestateForProcess.get().isPlayerWon()) {
                     gamestateForProcess.get().setPause(false);
                     return gamestateForProcess;
                 } else {
@@ -71,4 +68,6 @@ public class ControllerImpl implements Controller {
         logger.error("Unknown command : " + command);
         return gameState;
     }
+
+
 }
