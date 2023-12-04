@@ -109,8 +109,11 @@
                         <exclude>hu/nye/progtech/wumplus/model/constants/*</exclude>
                         <exclude>hu/nye/progtech/wumplus/ui/game/*</exclude>
                         <exclude>hu/nye/progtech/wumplus/ui/menu/*</exclude>
-                        <exclude>hu/nye/progtech/wumplus/service/util/IOService.*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/conduct/*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/conduct/menuperformer/*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/conduct/gamecontroller/*</exclude>
                         <exclude>hu/nye/progtech/wumplus/service/exception/*</exclude>
+                        <exclude>hu/nye/progtech/wumplus/service/util/IOService.*</exclude>
                         <exclude>hu/nye/progtech/wumplus/service/persister/database/*</exclude>
                     </excludes>
                 </configuration>

@@ -29,8 +29,6 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class ControllerImplTest {
-
-
     @Mock
     private MapWriter mapWriterMock;
 
@@ -39,8 +37,6 @@ public class ControllerImplTest {
 
     @Mock
     private CommandPrompt commandPromptMock;
-
-
     @Mock
     private GiveUpCommand giveUpCommandMock;
     @Mock
