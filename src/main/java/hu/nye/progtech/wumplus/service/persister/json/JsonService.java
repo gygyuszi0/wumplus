@@ -40,7 +40,6 @@ public class JsonService {
         String serialized = ioService.readFile(saveFolder + playerName + ".json");
         try {
             if (serialized != null) {
-                serialized = removeWhitespace(serialized);
                 PlayerWithMap playerWithMap = objectMapper.readValue(serialized, PlayerWithMap.class);
                 return Optional.of(playerWithMap);
             } else {
@@ -54,11 +53,4 @@ public class JsonService {
             return Optional.empty();
         }
     }
-
-    private String removeWhitespace(String str) {
-        String result = str.replaceAll("\n+", "");
-        result = result.replaceAll("\t+", "");
-        return result;
-    }
-
 }

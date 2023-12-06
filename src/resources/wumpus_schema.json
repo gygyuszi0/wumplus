@@ -1,40 +1,50 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "properties": {
-      "player": {
-        "type": "object",
-        "properties": {
-          "name": { "type": "string" },
-          "direction": { "type": "string", "enum": ["N", "E", "S", "W"] },
-          "coordinate": { "$ref": "#/definitions/coordinate" },
-          "startCoordinate": { "$ref": "#/definitions/coordinate" },
-          "numberOfArrows": { "type": "integer" },
-          "haveGold": { "type": "boolean" },
-          "score": { "type": "integer" },
-          "numberOfSteps": { "type": "integer" }
-        },
-        "required": ["name", "direction", "coordinate", "startCoordinate", "numberOfArrows", "haveGold", "score", "numberOfSteps"]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "player": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "direction": { "type": "string", "enum": ["N", "E", "S", "W"] },
+        "coordinate": { "$ref": "#/definitions/coordinate" },
+        "startCoordinate": { "$ref": "#/definitions/coordinate" },
+        "score": { "type": "integer" },
+        "numberOfArrows": { "type": "integer" },
+        "haveGold": { "type": "boolean" },
+        "numberOfSteps": { "type": "integer" }
       },
-      "map": {
-        "type": "object",
-        "properties": {
-          "numberOfRows": { "type": "integer" },
-          "numberOfColumns": { "type": "integer" },
-          "map_elements": { "type": "string" }
-        },
-        "required": ["numberOfRows", "numberOfColumns", "map_elements"]
-      }
+      "required": ["name", "direction", "coordinate", "startCoordinate", "score", "numberOfArrows", "haveGold", "numberOfSteps"]
     },
-    "definitions": {
-      "coordinate": {
-        "type": "object",
-        "properties": {
-          "pos_x": { "type": "integer" },
-          "pos_y": { "type": "integer" }
+    "map": {
+      "type": "object",
+      "properties": {
+        "numberOfRows": { "type": "integer" },
+        "numberOfColumns": { "type": "integer" },
+        "map_elements": {
+          "type": "array",
+          "items": { "type": "string" }
         },
-        "required": ["pos_x", "pos_y"]
-      }
-    },
-    "required": ["player", "map"]
-  }
+        "fixed": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "type": "boolean" }
+          }
+        }
+      },
+      "required": ["numberOfRows", "numberOfColumns", "map_elements", "fixed"]
+    }
+  },
+  "definitions": {
+    "coordinate": {
+      "type": "object",
+      "properties": {
+        "pos_x": { "type": "integer" },
+        "pos_y": { "type": "integer" }
+      },
+      "required": ["pos_x", "pos_y"]
+    }
+  },
+  "required": ["player", "map"]
+}
