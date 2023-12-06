@@ -2,7 +2,9 @@ package hu.nye.progtech.wumplus.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
@@ -100,18 +102,6 @@ public class PlayerVO {
         this.numberOfSteps = numberOfSteps;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public String toString() {
         return "PlayerVO{" +
@@ -173,7 +163,6 @@ public class PlayerVO {
         return coordinate.getCoordX();
     }
 
-
     @JsonIgnore
     public Integer getCoordY() {
         return coordinate.getCoordY();
@@ -191,7 +180,6 @@ public class PlayerVO {
         return playerVO;
     }
 
-
     @JsonIgnore
     public boolean isWon() {
         return coordinate.equals(startCoordinate) && haveGold;
@@ -202,7 +190,6 @@ public class PlayerVO {
     public Integer getBaseX() {
         return startCoordinate.getCoordX();
     }
-
 
     @JsonIgnore
     public Integer getBaseY() {
