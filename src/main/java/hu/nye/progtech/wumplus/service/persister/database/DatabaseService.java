@@ -1,10 +1,6 @@
 package hu.nye.progtech.wumplus.service.persister.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +20,7 @@ public class DatabaseService {
     private final String resourceUrl;
 
     public DatabaseService() throws DBServiceException {
-        this.resourceUrl = getClass().getClassLoader().getResource("").getPath();
+        this.resourceUrl = getClass().getClassLoader().getResource("").getPath().replace('\\', '/');
         this.jdbcUrl = "jdbc:sqlite:" + resourceUrl + "wumpus";
 
         try {
