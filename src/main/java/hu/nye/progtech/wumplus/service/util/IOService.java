@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -43,6 +45,22 @@ public class IOService {
             fileWriter.close();
         } catch (IOException e) {
             logger.error("Error writing file: {}", e.getMessage());
+        }
+    }
+
+    public String readFile(String filePath) {
+        File file = new File(filePath);
+        try {
+            Scanner fileReader = new Scanner(file);
+            StringBuilder result = new StringBuilder();
+            while (fileReader.hasNextLine()) {
+                result.append(fileReader.nextLine());
+            }
+            fileReader.close();
+            return result.toString();
+        } catch (FileNotFoundException e) {
+            logger.error("Error reading file: {}", e.getMessage());
+            return "";
         }
     }
 }

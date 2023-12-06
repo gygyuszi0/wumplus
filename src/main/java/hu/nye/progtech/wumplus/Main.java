@@ -73,6 +73,13 @@ public class Main {
         IOService ioServiceJson = new IOService();
         JsonService jsonService = new JsonService(objectMapper, ioServiceJson);
         jsonService.save("test", playerWithMap);
+        System.out.println("write to file : ");
+        System.out.println(playerWithMap);
+
+        Optional<PlayerWithMap> returned = jsonService.load("test");
+        System.out.println("Read from file : ");
+        System.out.println(returned.get());
+
 
 
         IOService ioService = new IOService();
