@@ -1,0 +1,24 @@
+{
+    "$schema": "./wumpus_schema.json",
+    "player": {
+        "name": "teszt",
+        "direction" : "E",
+        "coordinate" : {
+            "pos_x" : 4,
+            "pos_y" : 4
+        } ,
+        "startCoordinate" : {
+            "pos_x" : 1,
+            "pos_y" : 4
+        },
+        "numberOfArrows" : 1,
+        "haveGold" : false,
+        "score" : 1,
+        "numberOfSteps" : 2
+    },
+    "map" : {
+        "numberOfRows" : 3,
+        "numberOfColumns" : 3, 
+        "map_elements" : "WWW\nW__\nWUP"
+    }
+}
