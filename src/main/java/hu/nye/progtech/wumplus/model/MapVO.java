@@ -21,7 +21,7 @@ public class MapVO {
     public MapVO(
             @JsonProperty("numberOfRows") int numberOfRows,
             @JsonProperty("numberOfColumns") int numberOfColumns,
-            @JsonProperty("map") char[][] map,
+            @JsonProperty("map_elements") char[][] map,
             @JsonProperty("fixed") boolean[][] fixed) {
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
@@ -39,7 +39,7 @@ public class MapVO {
         return numberOfColumns;
     }
 
-    @JsonGetter("map")
+    @JsonGetter("map_elements")
     public char[][] getMap() {
         return deepCopy(this.map);
     }
