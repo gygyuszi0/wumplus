@@ -1,5 +1,9 @@
 package hu.nye.progtech.wumplus.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 /**
@@ -11,15 +15,20 @@ public class PlayerWithMap {
 
     private final MapVO mapVO;
 
-    public PlayerWithMap(PlayerVO playerVO, MapVO mapVO) {
+    @JsonCreator
+    public PlayerWithMap(
+            @JsonProperty("player") PlayerVO playerVO,
+            @JsonProperty("map") MapVO mapVO) {
         this.playerVO = playerVO;
         this.mapVO = mapVO;
     }
 
+    @JsonGetter("player")
     public PlayerVO getPlayerVO() {
         return playerVO;
     }
 
+    @JsonGetter("map")
     public MapVO getMapVO() {
         return mapVO;
     }
