@@ -1,5 +1,9 @@
 package hu.nye.progtech.wumplus.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -13,25 +17,34 @@ public class MapVO {
     private final char[][] map;             // 0-tól indexel
     private final boolean[][] fixed;        // 0-tól indexel
 
-    public MapVO(int numberOfRows, int numberOfColumns, char[][] map, boolean[][] fixed) {
+    @JsonCreator
+    public MapVO(
+            @JsonProperty("numberOfRows") int numberOfRows,
+            @JsonProperty("numberOfColumns") int numberOfColumns,
+            @JsonProperty("map") char[][] map,
+            @JsonProperty("fixed") boolean[][] fixed) {
         this.numberOfRows = numberOfRows;
         this.numberOfColumns = numberOfColumns;
         this.map = deepCopy(map);
         this.fixed = deepCopy(fixed);
     }
 
+    @JsonGetter("numberOfRows")
     public int getNumberOfRows() {
         return numberOfRows;
     }
 
+    @JsonGetter("numberOfColumns")
     public int getNumberOfColumns() {
         return numberOfColumns;
     }
 
+    @JsonGetter("map")
     public char[][] getMap() {
         return deepCopy(this.map);
     }
 
+    @JsonGetter("fixed")
     public boolean[][] getFixed() {
         return deepCopy(this.fixed);
     }

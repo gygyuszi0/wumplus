@@ -1,5 +1,10 @@
 package hu.nye.progtech.wumplus.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 import java.util.Objects;
 
 /**
@@ -10,23 +15,29 @@ public class CoordinateVO {
     private Integer coordX;
     private Integer coordY;
 
-    public CoordinateVO(Integer x, Integer y) {
+    @JsonCreator
+    public CoordinateVO(
+            @JsonProperty("pos_x") Integer x,
+            @JsonProperty("pos_y") Integer y) {
         this.coordX = x;
         this.coordY = y;
     }
 
+    @JsonGetter("pos_x")
     public Integer getCoordX() {
         return coordX;
     }
 
+    @JsonSetter("pos_x")
     public void setCoordX(Integer x) {
         this.coordX = x;
     }
 
+    @JsonGetter("pos_y")
     public Integer getCoordY() {
         return coordY;
     }
-
+    @JsonSetter("pos_y")
     public void setCoordY(Integer y) {
         this.coordY = y;
     }

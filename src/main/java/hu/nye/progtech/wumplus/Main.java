@@ -3,9 +3,14 @@ package hu.nye.progtech.wumplus;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.PrettyPrinter;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import hu.nye.progtech.wumplus.conduct.Conductor;
 import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 import hu.nye.progtech.wumplus.conduct.gamecontroller.ControllerImpl;
@@ -16,6 +21,9 @@ import hu.nye.progtech.wumplus.conduct.menuperformer.OptionPerformer;
 import hu.nye.progtech.wumplus.conduct.menuperformer.OptionPlay;
 import hu.nye.progtech.wumplus.conduct.menuperformer.OptionReadFromFile;
 import hu.nye.progtech.wumplus.conduct.menuperformer.OptionSaveToDatabase;
+import hu.nye.progtech.wumplus.model.CoordinateVO;
+import hu.nye.progtech.wumplus.model.MapVO;
+import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.impl.GiveUpCommand;
 import hu.nye.progtech.wumplus.service.command.impl.LootCommand;
@@ -47,7 +55,29 @@ public class Main {
      * @param args
      *
      */
-    public static void main(String[] args) throws FileNotFoundException, DBServiceException {
+    public static void main(String[] args) throws IOException, DBServiceException {
+
+        CoordinateVO coordinateVO = new CoordinateVO(0, 0);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        String json = objectMapper.writeValueAsString(coordinateVO);
+        System.out.println(json);
+        CoordinateVO coordinateVO2 = objectMapper.readValue(json, CoordinateVO.class);
+        System.out.println(coordinateVO2);
+
+        PlayerVO  playerVO = new PlayerVO("test", 'N', coordinateVO, coordinateVO);
+        playerVO.setNonStatic(1,true, 1,2);
+        json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(playerVO);
+        System.out.println(json);
+        playerVO = objectMapper.readValue(json, PlayerVO.class);
+        System.out.println(playerVO);
+
+        MapVO  mapVO = new MapVO(3, 3,
+                new char[][]{{'W', 'W', 'W'}, {'W', 'W', 'W'}, {'W', 'W', 'W'}},
+                new boolean[][]{{false, false, false}, {false, false, false}, {false, false, false}});
+        json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(mapVO);
+        System.out.println(json);
+
         IOService ioService = new IOService();
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
