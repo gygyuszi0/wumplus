@@ -1,8 +1,10 @@
 package hu.nye.progtech.wumplus.model;
 
-import com.fasterxml.jackson.annotation.*;
-
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 /**
  * Játkos információk.

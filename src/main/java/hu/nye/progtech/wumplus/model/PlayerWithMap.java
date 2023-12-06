@@ -1,10 +1,10 @@
 package hu.nye.progtech.wumplus.model;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.Objects;
 
 /**
  * Playert és Mapet tartalmazó osztály.

@@ -1,11 +1,11 @@
 package hu.nye.progtech.wumplus.model;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-
-import java.util.Objects;
 
 /**
  * Koordinátát tárol egész számokkal.
@@ -37,6 +37,7 @@ public class CoordinateVO {
     public Integer getCoordY() {
         return coordY;
     }
+
     @JsonSetter("pos_y")
     public void setCoordY(Integer y) {
         this.coordY = y;

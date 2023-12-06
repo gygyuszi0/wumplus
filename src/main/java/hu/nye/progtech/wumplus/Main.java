@@ -59,29 +59,6 @@ public class Main {
      *
      */
     public static void main(String[] args) throws IOException, DBServiceException {
-
-        CoordinateVO coordinateVO = new CoordinateVO(0, 0);
-        PlayerVO  playerVO = new PlayerVO("test", 'N', coordinateVO, coordinateVO);
-        playerVO.setNonStatic(1,true, 1,2);
-        MapVO  mapVO = new MapVO(3, 3,
-                new char[][]{{'W', 'W', 'W'}, {'W', 'W', 'W'}, {'W', 'W', 'W'}},
-                new boolean[][]{{false, false, false}, {false, false, false}, {false, false, false}});
-
-        PlayerWithMap playerWithMap = new PlayerWithMap(playerVO, mapVO);
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        IOService ioServiceJson = new IOService();
-        JsonService jsonService = new JsonService(objectMapper, ioServiceJson);
-        jsonService.save("test", playerWithMap);
-        System.out.println("write to file : ");
-        System.out.println(playerWithMap);
-
-        Optional<PlayerWithMap> returned = jsonService.load("test");
-        System.out.println("Read from file : ");
-        System.out.println(returned.get());
-
-
-
         IOService ioService = new IOService();
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
