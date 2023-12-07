@@ -47,10 +47,12 @@ public class OptionReadFromFile implements OptionPerformer  {
                 logger.info("New game state: " + result.get());
                 return result;
             } else {
-                return Optional.empty();
+                logger.error("GameState invalid.");
+                return gameState;
             }
         } catch (Exception e) {
-            return Optional.empty();
+            logger.error("Error reading from file: " + e.getMessage());
+            return gameState;
         }
     }
 
