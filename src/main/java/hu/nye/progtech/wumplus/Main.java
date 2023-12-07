@@ -69,7 +69,10 @@ public class Main {
 
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
-
+        MapWriter mapWriter = new MapWriter(ioService);
+        HudWriter hudWriter  = new HudWriter(ioService);
+        LeaderBoardWriter leaderBoardWriter = new LeaderBoardWriter(ioService);
+        CommandPrompt commandPrompt = new CommandPrompt(ioService);
 
         String resourceDir = "./";
         try {
@@ -83,10 +86,10 @@ public class Main {
         ObjectMapper  objectMapper = new ObjectMapper();
         JsonService jsonService = new JsonService(objectMapper, ioService, resourceDir);
 
-        MapWriter mapWriter = new MapWriter(ioService);
-        HudWriter hudWriter  = new HudWriter(ioService);
-        LeaderBoardWriter leaderBoardWriter = new LeaderBoardWriter(ioService);
-        CommandPrompt commandPrompt = new CommandPrompt(ioService);
+        String inputFile = Main.class.getClassLoader().getResource("").getPath() + "wumpluszinput.txt";;
+        FileReader fileReader = new FileReader(inputFile);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        BufferedReaderMapReader mapReader = new BufferedReaderMapReader(bufferedReader);
 
         LootPerformer lootPerformer = new LootPerformer();
         StepPerformer  stepPerformer = new StepPerformer();
@@ -99,13 +102,6 @@ public class Main {
                 new PauseCommand()
         );
         ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt, commands);
-
-        String inputFile = Main.class.getClassLoader().getResource("").getPath() + "wumpluszinput.txt";;
-        FileReader fileReader = new FileReader(inputFile);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-        BufferedReaderMapReader mapReader = new BufferedReaderMapReader(bufferedReader);
-
-
         List<OptionPerformer> optionPerformers = Arrays.asList(
                 new OptionCreateNewMap(),
                 new OptionReadFromFile(mapReader),
@@ -118,7 +114,6 @@ public class Main {
 
         Conductor conductor = new CunductorImpl(menuPrompt, playerNamePrompt,
                 optionPerformers, databaseService, leaderBoardWriter);
-
         conductor.mainLoop();
     }
 }
