@@ -41,6 +41,11 @@ public class LootCommand implements Command {
                 gameState.setPlayerVO(newPlayerVo);
                 gameState.setMapVO(newMapVO);
 
+                if (newPlayerVo.getCoordinate().equals(newPlayerVo.getStartCoordinate())) {
+                    gameState.setShouldExit(true);
+                    gameState.setPlayerWon(true);
+                }
+
                 return Optional.of(gameState);
             } else {
                 logger.error("Game state is not present.");

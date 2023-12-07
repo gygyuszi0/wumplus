@@ -11,9 +11,11 @@ public class GameState {
     private boolean mapCompleted;
 
     private boolean playerDead;
-    private boolean givUp;
 
+    private boolean playerWon;
+    private boolean givUp;
     private boolean pause;
+    private boolean shouldExit;
 
     public GameState(MapVO mapVO, PlayerVO playerVO, boolean shouldExit, boolean mapCompleted) {
         this.mapVO = mapVO;
@@ -23,10 +25,10 @@ public class GameState {
         this.givUp = false;
     }
 
+
     public MapVO getMapVO() {
         return mapVO;
     }
-
     public void setMapVO(MapVO mapVO) {
         this.mapVO = mapVO;
     }
@@ -34,30 +36,50 @@ public class GameState {
     public PlayerVO getPlayerVO() {
         return playerVO;
     }
-
     public void setPlayerVO(PlayerVO playerVO) {
         this.playerVO = playerVO;
     }
 
+
+
+
     public boolean isShouldExit() {
-        return givUp || pause || playerDead || isPlayerWon();
+        return shouldExit;
     }
-
-    public boolean isMapCompleted() {
-        return mapCompleted;
+    public void setShouldExit(boolean shouldExit) {
+        this.shouldExit = shouldExit;   
     }
-
-    public void setMapCompleted(boolean mapCompleted) {
-        this.mapCompleted = mapCompleted;
-    }
-
+    
     public boolean isPlayerDead() {
         return playerDead;
     }
-
     public void setPlayerDead(boolean playerDead) {
         this.playerDead = playerDead;
     }
+
+    public boolean isPlayerWon() {
+        return this.playerWon;
+    }
+    public void setPlayerWon(boolean playerWon) {
+        this.playerWon = playerWon;
+    }
+
+    public boolean isPause() {
+        return pause;
+    }
+    public void setPause(boolean pause) {
+        this.pause = pause;
+    }
+
+    public boolean isGiveUp() {
+        return givUp;
+    }
+    public void setGiveUp(boolean givUp) {
+        this.givUp = givUp;
+    }
+
+
+
 
     /**
      * Másolat létrehozása.
@@ -91,7 +113,6 @@ public class GameState {
         return Objects.hash(mapVO, playerVO, mapCompleted, playerDead, givUp, pause);
     }
 
-
     @Override
     public String toString() {
         return "GameState{" +
@@ -104,12 +125,10 @@ public class GameState {
                 '}';
     }
 
+
+    
     public String getPlayerName() {
         return playerVO.getName();
-    }
-
-    public boolean isPlayerWon() {
-        return playerVO.isWon();
     }
 
     public char[][] getMapElement() {
@@ -122,21 +141,5 @@ public class GameState {
 
     public int getPlayerY() {
         return playerVO.getCoordY();
-    }
-
-    public boolean isGiveUp() {
-        return givUp;
-    }
-
-    public void setGiveUp(boolean givUp) {
-        this.givUp = givUp;
-    }
-
-    public boolean isPause() {
-        return pause;
-    }
-
-    public void setPause(boolean pause) {
-        this.pause = pause;
     }
 }

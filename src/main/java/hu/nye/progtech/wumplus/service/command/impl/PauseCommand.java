@@ -25,6 +25,7 @@ public class PauseCommand implements Command {
         if (gameState.isPresent()) {
             GameState result = gameState.get().deepCopy();
             result.setPause(true);
+            result.setShouldExit(true);
             return Optional.of(result);
         } else {
             logger.info("No game is running");

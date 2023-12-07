@@ -21,6 +21,7 @@ public class GiveUpCommand implements Command {
         if (gameState.isPresent()) {
             GameState result = gameState.get();
             result.setGiveUp(true);
+            result.setShouldExit(true);
             return Optional.of(result);
         } else {
             return Optional.empty();

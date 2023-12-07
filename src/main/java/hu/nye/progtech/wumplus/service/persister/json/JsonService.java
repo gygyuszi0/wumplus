@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hu.nye.progtech.wumplus.model.MapVO;
-import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.PlayerWithMap;
 import hu.nye.progtech.wumplus.service.util.IOService;
 import org.slf4j.Logger;
@@ -26,7 +23,7 @@ public class JsonService {
     public JsonService(ObjectMapper objectMapper, IOService ioService) {
         this.objectMapper = objectMapper;
         this.ioService = ioService;
-        this.saveFolder = getClass().getClassLoader().getResource("").getPath().replace('\\', '/');
+         this.saveFolder = getClass().getClassLoader().getResource("").getPath().replace('\\', '/');
     }
 
     /**

@@ -181,12 +181,6 @@ public class PlayerVO {
     }
 
     @JsonIgnore
-    public boolean isWon() {
-        return coordinate.equals(startCoordinate) && haveGold;
-    }
-
-
-    @JsonIgnore
     public Integer getBaseX() {
         return startCoordinate.getCoordX();
     }

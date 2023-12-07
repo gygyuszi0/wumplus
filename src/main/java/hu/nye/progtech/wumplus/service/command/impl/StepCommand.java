@@ -42,6 +42,11 @@ public class StepCommand implements Command {
                 PlayerVO stepedPlayer = stepPerformer.perform(gameState.getPlayerVO(), gameState.getMapVO());
                 gameState.setPlayerVO(stepedPlayer);
 
+                if (stepedPlayer.getCoordinate().equals(stepedPlayer.getStartCoordinate())){
+                    gameState.setShouldExit(true);
+                    gameState.setPlayerWon(true);
+                }
+
                 return Optional.of(gameState);
             } catch (PerformerException e) {
                 logger.error("Can't perform this step" + e.getMessage());
@@ -50,6 +55,7 @@ public class StepCommand implements Command {
                 logger.error("Player is dead");
                 GameState gameState = safeGameState.get();
                 gameState.setPlayerDead(true);
+                gameState.setShouldExit(true);
                 return Optional.of(gameState);
             } catch (MapQueryException e) {
                 logger.error("Error in map query" + e.getMessage());
