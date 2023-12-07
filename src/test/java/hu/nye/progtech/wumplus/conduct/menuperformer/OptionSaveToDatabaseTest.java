@@ -53,6 +53,7 @@ public class OptionSaveToDatabaseTest {
     public void testPerformWithGameStatePresent() throws DBServiceException {
         // Arrange
         Optional<GameState> gameStateParam = Optional.of(gameStateMock);
+        when(gameStateMock.getPlayerVO()).thenReturn(playerVOMock);
 
         // Act
         Optional<GameState> result = underTest.perform(gameStateParam);
