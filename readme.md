@@ -5,14 +5,6 @@
   - Main osztályban az induló információk inicializálására, 
   - Performer osztályban a módosítások rögzítésére
 - Feltételezi a program az adatbázis létezését biztonsági okokból.
-- Menü opciók:
-  - File olvasás : 
-    - reader, parser és validator osztályok függnek file-tól.\
-        így main osztályban nincs inicializálva, használat közben\
-        ha sérül a file a többi funkció működhet és a játék játszható.
-- Tesztek:
-  - Harmadik videó tanulsága alapján a ui és az io nincs tesztelve
-  - Konzultáció tanulsága alapján az exception osztályok sincsenek
 
 # A játékról röviden 
 
@@ -40,6 +32,4 @@
           a feladatban nem volt egyértelműen meghatározva,\
           hogy melyik mezőről vegye fel, így ez tűnt logikusnak.
     - pause : kilép a menübe, megőrzi a játék-állást, itt menthető adatbázisba
-    - give up : kilép a menübe, visszatér a játék kezdeti állására.  
-    
-
+    - give up : kilép a menübe, visszatér a játék kezdeti állására.
