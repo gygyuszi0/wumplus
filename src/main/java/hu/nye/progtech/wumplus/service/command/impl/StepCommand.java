@@ -42,7 +42,7 @@ public class StepCommand implements Command {
                 PlayerVO stepedPlayer = stepPerformer.perform(gameState.getPlayerVO(), gameState.getMapVO());
                 gameState.setPlayerVO(stepedPlayer);
 
-                if (stepedPlayer.getCoordinate().equals(stepedPlayer.getStartCoordinate())){
+                if (stepedPlayer.getCoordinate().equals(stepedPlayer.getStartCoordinate())) {
                     gameState.setShouldExit(true);
                     gameState.setPlayerWon(true);
                 }

@@ -9,9 +9,7 @@ public class GameState {
     private MapVO mapVO;
     private PlayerVO playerVO;
     private boolean mapCompleted;
-
     private boolean playerDead;
-
     private boolean playerWon;
     private boolean givUp;
     private boolean pause;
@@ -25,10 +23,10 @@ public class GameState {
         this.givUp = false;
     }
 
-
     public MapVO getMapVO() {
         return mapVO;
     }
+
     public void setMapVO(MapVO mapVO) {
         this.mapVO = mapVO;
     }
@@ -36,16 +34,15 @@ public class GameState {
     public PlayerVO getPlayerVO() {
         return playerVO;
     }
+
     public void setPlayerVO(PlayerVO playerVO) {
         this.playerVO = playerVO;
     }
 
-
-
-
     public boolean isShouldExit() {
         return shouldExit;
     }
+
     public void setShouldExit(boolean shouldExit) {
         this.shouldExit = shouldExit;   
     }
@@ -53,6 +50,7 @@ public class GameState {
     public boolean isPlayerDead() {
         return playerDead;
     }
+
     public void setPlayerDead(boolean playerDead) {
         this.playerDead = playerDead;
     }
@@ -60,6 +58,7 @@ public class GameState {
     public boolean isPlayerWon() {
         return this.playerWon;
     }
+
     public void setPlayerWon(boolean playerWon) {
         this.playerWon = playerWon;
     }
@@ -67,6 +66,7 @@ public class GameState {
     public boolean isPause() {
         return pause;
     }
+
     public void setPause(boolean pause) {
         this.pause = pause;
     }
@@ -74,12 +74,10 @@ public class GameState {
     public boolean isGiveUp() {
         return givUp;
     }
+
     public void setGiveUp(boolean givUp) {
         this.givUp = givUp;
     }
-
-
-
 
     /**
      * Másolat létrehozása.
@@ -125,8 +123,6 @@ public class GameState {
                 '}';
     }
 
-
-    
     public String getPlayerName() {
         return playerVO.getName();
     }

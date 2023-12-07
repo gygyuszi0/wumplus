@@ -26,9 +26,6 @@ import java.util.Optional;
 public class StepCommandTest {
 
     @Mock
-    private Logger loggerMock;
-
-    @Mock
     private StepPerformer stepPerformerMock;
 
     @Mock
@@ -36,6 +33,8 @@ public class StepCommandTest {
 
     @Mock
     private PlayerVO playerVOMock;
+    @Mock
+    private CoordinateVO  coordinateVOMock;
 
     private StepCommand underTest;
 
@@ -67,6 +66,7 @@ public class StepCommandTest {
         // Arrange
         when(gameStateMock.getPlayerVO()).thenReturn(playerVOMock);
         when(stepPerformerMock.perform(playerVOMock, gameStateMock.getMapVO())).thenReturn(playerVOMock);
+        when(playerVOMock.getCoordinate()).thenReturn(coordinateVOMock);
 
         // Act
         Optional<GameState> result = underTest.process(CommandConst.STEP, Optional.of(gameStateMock));
