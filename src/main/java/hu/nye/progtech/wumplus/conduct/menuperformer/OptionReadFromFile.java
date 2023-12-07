@@ -1,8 +1,6 @@
 package hu.nye.progtech.wumplus.conduct.menuperformer;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +34,7 @@ public class OptionReadFromFile implements OptionPerformer  {
 
     @Override
     public Optional<GameState> perform(Optional<GameState> gameState) {
-        String inputFile = getClass().getClassLoader().getResource("").getPath() + "wumpuszinput.txt";
+        String inputFile = getClass().getClassLoader().getResource("").getPath() + "wumpluszinput.txt";
         try {
             List<String> rawMap = readFromFile();
             

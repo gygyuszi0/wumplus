@@ -1,18 +1,13 @@
 package hu.nye.progtech.wumplus;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.PrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationConfig;
 import hu.nye.progtech.wumplus.conduct.Conductor;
 import hu.nye.progtech.wumplus.conduct.CunductorImpl;
 import hu.nye.progtech.wumplus.conduct.gamecontroller.ControllerImpl;
@@ -23,10 +18,6 @@ import hu.nye.progtech.wumplus.conduct.menuperformer.OptionPerformer;
 import hu.nye.progtech.wumplus.conduct.menuperformer.OptionPlay;
 import hu.nye.progtech.wumplus.conduct.menuperformer.OptionReadFromFile;
 import hu.nye.progtech.wumplus.conduct.menuperformer.OptionSaveToDatabase;
-import hu.nye.progtech.wumplus.model.CoordinateVO;
-import hu.nye.progtech.wumplus.model.MapVO;
-import hu.nye.progtech.wumplus.model.PlayerVO;
-import hu.nye.progtech.wumplus.model.PlayerWithMap;
 import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.impl.GiveUpCommand;
 import hu.nye.progtech.wumplus.service.command.impl.LootCommand;
@@ -47,6 +38,8 @@ import hu.nye.progtech.wumplus.ui.game.MapWriter;
 import hu.nye.progtech.wumplus.ui.menu.LeaderBoardWriter;
 import hu.nye.progtech.wumplus.ui.menu.MenuPrompt;
 import hu.nye.progtech.wumplus.ui.menu.PlayerNamePrompt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -59,18 +52,36 @@ public class Main {
      * @param args
      *
      */
+
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
+    /**
+     * Wumplus-game main függvény.
+     *
+     * @param args Command line arguments
+     *
+     * @throws IOException read write error
+     * @throws DBServiceException database error
+     * @throws URISyntaxException wrong uri
+     */
     public static void main(String[] args) throws IOException, DBServiceException, URISyntaxException {
         IOService ioService = new IOService();
 
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
 
-        ObjectMapper  objectMapper = new ObjectMapper();
-        JsonService jsonService = new JsonService(objectMapper, ioService);
 
-        String resourceDir = Main.class.getClassLoader().getSystemResource("").toURI().getPath();
-        resourceDir = resourceDir.replace("\\", "/");
+        String resourceDir = "./";
+        try {
+            resourceDir = Main.class.getClassLoader().getSystemResource("").toURI().getPath();
+            resourceDir = resourceDir.replace("\\", "/");
+            logger.info("Resource directory: {}", resourceDir);
+        } catch (Exception e) {
+            logger.error("Error while getting resource directory");
+        }
         DatabaseService databaseService = new DatabaseService(resourceDir);
+        ObjectMapper  objectMapper = new ObjectMapper();
+        JsonService jsonService = new JsonService(objectMapper, ioService, resourceDir);
 
         MapWriter mapWriter = new MapWriter(ioService);
         HudWriter hudWriter  = new HudWriter(ioService);
@@ -89,7 +100,7 @@ public class Main {
         );
         ControllerImpl gameController = new ControllerImpl(mapWriter, hudWriter, commandPrompt, commands);
 
-        String inputFile = Main.class.getClassLoader().getResource("").getPath() + "wumpuszinput.txt";;
+        String inputFile = Main.class.getClassLoader().getResource("").getPath() + "wumpluszinput.txt";;
         FileReader fileReader = new FileReader(inputFile);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         BufferedReaderMapReader mapReader = new BufferedReaderMapReader(bufferedReader);

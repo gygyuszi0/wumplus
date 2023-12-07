@@ -20,10 +20,10 @@ public class JsonService {
     private final IOService ioService;
     private final String saveFolder;
 
-    public JsonService(ObjectMapper objectMapper, IOService ioService) {
+    public JsonService(ObjectMapper objectMapper, IOService ioService, String res) {
         this.objectMapper = objectMapper;
         this.ioService = ioService;
-         this.saveFolder = getClass().getClassLoader().getResource("").getPath().replace('\\', '/');
+        this.saveFolder = res;
     }
 
     /**
