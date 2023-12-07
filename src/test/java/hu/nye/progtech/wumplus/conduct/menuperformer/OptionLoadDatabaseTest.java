@@ -90,6 +90,7 @@ public class OptionLoadDatabaseTest {
         Optional<GameState> result = underTest.perform(Optional.of(gameStateMock));
 
         // then
-        assertFalse(result.isPresent());
+        assertTrue(result.isPresent());
+        assertEquals(gameStateMock, result.get());
     }
 }
