@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -58,7 +59,7 @@ public class Main {
      * @param args
      *
      */
-    public static void main(String[] args) throws IOException, DBServiceException {
+    public static void main(String[] args) throws IOException, DBServiceException, URISyntaxException {
         IOService ioService = new IOService();
 
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
@@ -67,7 +68,9 @@ public class Main {
         ObjectMapper  objectMapper = new ObjectMapper();
         JsonService jsonService = new JsonService(objectMapper, ioService);
 
-        DatabaseService databaseService = new DatabaseService();
+        String resourceDir = Main.class.getClassLoader().getSystemResource("").toURI().getPath();
+        resourceDir = resourceDir.replace("\\", "/");
+        DatabaseService databaseService = new DatabaseService(resourceDir);
 
         MapWriter mapWriter = new MapWriter(ioService);
         HudWriter hudWriter  = new HudWriter(ioService);

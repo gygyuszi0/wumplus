@@ -23,8 +23,8 @@ public class DatabaseService {
     private final String jdbcUrl;
     private final String resourceUrl;
 
-    public DatabaseService() throws DBServiceException {
-        this.resourceUrl = getClass().getClassLoader().getResource("").getPath().replace('\\', '/');
+    public DatabaseService(String res) throws DBServiceException {
+        this.resourceUrl = res;
         this.jdbcUrl = "jdbc:sqlite:" + resourceUrl + "wumpus";
 
         try {
