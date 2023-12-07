@@ -60,11 +60,16 @@ public class Main {
      */
     public static void main(String[] args) throws IOException, DBServiceException {
         IOService ioService = new IOService();
+
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
         PlayerNamePrompt playerNamePrompt = new PlayerNamePrompt(ioService);
+
+        ObjectMapper  objectMapper = new ObjectMapper();
+        JsonService jsonService = new JsonService(objectMapper, ioService);
+
         DatabaseService databaseService = new DatabaseService();
 
-        MapWriter  mapWriter = new MapWriter(ioService);
+        MapWriter mapWriter = new MapWriter(ioService);
         HudWriter hudWriter  = new HudWriter(ioService);
         LeaderBoardWriter leaderBoardWriter = new LeaderBoardWriter(ioService);
         CommandPrompt commandPrompt = new CommandPrompt(ioService);
@@ -91,7 +96,7 @@ public class Main {
                 new OptionCreateNewMap(),
                 new OptionReadFromFile(mapReader),
                 new OptionLoadDatabase(databaseService),
-                new OptionSaveToDatabase(databaseService),
+                new OptionSaveToDatabase(databaseService, jsonService),
                 new OptionPlay(gameController),
                 new OptionExit()
             );

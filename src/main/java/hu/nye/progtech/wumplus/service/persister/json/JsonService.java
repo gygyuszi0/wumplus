@@ -39,6 +39,7 @@ public class JsonService {
         try {
             String serialized = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(playerWithMap);
             ioService.writeFile(serialized, saveFolder + playerName + ".json");
+            logger.info("Saved player with map to file: {}", saveFolder + playerName + ".json");
         } catch (JsonProcessingException e) {
             logger.error("Error while serializing player with map", e);
         }

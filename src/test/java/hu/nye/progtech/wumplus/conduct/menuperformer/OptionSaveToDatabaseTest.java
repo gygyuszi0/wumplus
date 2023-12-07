@@ -5,6 +5,7 @@ import hu.nye.progtech.wumplus.model.MapVO;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
+import hu.nye.progtech.wumplus.service.persister.json.JsonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,6 +27,9 @@ public class OptionSaveToDatabaseTest {
     private DatabaseService databaseServiceMock;
 
     @Mock
+    private JsonService jsonServiceMock;
+
+    @Mock
     private Logger loggerMock;
 
     @Mock
@@ -41,7 +45,7 @@ public class OptionSaveToDatabaseTest {
 
     @BeforeEach
     public void setUp() {
-        underTest = new OptionSaveToDatabase(databaseServiceMock);
+        underTest = new OptionSaveToDatabase(databaseServiceMock, jsonServiceMock);
         underTest.setLogger(loggerMock);
     }
 
