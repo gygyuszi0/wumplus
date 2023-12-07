@@ -2,18 +2,14 @@ package hu.nye.progtech.wumplus.service.command.impl;
 
 import java.util.Optional;
 
-import hu.nye.progtech.wumplus.model.CoordinateVO;
 import hu.nye.progtech.wumplus.model.GameState;
 import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.constants.CommandConst;
-import hu.nye.progtech.wumplus.model.constants.Element;
 import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.performer.StepPerformer;
-import hu.nye.progtech.wumplus.service.exception.MapParseException;
 import hu.nye.progtech.wumplus.service.exception.MapQueryException;
 import hu.nye.progtech.wumplus.service.exception.PerformerException;
 import hu.nye.progtech.wumplus.service.exception.PlayerDeadException;
-import hu.nye.progtech.wumplus.service.util.MapQuery;
 import org.slf4j.Logger;
 
 

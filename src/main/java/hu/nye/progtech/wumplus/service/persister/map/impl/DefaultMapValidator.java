@@ -10,8 +10,6 @@ import hu.nye.progtech.wumplus.service.util.NumberOfElement;
  * Map logikiájának ellenőrzése - játékos független rész.
  *
  *
- * @TODO: 2023. 11. 12. Utilt készíteni az elemek számából és a frame lekérdezéséből.
- *
  */
 public class DefaultMapValidator implements MapValidator {
 

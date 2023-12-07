@@ -21,6 +21,7 @@ public class GameState {
         this.mapCompleted = mapCompleted;
         this.playerDead = false;
         this.givUp = false;
+        this.shouldExit  = shouldExit;
     }
 
     public MapVO getMapVO() {

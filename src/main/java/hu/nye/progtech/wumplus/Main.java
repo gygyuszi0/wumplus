@@ -3,7 +3,6 @@ package hu.nye.progtech.wumplus;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,7 +48,6 @@ public class Main {
     /**
      * Wumplus-game main függvény.
      *
-     * @param args
      *
      */
 
@@ -62,9 +60,8 @@ public class Main {
      *
      * @throws IOException read write error
      * @throws DBServiceException database error
-     * @throws URISyntaxException wrong uri
      */
-    public static void main(String[] args) throws IOException, DBServiceException, URISyntaxException {
+    public static void main(String[] args) throws IOException, DBServiceException {
         IOService ioService = new IOService();
 
         MenuPrompt menuPrompt = new MenuPrompt(ioService);
@@ -86,7 +83,7 @@ public class Main {
         ObjectMapper  objectMapper = new ObjectMapper();
         JsonService jsonService = new JsonService(objectMapper, ioService, resourceDir);
 
-        String inputFile = resourceDir + "wumpluszinput.txt";;
+        String inputFile = resourceDir + "wumpluszinput.txt";
         FileReader fileReader = new FileReader(inputFile);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         BufferedReaderMapReader mapReader = new BufferedReaderMapReader(bufferedReader);

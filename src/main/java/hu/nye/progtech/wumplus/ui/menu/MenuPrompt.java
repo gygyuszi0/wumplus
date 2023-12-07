@@ -2,8 +2,6 @@ package hu.nye.progtech.wumplus.ui.menu;
 
 import hu.nye.progtech.wumplus.model.constants.MenuOptions;
 import hu.nye.progtech.wumplus.service.util.IOService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Menu megjelenítésére szolgáló osztály.

@@ -9,7 +9,6 @@ import hu.nye.progtech.wumplus.model.PlayerWithMap;
 import hu.nye.progtech.wumplus.model.constants.CommandConst;
 import hu.nye.progtech.wumplus.service.command.Command;
 import hu.nye.progtech.wumplus.service.command.performer.LootPerformer;
-import hu.nye.progtech.wumplus.service.exception.PerformerException;
 import org.slf4j.Logger;
 
 /**

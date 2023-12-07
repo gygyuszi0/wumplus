@@ -331,14 +331,6 @@ public class DatabaseService {
         }
     }
 
-    public void delete() {
-        System.out.println("Deleted from database");
-    }
-
-    public void update() {
-        System.out.println("Updated in database");
-    }
-
     /**
      * Database létrehozása.
      */
@@ -350,29 +342,5 @@ public class DatabaseService {
             System.err.println("Hiba a kapcsolódás során: " + e.getMessage());
         }
         System.out.println("Created in database");
-    }
-
-    public void read() {
-        System.out.println("Read from database");
-    }
-
-    public void write() {
-        System.out.println("Written to database");
-    }
-
-    public void close() {
-        System.out.println("Closed database");
-    }
-
-    public void open() {
-        System.out.println("Opened database");
-    }
-
-    public void connect() {
-        System.out.println("Connected to database");
-    }
-
-    public void disconnect() {
-        System.out.println("Disconnected from database");
     }
 }
