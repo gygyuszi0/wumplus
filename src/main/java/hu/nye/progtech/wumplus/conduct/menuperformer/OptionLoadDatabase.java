@@ -41,11 +41,11 @@ public class OptionLoadDatabase implements OptionPerformer {
                 LOGGER.info("Loaded from database: " + result);
                 return Optional.of(result);
             } else {
-                return Optional.empty();
+                return gameState;
             }
         } catch (DBServiceException e) {
             LOGGER.error("Error loading from database", e);
-            return Optional.empty();
+            return gameState;
         }
     }
 
