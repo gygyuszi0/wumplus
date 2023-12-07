@@ -1,11 +1,15 @@
 package hu.nye.progtech.wumplus.ui.menu;
 
+import hu.nye.progtech.wumplus.model.constants.MenuOptions;
 import hu.nye.progtech.wumplus.service.util.IOService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Menu megjelenítésére szolgáló osztály.
  */
 public class MenuPrompt {
+
     private final String menuLine1 = "Please select an option:\n";
     private final String menuLine2 = "\t1. Create new map\n";
     private final String menuLine3 = "\t2. Read from file\n";
@@ -30,7 +34,11 @@ public class MenuPrompt {
     public Integer readChoice() {
         ioService.writeConsole(menuPromt);
         String choice = ioService.readConsole();
-        Integer choiceConverted = Integer.parseInt(choice);
-        return choiceConverted;
+        try {
+            Integer choiceConverted = Integer.parseInt(choice);
+            return choiceConverted;
+        } catch (NumberFormatException e) {
+            return MenuOptions.INVALID;
+        }
     }
 }

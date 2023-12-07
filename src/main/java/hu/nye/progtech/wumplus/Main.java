@@ -95,7 +95,7 @@ public class Main {
         List<OptionPerformer> optionPerformers = Arrays.asList(
                 new OptionCreateNewMap(),
                 new OptionReadFromFile(mapReader),
-                new OptionLoadDatabase(databaseService),
+                new OptionLoadDatabase(databaseService, jsonService),
                 new OptionSaveToDatabase(databaseService, jsonService),
                 new OptionPlay(gameController),
                 new OptionExit()

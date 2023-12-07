@@ -6,6 +6,7 @@ import hu.nye.progtech.wumplus.model.PlayerVO;
 import hu.nye.progtech.wumplus.model.PlayerWithMap;
 import hu.nye.progtech.wumplus.service.exception.DBServiceException;
 import hu.nye.progtech.wumplus.service.persister.database.DatabaseService;
+import hu.nye.progtech.wumplus.service.persister.json.JsonService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,6 +29,9 @@ public class OptionLoadDatabaseTest {
     private DatabaseService databaseServiceMock;
 
     @Mock
+    private JsonService  jsonServiceMock;
+
+    @Mock
     private GameState gameStateMock;
 
     @Mock
@@ -43,7 +47,7 @@ public class OptionLoadDatabaseTest {
 
     @BeforeEach
     public void setUp() {
-        underTest = new OptionLoadDatabase(databaseServiceMock);
+        underTest = new OptionLoadDatabase(databaseServiceMock, jsonServiceMock);
     }
 
     @Test

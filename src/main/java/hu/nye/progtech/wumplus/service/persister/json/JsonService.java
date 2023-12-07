@@ -57,8 +57,10 @@ public class JsonService {
         try {
             if (serialized != null) {
                 PlayerWithMap playerWithMap = objectMapper.readValue(serialized, PlayerWithMap.class);
+                logger.info("Loaded player with map from file: {}", saveFolder + playerName + ".json");
                 return Optional.of(playerWithMap);
             } else {
+                logger.error("File {} not found", saveFolder + playerName + ".json");
                 return Optional.empty();
             }
         } catch (JsonProcessingException e) {
