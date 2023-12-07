@@ -34,7 +34,6 @@ public class OptionReadFromFile implements OptionPerformer  {
 
     @Override
     public Optional<GameState> perform(Optional<GameState> gameState) {
-        String inputFile = getClass().getClassLoader().getResource("").getPath() + "wumpluszinput.txt";
         try {
             List<String> rawMap = readFromFile();
             
@@ -45,20 +44,17 @@ public class OptionReadFromFile implements OptionPerformer  {
             boolean mapValid = notErrorPlayerMap(playerVO, mapVO);
             if (mapValid) {
                 Optional<GameState> result = Optional.of(new GameState(mapVO, playerVO, false, false));
-                logger.info("Read from file: " + inputFile);
                 logger.info("New game state: " + result.get());
                 return result;
             } else {
-                logger.error("Error reading from file: " + inputFile);
                 return Optional.empty();
             }
         } catch (Exception e) {
-            logger.error("Error reading from file: " + inputFile);
             return Optional.empty();
         }
     }
 
-    private List<String> readFromFile() throws FileNotFoundException, MapReadException {
+    private List<String> readFromFile() throws MapReadException {
         List<String> rawMap = bufferedReaderMapReader.readMap();
         return rawMap;
     }

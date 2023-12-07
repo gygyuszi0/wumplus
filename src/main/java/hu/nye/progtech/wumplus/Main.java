@@ -86,7 +86,7 @@ public class Main {
         ObjectMapper  objectMapper = new ObjectMapper();
         JsonService jsonService = new JsonService(objectMapper, ioService, resourceDir);
 
-        String inputFile = Main.class.getClassLoader().getResource("").getPath() + "wumpluszinput.txt";;
+        String inputFile = resourceDir + "wumpluszinput.txt";;
         FileReader fileReader = new FileReader(inputFile);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         BufferedReaderMapReader mapReader = new BufferedReaderMapReader(bufferedReader);
