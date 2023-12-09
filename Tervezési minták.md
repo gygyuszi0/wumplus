@@ -1,0 +1,58 @@
+# Programtervezési minták (Software Design Patterns)
+
+> **Definíció**
+> Egy programtervezési minta egy programozási feladatra ad általános,\
+> újrafelhasználható megoldát. Egymással együttműködő objektumok \
+> és osztályok leírása.
+
+## 1. MVC modell
+
+Az MVC modell jelentése: Modell - View - Controller. A felhasználó a nézet réteggel lép interakcióba, műveletet végez. Ezt a műveletet, utasítást feldolgozza a controller réteg. Az információkat, a program számára keztelhető formában, objektumokban (ValueObject) a modell réteg kezeli.
+
+Kötelező rétegek a fentebb leírtak szerint:
+- Modell : objektumok leírása
+- Controller : Felhasználói műveletek kezelése
+- View : felhasználói felület megjelenítése, utasítások vétele.
+
+Lehetnek opcinális rétegek is:
+ - Service : egy közvetítő réteg információt kér a modelltől és \
+    továbbítja a vezérlőnek.
+ - Persister : tárolja valamilyen perzisztens módon (adatbázis, file), \
+    azokat az adatokat amiket később, a program esetleges újraindíŧása után\
+    még használni kell.
+
+![MVC modell](mcv.png)\
+*MVC modell*
+
+## 2. Néhány további tervezési minta:
+
+1. Objektum létrehozására vonatkozó tervezési minták:
+    - **Prototype** : definiálunk és létrehozunk egy objektumot, \
+        majd másolatot készítünk belőle ha új példányra van szükség.
+    - **Singleton** : létrehozunk egy osztály egy példányát, kizárólag egy helyen. \
+        Majd globális hozzáférést biztosítunk azon elemeknek, akik ezt használják. \
+        Pl.: adatbázis elérés
+2. Osztályok felépítésére vonatkozó minták:
+    - **Decorator** : Az objektumok wrapper osztályokba csomagolhatóak, \
+        amleyek egy viselkedést valósítanak meg. \
+        Pl.: GUI esetében egy felirat egy gomb nevű wrapper osztályba csomagolva\
+        már kattintható, egyébként nem.
+    - **Bridge**    : Egy oszutályt két részre osztunk : absztrakcióra és\
+        implementációra. Majd egymástól függetlenül fejlesztjük őket.
+3. Objektumok közötti kapcsolatra vonatkozó tervezési minták:
+    - **Mediator**  : Összetett függőségek egyszerűsítésére jó. Az objektumok\
+        közvetlenül nem kommunikálnak a függőségeikkel. Egy közvetítő objektumnak\
+        (mediator) küldik az üzenetet, ez a függőségek segítségével megoldja a\
+        feladatot, majd az eredményt visszaküldi a kérés feladójának.
+    - **Command**   : Minden utasítást egyetlen objektumban írunk le úgy, hogy ez\
+        tartalmazzon minden információ a végrehajtáshoz. Felkészítjük a\
+        végrehajthatatlan utasításra is.
+
+---------------------------------------------------------------------------------
+
+*Források*
+
+[Design patterns - Wikipedia](https://hu.wikipedia.org/wiki/Programtervez%C3%A9si_minta)\
+[MVC - Wikipedia](https://hu.wikipedia.org/wiki/Modell-n%C3%A9zet-vez%C3%A9rl%C5%91)\
+[MVC schema - ELTE Inf](http://nyelvek.inf.elte.hu/leirasok/ASP.NET/index.php?chapter=5)\
+[Design Patterns Catalog](https://refactoring.guru/design-patterns/catalog)
