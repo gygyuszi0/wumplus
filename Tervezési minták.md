@@ -1,9 +1,14 @@
-# Tervezési minták egy OO programozási nyelvben (Software Design Patterns)
+# Tervezési minták egy OO programozási nyelvben. MVC, mint modell-nézet-vezérlő minta és néhány másik tervezési minta. (Software Design Patterns)
 
 > **Definíció**
 > Egy programtervezési minta egy programozási feladatra ad általános,\
 > újrafelhasználható megoldát. Egymással együttműködő objektumok \
 > és osztályok leírása.
+
+Ezek kifejlesztésének motivációja az volt, hogy a technológia fejlődésével \
+és az igények nöbekedesével egyre bonyolultabb, összetettebb szoftvereket kellett írni.\
+Így az áttekinthetőség és helyes működés kedvéért szükségessé vált általános "sablonok"\
+kidolgozása.
 
 ## 1. MVC modell
 
